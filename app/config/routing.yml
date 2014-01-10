@@ -1,0 +1,4 @@
+eieinstitut:
+    resource: "@EieinstitutBundle/Resources/config/routing.yml"
+    prefix:   /
+
