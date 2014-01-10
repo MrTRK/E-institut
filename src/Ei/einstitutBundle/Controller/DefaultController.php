@@ -14,4 +14,8 @@ class DefaultController extends Controller
     {
         return $this->render('EieinstitutBundle:Default:admin.html.twig');
     }
+    public function pageAction()
+    {
+        return $this->render('EieinstitutBundle:Pages:index.html.twig');
+    }
 }

@@ -134,8 +134,18 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // eieinstitut_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'eieinstitut_homepage')), array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::indexAction',));
+        }
+
+        // eieinstitut_admin
         if ($pathinfo === '/admin') {
-            return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::adminAction',  '_route' => 'eieinstitut_homepage',);
+            return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::adminAction',  '_route' => 'eieinstitut_admin',);
+        }
+
+        // Page
+        if ($pathinfo === '/page') {
+            return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::pageAction',  '_route' => 'Page',);
         }
 
         if (0 === strpos($pathinfo, '/log')) {

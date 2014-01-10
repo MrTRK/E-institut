@@ -2,10 +2,13 @@ eieinstitut_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: EieinstitutBundle:Default:index }
 
-eieinstitut_homepage:
+eieinstitut_admin:
     pattern:  /admin
     defaults: { _controller: EieinstitutBundle:Default:admin }
 
+Page:
+    pattern:  /page
+    defaults: { _controller: EieinstitutBundle:Default:page }
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
