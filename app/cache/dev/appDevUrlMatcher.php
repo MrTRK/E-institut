@@ -158,23 +158,31 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::test_pageAction',  '_route' => 'Test',);
         }
 
-        if (0 === strpos($pathinfo, '/log')) {
-            if (0 === strpos($pathinfo, '/login')) {
-                // fos_user_security_login
-                if ($pathinfo === '/login') {
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
-                }
-
-                // fos_user_security_check
-                if ($pathinfo === '/login_check') {
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
-                }
-
+        if (0 === strpos($pathinfo, '/l')) {
+            // listes_ressources
+            if ($pathinfo === '/listes_ressources') {
+                return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::listes_ressourcesAction',  '_route' => 'listes_ressources',);
             }
 
-            // fos_user_security_logout
-            if ($pathinfo === '/logout') {
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
+            if (0 === strpos($pathinfo, '/log')) {
+                if (0 === strpos($pathinfo, '/login')) {
+                    // fos_user_security_login
+                    if ($pathinfo === '/login') {
+                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
+                    }
+
+                    // fos_user_security_check
+                    if ($pathinfo === '/login_check') {
+                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
+                    }
+
+                }
+
+                // fos_user_security_logout
+                if ($pathinfo === '/logout') {
+                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
+                }
+
             }
 
         }

@@ -18,6 +18,10 @@ Test:
     pattern:  /test_page
     defaults: { _controller: EieinstitutBundle:Default:test_page }
 
+listes_ressources:
+    pattern:  /listes_ressources
+    defaults: { _controller: EieinstitutBundle:Default:listes_ressources }
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

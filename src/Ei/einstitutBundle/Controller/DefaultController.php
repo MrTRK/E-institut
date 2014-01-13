@@ -27,4 +27,8 @@ class DefaultController extends Controller
     {
         return $this->render('EieinstitutBundle:Pages:Licence.html.twig');
     }
+    public function listes_ressourcesAction()
+    {
+        return $this->render('EieinstitutBundle:Representation:listes_ressources.html.twig');
+    }
 }
