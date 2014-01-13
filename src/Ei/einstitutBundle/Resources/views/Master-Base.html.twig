@@ -57,13 +57,16 @@
         {% endblock %}
 </head>
 <body>
-     {% include 'EieinstitutBundle::include/Header.html.twig' %}
-    
- 
-    {% block content %}
-	
-    {% endblock %}
+    {% include 'EieinstitutBundle::include/Header.html.twig' %}
 
+	<article class="container_12">
+
+	{% block content %}
+
+	{% endblock %}
+
+	</article>
+	
     {% include 'EieinstitutBundle::include/Footer.html.twig' %}
     
          

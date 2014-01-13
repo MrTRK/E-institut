@@ -148,6 +148,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::pageAction',  '_route' => 'Page',);
         }
 
+        // espace_personnel
+        if ($pathinfo === '/espace_personnel') {
+            return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::espace_personnelAction',  '_route' => 'espace_personnel',);
+        }
+
+        // Test
+        if ($pathinfo === '/test_page') {
+            return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::test_pageAction',  '_route' => 'Test',);
+        }
+
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login

@@ -120,26 +120,31 @@ class __TwigTemplate_7a72f30a0ec9708f4d53753b780805ca2c1c65377284d2ac01b8ecc01e0
         // line 52
         $this->displayBlock('stylesheets', $context, $blocks);
         // line 55
-        echo "         ";
+        echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
         // line 58
         echo "</head>
 <body>
-    <h1>Header</h1>
-    
- 
     ";
-        // line 63
-        $this->displayBlock('content', $context, $blocks);
-        // line 66
+        // line 60
+        $this->env->loadTemplate("EieinstitutBundle::include/Header.html.twig")->display($context);
+        // line 61
         echo "
-    ";
+\t<article class=\"container_12\">
+
+\t";
+        // line 64
+        $this->displayBlock('content', $context, $blocks);
         // line 67
+        echo "
+\t</article>
+\t
+    ";
+        // line 70
         $this->env->loadTemplate("EieinstitutBundle::include/Footer.html.twig")->display($context);
-        // line 68
+        // line 71
         echo "    
-     
-     
+         
      <!--
 \t
 \tUpdated as v1.5:
@@ -149,62 +154,62 @@ class __TwigTemplate_7a72f30a0ec9708f4d53753b780805ca2c1c65377284d2ac01b8ecc01e0
 \t
 \t<!-- Generic libs -->
 \t<script src=\"";
-        // line 79
+        // line 81
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/libs/jquery-1.6.3.min.js"), "html", null, true);
         echo "\"></script>
 \t<script src=\"";
-        // line 80
+        // line 82
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/old-browsers.js"), "html", null, true);
         echo "\"></script>\t\t<!-- remove if you do not need older browsers detection -->
 \t<script src=\"";
-        // line 81
+        // line 83
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/libs/jquery.hashchange.js"), "html", null, true);
         echo "\"></script>
 \t
 \t<!-- Template libs -->
 \t<script src=\"";
-        // line 84
+        // line 86
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/jquery.accessibleList.js"), "html", null, true);
         echo "\"></script>
 \t<script src=\"";
-        // line 85
+        // line 87
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/searchField.js"), "html", null, true);
         echo "\"></script>
 \t<script src=\"";
-        // line 86
+        // line 88
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/common.js"), "html", null, true);
         echo "\"></script>
 \t<script src=\"";
-        // line 87
+        // line 89
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/standard.js"), "html", null, true);
         echo "\"></script>
 \t<!--[if lte IE 8]><script src=\"js/standard.ie.js\"></script><![endif]-->
 \t<script src=\"";
-        // line 89
+        // line 91
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/jquery.tip.js"), "html", null, true);
         echo "\"></script>
 \t<script src=\"";
-        // line 90
+        // line 92
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/jquery.contextMenu.js"), "html", null, true);
         echo "\"></script>
 \t<script src=\"";
-        // line 91
+        // line 93
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/jquery.modal.js"), "html", null, true);
         echo "\"></script>
 \t
 \t<!-- Custom styles lib -->
 \t<script src=\"";
-        // line 94
+        // line 96
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/list.js"), "html", null, true);
         echo "\"></script>
 \t
 \t<!-- Plugins -->
 \t<script src=\"";
-        // line 97
+        // line 99
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/libs/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
 \t<script src=\"";
-        // line 98
+        // line 100
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/libs/jquery.datepick/jquery.datepick.min.js"), "html", null, true);
         echo "\"></script>
 \t
@@ -212,15 +217,15 @@ class __TwigTemplate_7a72f30a0ec9708f4d53753b780805ca2c1c65377284d2ac01b8ecc01e0
 
 \t\t  <!-- <script type='text/javascript' src='js/camera.slide/jquery.min.js'></script>-->
 \t<script type='text/javascript' src='";
-        // line 103
+        // line 105
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/camera.slide/jquery.mobile.customized.min.js"), "html", null, true);
         echo "'></script>
 \t<script type='text/javascript' src='";
-        // line 104
+        // line 106
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/camera.slide/jquery.easing.1.3.js"), "html", null, true);
         echo "'></script>
 \t<script type='text/javascript' src='";
-        // line 105
+        // line 107
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/js/camera.slide/camera.min.js"), "html", null, true);
         echo "'></script>
 \t<script>
@@ -235,9 +240,9 @@ class __TwigTemplate_7a72f30a0ec9708f4d53753b780805ca2c1c65377284d2ac01b8ecc01e0
 \t<!--Load the AJAX API-->
 \t<script src=\"http://www.google.com/jsapi\"></script>
      ";
-        // line 117
+        // line 119
         $this->displayBlock('javascripts_Bottom', $context, $blocks);
-        // line 120
+        // line 122
         echo "</body>
 </html>";
     }
@@ -258,18 +263,18 @@ class __TwigTemplate_7a72f30a0ec9708f4d53753b780805ca2c1c65377284d2ac01b8ecc01e0
         ";
     }
 
-    // line 63
+    // line 64
     public function block_content($context, array $blocks = array())
     {
-        // line 64
+        // line 65
         echo "
-    ";
+\t";
     }
 
-    // line 117
+    // line 119
     public function block_javascripts_Bottom($context, array $blocks = array())
     {
-        // line 118
+        // line 120
         echo "
      ";
     }
@@ -286,6 +291,6 @@ class __TwigTemplate_7a72f30a0ec9708f4d53753b780805ca2c1c65377284d2ac01b8ecc01e0
 
     public function getDebugInfo()
     {
-        return array (  273 => 118,  270 => 117,  265 => 64,  262 => 63,  257 => 56,  254 => 55,  249 => 53,  246 => 52,  241 => 120,  239 => 117,  224 => 105,  220 => 104,  216 => 103,  208 => 98,  204 => 97,  198 => 94,  192 => 91,  188 => 90,  184 => 89,  179 => 87,  175 => 86,  171 => 85,  167 => 84,  161 => 81,  157 => 80,  153 => 79,  140 => 68,  138 => 67,  135 => 66,  133 => 63,  126 => 58,  123 => 55,  121 => 52,  106 => 40,  100 => 37,  96 => 36,  90 => 33,  86 => 32,  82 => 31,  78 => 30,  74 => 29,  70 => 28,  66 => 27,  59 => 23,  52 => 19,  48 => 18,  44 => 17,  40 => 16,  23 => 1,);
+        return array (  278 => 120,  275 => 119,  270 => 65,  267 => 64,  262 => 56,  259 => 55,  254 => 53,  251 => 52,  246 => 122,  244 => 119,  229 => 107,  225 => 106,  221 => 105,  213 => 100,  209 => 99,  203 => 96,  197 => 93,  193 => 92,  189 => 91,  184 => 89,  180 => 88,  176 => 87,  172 => 86,  166 => 83,  162 => 82,  158 => 81,  146 => 71,  144 => 70,  139 => 67,  137 => 64,  132 => 61,  130 => 60,  126 => 58,  123 => 55,  121 => 52,  106 => 40,  100 => 37,  96 => 36,  90 => 33,  86 => 32,  82 => 31,  78 => 30,  74 => 29,  70 => 28,  66 => 27,  59 => 23,  52 => 19,  48 => 18,  44 => 17,  40 => 16,  23 => 1,);
     }
 }

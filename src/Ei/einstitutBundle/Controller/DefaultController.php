@@ -23,4 +23,8 @@ class DefaultController extends Controller
     {
         return $this->render('EieinstitutBundle::espace_personnel.html.twig');
     }
+    public function test_pageAction()
+    {
+        return $this->render('EieinstitutBundle:Pages:Licence.html.twig');
+    }
 }
