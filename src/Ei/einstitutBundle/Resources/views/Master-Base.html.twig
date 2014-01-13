@@ -52,22 +52,21 @@
         {% block stylesheets %}
 
         {% endblock %}
-         {% block javascripts %}
+        {% block javascripts %}
 
         {% endblock %}
 </head>
 <body>
-    <h1>Header</h1>
+     {% include 'EieinstitutBundle::include/Header.html.twig' %}
     
  
     {% block content %}
-
+	
     {% endblock %}
 
     {% include 'EieinstitutBundle::include/Footer.html.twig' %}
     
-     
-     
+         
      <!--
 	
 	Updated as v1.5:

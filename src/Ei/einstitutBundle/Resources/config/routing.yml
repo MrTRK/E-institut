@@ -10,6 +10,10 @@ Page:
     pattern:  /page
     defaults: { _controller: EieinstitutBundle:Default:page }
 
+espace_personnel:
+    pattern:  /espace_personnel
+    defaults: { _controller: EieinstitutBundle:Default:espace_personnel }
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
