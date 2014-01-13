@@ -16,15 +16,13 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<article class=\"container_12\">
-\t
-\t\t<div class=\"clear\"></div>
+        echo "
 \t<!-- content footer-->
 \t\t<section class=\"grid_12\">
 
-\t\t\t<div class=\"block-border\">
-                   <div class=\"block-content\">
-\t\t\t\t   <div class=\"block-controls\">
+\t\t<div class=\"block-border\">
+            <div class=\"block-content\">
+\t\t\t\t<div class=\"block-controls\">
 \t\t\t\t\t
 \t\t\t\t   <!-- list of members -->
 \t\t\t
@@ -32,7 +30,7 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
 \t\t\t\t\t<legend> Membres</legend>
 \t\t\t\t\t <li title=\"Université de Ouagadougou\"> 
 \t\t\t\t\t\t\t<a href=\"http://www.univ-ouaga.bf/\" target=\"_blank\"><img src=\"";
-        // line 16
+        // line 14
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/logo/logo_univ-ouagadougou.gif"), "html", null, true);
         echo "\" width=\"64\" height=\"43\"></a>
 \t\t\t\t\t\t
@@ -42,7 +40,7 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
 \t\t\t\t\t
 \t\t\t\t\t <li title=\"Université de Bamako\">
 \t\t\t\t\t\t\t<a href=\"http://u-bamako.ml.refer.org/\" target=\"_blank\"><img src=\"";
-        // line 23
+        // line 21
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/logo/logo_univ-bamako.gif"), "html", null, true);
         echo "\" width=\"64\" height=\"45\"></a>
 \t\t\t\t\t\t<div class=\"clear\"></div>
@@ -51,7 +49,7 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
 \t\t\t\t\t
 \t\t\t\t\t <li title=\"Université Marien Ngouabi\">
 \t\t\t\t\t\t\t<a href=\"http://www.univ-mngb.net/\" target=\"_blank\"><img src=\"";
-        // line 29
+        // line 27
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/logo/logo_univ-marien-ngouabi.gif"), "html", null, true);
         echo "\" width=\"64\" height=\"50\"></a>
 \t\t\t\t\t\t<div class=\"clear\"></div>
@@ -60,7 +58,7 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
 \t\t\t\t\t
 \t\t\t\t\t <li title=\"Université de Ndjamena\"> 
 \t\t\t\t\t\t\t<a href=\"http://universite-ndjamena.org/\" target=\"_blank\"><img src=\"";
-        // line 35
+        // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/logo/logo_univ-ndjamena.gif"), "html", null, true);
         echo "\" width=\"64\" height=\"48\"></a>
 \t\t\t\t\t\t<div class=\"clear\"></div>
@@ -75,7 +73,7 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
 \t\t\t\t\t<!-- list of partners -->
 \t\t\t\t     <li title=\"acp\"> 
 \t\t\t\t\t\t\t<a href=\"http://www.acp.int/\" target=\"_blank\"><img src=\"";
-        // line 47
+        // line 45
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/logo/logo_acp.gif"), "html", null, true);
         echo "\" width=\"64\" height=\"43\"></a>
 \t\t\t\t\t\t<div class=\"clear \"></div>
@@ -84,7 +82,7 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
 \t\t\t\t\t
 \t\t\t\t\t <li title=\"Université Blaise Pascal\">
 \t\t\t\t\t\t\t<a href=\"http://www.univ-bpclermont.fr/\" target=\"_blank\"><img src=\"";
-        // line 53
+        // line 51
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/logo/logo_ubp.gif"), "html", null, true);
         echo "\" width=\"64\" height=\"43\"></a>
 \t\t\t\t\t\t<div class=\"clear\"></div>
@@ -136,27 +134,27 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
                        <div class=\"grid_3 form\">
                               <ul class=\"controls-buttons\">
 \t\t\t\t\t\t\t\t<li><a href=\"https://www.facebook.com/pages/E-Institut-Espace-Num%C3%A9rique-Acad%C3%A9mique-Unifi%C3%A9-ENAU/212028762219064\" target=\"_blank\"><img src=\"";
-        // line 102
+        // line 100
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/images/icons/social/fb.png"), "html", null, true);
         echo "\" width=\"24\" height=\"24\"></a></li>
 \t\t\t\t\t\t\t\t<li><a href=\"https://twitter.com/EInstitut\"target=\"_blank\"><img src=\"";
-        // line 103
+        // line 101
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/images/icons/social/tw.png"), "html", null, true);
         echo "\" width=\"24\" height=\"24\"></a></li>
 \t\t\t\t\t\t\t\t<li><a href=\"http://www.linkedin.com/pub/e-institut/45/a43/168\" target=\"_blank\"><img src=\"";
-        // line 104
+        // line 102
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/images/icons/social/ln.png"), "html", null, true);
         echo "\" width=\"24\" height=\"24\"></a></li>
 \t\t\t\t\t\t\t\t<li><a href=\"http://www.youtube.com/channel/UCNJWFhvZoYW_Qx-GoHHRBcw\" target=\"_blank\"><img src=\"";
-        // line 105
+        // line 103
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/images/icons/social/yt.png"), "html", null, true);
         echo "\" width=\"24\" height=\"24\"></a></li>
 \t\t\t\t\t\t\t\t<li><a href=\"https://plus.google.com/112849304228527795761/posts\" target=\"_blank\"><img src=\"";
-        // line 106
+        // line 104
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/images/icons/social/goo.png"), "html", null, true);
         echo "\" width=\"24\" height=\"24\"></a></li>
 \t\t\t\t\t\t\t\t<li><a href=\"#\" target=\"_blank\"><img src=\"";
-        // line 107
+        // line 105
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/images/icons/social/rss.png"), "html", null, true);
         echo "\" width=\"24\" height=\"24\"></a></li>
 \t\t\t\t\t\t\t\t
@@ -167,7 +165,7 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
 \t\t\t\t\t\t        <p>
 \t\t\t\t\t\t<label for=\"simple-calendar\">Votre adresse email :</label>
 \t\t\t\t\t\t<span class=\"input-type-text margin-right relative\"><input type=\"text\" name=\"simple-calendar\" id=\"simple-calendar\" value=\"\" class=\"datepicker hasDatepick\"><img src=\"";
-        // line 115
+        // line 113
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/images/icons/fugue/mail.png"), "html", null, true);
         echo "\" width=\"16\" height=\"16\">
 \t\t\t\t\t\t
@@ -192,7 +190,7 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
                    </div>
 \t\t</section>
 
-\t</article>
+
 \t<!-- End content footer-->
 \t\t
 \t
@@ -207,7 +205,7 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
 \t\t
 \t\t<div class=\"float-right\">
 \t\t\t<a href=\"#top\" class=\"button\"><img src=\"";
-        // line 152
+        // line 150
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/eieinstitut/images/icons/fugue/navigation-090.png"), "html", null, true);
         echo "\" width=\"16\" height=\"16\">Haut de page</a>
 \t\t</div>
@@ -227,6 +225,6 @@ class __TwigTemplate_db53917b84dfd7195490c8408fea56464294b0292c8a8c6e624759b2b2d
 
     public function getDebugInfo()
     {
-        return array (  211 => 152,  160 => 107,  156 => 106,  152 => 105,  148 => 104,  144 => 103,  88 => 53,  79 => 47,  64 => 35,  55 => 29,  46 => 23,  36 => 16,  19 => 1,  273 => 118,  270 => 117,  265 => 64,  262 => 63,  257 => 56,  254 => 55,  249 => 53,  246 => 52,  241 => 120,  239 => 117,  224 => 105,  220 => 104,  216 => 103,  208 => 98,  204 => 97,  198 => 94,  192 => 91,  188 => 90,  184 => 89,  179 => 87,  175 => 86,  171 => 115,  167 => 84,  161 => 81,  157 => 80,  153 => 79,  140 => 102,  138 => 67,  135 => 66,  133 => 63,  126 => 58,  123 => 55,  121 => 52,  106 => 40,  100 => 37,  96 => 36,  90 => 33,  86 => 32,  82 => 31,  78 => 30,  74 => 29,  70 => 28,  66 => 27,  59 => 23,  52 => 19,  48 => 18,  44 => 17,  40 => 16,  23 => 1,  31 => 5,  28 => 4,);
+        return array (  209 => 150,  169 => 113,  158 => 105,  154 => 104,  150 => 103,  146 => 102,  138 => 100,  77 => 45,  62 => 33,  53 => 27,  34 => 14,  19 => 1,  277 => 120,  274 => 119,  269 => 65,  266 => 64,  261 => 56,  258 => 55,  253 => 53,  250 => 52,  245 => 122,  243 => 119,  228 => 107,  224 => 106,  220 => 105,  212 => 100,  208 => 99,  202 => 96,  196 => 93,  192 => 92,  188 => 91,  183 => 89,  179 => 88,  175 => 87,  171 => 86,  165 => 83,  161 => 82,  157 => 81,  142 => 101,  139 => 67,  137 => 64,  132 => 61,  130 => 60,  126 => 58,  123 => 55,  121 => 52,  106 => 40,  100 => 37,  96 => 36,  90 => 33,  86 => 51,  82 => 31,  78 => 30,  74 => 29,  70 => 28,  66 => 27,  59 => 23,  52 => 19,  48 => 18,  44 => 21,  40 => 16,  23 => 1,);
     }
 }

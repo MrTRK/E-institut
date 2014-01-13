@@ -148,9 +148,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::pageAction',  '_route' => 'Page',);
         }
 
-        // espace_personnel
-        if ($pathinfo === '/espace_personnel') {
-            return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::espace_personnelAction',  '_route' => 'espace_personnel',);
+        // Sub_Master_Base
+        if ($pathinfo === '/SubMasterBase') {
+            return array (  '_controller' => 'Ei\\einstitutBundle\\Controller\\DefaultController::Sub_Master_BaseAction',  '_route' => 'Sub_Master_Base',);
         }
 
         // Test

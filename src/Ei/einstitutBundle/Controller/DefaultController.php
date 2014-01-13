@@ -19,9 +19,9 @@ class DefaultController extends Controller
         return $this->render('EieinstitutBundle:Pages:index.html.twig');
     }
 
-	public function espace_personnelAction()
+	public function Sub_Master_BaseAction()
     {
-        return $this->render('EieinstitutBundle::espace_personnel.html.twig');
+        return $this->render('EieinstitutBundle::Sub-Master-Base.html.twig');
     }
     public function test_pageAction()
     {

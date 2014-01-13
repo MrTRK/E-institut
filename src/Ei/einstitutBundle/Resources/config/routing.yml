@@ -10,9 +10,9 @@ Page:
     pattern:  /page
     defaults: { _controller: EieinstitutBundle:Default:page }
 
-espace_personnel:
-    pattern:  /espace_personnel
-    defaults: { _controller: EieinstitutBundle:Default:espace_personnel }
+Sub_Master_Base:
+    pattern:  /SubMasterBase
+    defaults: { _controller: EieinstitutBundle:Default:Sub_Master_Base }
 
 Test:
     pattern:  /test_page
