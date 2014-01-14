@@ -1,0 +1,349 @@
+{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+
+
+{% block content %}
+    
+    <section class="grid_12">
+				<small>Espace personnel</small>
+			</section>
+			<!--blocks gauche -->
+			<section class="grid_3">
+			<section>
+			<div class="block-border">
+			<div class="block-content">
+						<h1>Ressources</h1>
+						
+						<ul class="simple-list">
+							<li><a href="#">Rechercher</a></li>
+							<li><a href="#">Ajouter</a></li>
+							<li><a href="#">Mes ressources</a></li>
+						</ul>
+				</div>
+			</div>
+			</section>
+			<section>
+			<div class="block-border">
+			<div class="block-content">
+						<h1>Visio conférence</h1>
+						
+						<ul class="simple-list">
+							<li><a href="#">Reserver</a></li>
+							<li><a href="#">Suivre</a></li>
+							<li><a href="#">Demarer</a></li>
+						</ul>
+				</div>
+			</div>
+			</section>
+			<section>
+			<div class="block-border">
+			<div class="block-content">
+						<h1>Tableau blanc interactif</h1>
+						
+						<ul class="simple-list">
+							<ul class="simple-list">
+							<li><a href="#">Reserver</a></li>
+							<li><a href="#">Suivre</a></li>
+							<li><a href="#">Demarer</a></li>
+						</ul>
+						</ul>
+				</div>
+			</div>
+			</section>
+			
+			<div class="block-border"><div class="block-content">	
+				
+					<h1>Mon calendrier</h1>
+				
+				
+				<div class="medium-calendar">
+					<div class="calendar-controls">
+						<a href="#" class="calendar-prev" title="Previous month"><img src="images/cal-arrow-left.png" width="16" height="16"></a>
+						<a href="#" class="calendar-next" title="Next month"><img src="images/cal-arrow-right.png" width="16" height="16"></a>
+						Apr 2010
+					</div>
+					
+					<table cellspacing="0">
+						<thead>
+							<tr>
+								<th scope="col" class="week-end">Sun</th>
+								<th scope="col">Mon</th>
+								<th scope="col">Tue</th>
+								<th scope="col">Wed</th>
+								<th scope="col">Thu</th>
+								<th scope="col">Fri</th>
+								<th scope="col" class="week-end">Sat</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="week-end other-month">28</td>
+								<td class="other-month">29</td>
+								<td class="other-month">30</td>
+								<td class="other-month">31</td>
+								<td><a href="#">1</a></td>
+								<td><a href="#"><span class="blue-corner">2</span></a></td>
+								<td class="week-end"><a href="#">3</a></td>
+							</tr>
+							<tr>
+								<td class="week-end"><a href="#">4</a></td>
+								<td><a href="#">5<span class="nb-events">54</span></a></td>
+								<td><a href="#">6</a></td>
+								<td><a href="#">7<span class="nb-events">1</span></a></td>
+								<td><a href="#"><span class="red-corner"><span class="blue-corner">8</span></span></a></td>
+								<td><a href="#"><span class="today">9</span></a></td>
+								<td class="week-end"><a href="#">10</a></td>
+							</tr>
+							<tr>
+								<td class="week-end"><a href="#">11</a></td>
+								<td><a href="#">12</a></td>
+								<td><a href="#">13</a></td>
+								<td><a href="#">14<span class="nb-events">1</span></a></td>
+								<td><a href="#"><span class="red-corner">15</span><span class="nb-events">1</span></a></td>
+								<td><a href="#">16</a></td>
+								<td class="week-end"><a href="#">17</a></td>
+							</tr>
+							<tr>
+								<td class="week-end"><a href="#">18</a></td>
+								<td><a href="#">19</a></td>
+								<td><a href="#">20<span class="nb-events">1</span></a></td>
+								<td><a href="#">21</a></td>
+								<td><a href="#">22<span class="nb-events">1</span></a></td>
+								<td><a href="#"><span class="blue-corner">23</span></a></td>
+								<td class="week-end"><a href="#"><span class="blue-corner">24</span></a></td>
+							</tr>
+							<tr>
+								<td class="week-end"><a href="#">25</a></td>
+								<td class="unavailable">26</td>
+								<td class="unavailable">27</td>
+								<td class="unavailable">28</td>
+								<td><a href="#">29</a></td>
+								<td><a href="#">30</a></td>
+								<td class="week-end other-month"><div><span class="blue-corner">1</span><span class="nb-events">2</span></div></td><!-- div required to position elements -->
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+			</div></div>
+			
+		</section>
+		
+		<section class="grid_6">
+			<div class="block-border">
+			    <div class="block-content">
+
+			      
+					<div class="block-controls">
+								<h1>Recherche avancée de ressources </h1>  <br><br>
+								
+					</div>
+						<form class="form" id="tab-stats" method="post" action="">
+							<fieldset class="grey-bg">
+							
+								<!--<legend><a href="#">Recherche avancée</legend>-->
+										
+									<span class="label required"> Domaine </span>
+						<select class="full-width" name="Domaine" id="stats-sites-0">
+							<option value="0">Informatique</option>
+							<option value="0">Economie</option>
+						</select><br><br>		
+					
+					<span class="label required"> Théme</span>
+						<select class="full-width" name="theme" id="stats-sites-0">
+							<option value="0">Développemnt</option>
+							<option value="0">Réseau</option>
+						</select><br><br>	
+							
+					<span class="label required">Type</span>
+						<select class="full-width" name="type" id="stats-sites-0">
+							<option value="0">Vidéo</option>
+							<option value="0">Document PDF</option>
+						</select>
+						
+									
+								<div class="columns">
+							<p class="colx2-left">
+									<span class="label required">
+											Tags
+									</span>
+								<input id="complex-fr-subtitle" class="full-width" type="text" value="" name="tags"> <br><br>
+								
+							</p>
+							<p class="colx2-right">
+							<span class="label ">
+										&nbsp;	
+									</span>
+								<button type="button">Ajouter</button> <br><br>
+								
+								</p>
+								</div>
+									
+			<div class="block-border">
+			    <div class="block-content no-title">
+			    	<h3>Tags</h3>
+			    
+					<ul class="tags">
+					    <li>Sea</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Sea</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Sea</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Sea</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Sea</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Sea</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Sea</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Sea</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Sea</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					    <li>Sea</li>
+					    <li>Fish</li>
+					    <li>Bubble</li>
+					</ul>
+
+				</div>
+			</div><br>
+			
+			<ul class="checkable-list">
+				<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"><b>pour préparer..</b></label>
+					<ul class="checkable-list">
+						<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"> <b>mes cours</b></label></li>
+						<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"><b> mes travaux dirigés</b></label></li>
+						<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"> <b>mes expériences</b></label></li>
+						<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"> <b> mes exposés scientifiques</b></label></li>
+					</ul>
+				</li>
+				<li><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2"><b>pour donner des compléments documentaires à..</b></label>
+					<ul class="checkable-list">
+						<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"> <b>mes cours</b></label></li>
+						<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"><b> mes travaux dirigés</b></label></li>
+						<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"> <b>mes expériences</b></label></li>
+						<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"> <b> mes exposés scientifiques</b></label></li>
+					</ul>
+				</li>
+				<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"><b>pour comprendre les bases d'un sujet</b></label></li>
+				<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"><b>pour approfondir mes connaissances sur un sujet</b></label></li>
+				<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"><b>pour résoudre les problèmes du domaine</b></label></li>
+				<li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"><b>pour s'exercer</b></label></li>
+			</ul>
+		
+						<span class="label">Trier les résultats par...</span>
+						<hr align="left" width="50%">
+						<input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-1" value="1">&nbsp;<label for="simple-checkbox-1">Les plus conseillées par le réseau</label> <br><br>
+						<input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-2" value="2">&nbsp;<label for="simple-checkbox-2">Les ressources officielles (IUT en ligne)</label><br><br>
+						<input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-1" value="1">&nbsp;<label for="simple-checkbox-1">Les dernières mises en ligne</label> <br>
+						
+		
+				
+				
+						
+			<div class="float-right"><br>
+			
+			<button type="button"><img src="images/icons/fugue/tick-circle.png" width="16" height="16"> Rechercher</button>
+								
+			</div>
+				</fieldset></form></div>
+			</div>
+						
+							
+					
+					
+		</section>
+	<!-- blocks droit -->
+			<section class="grid_3">
+			<section>
+			<div class="block-border">
+			<div class="block-content">
+						<h1>Mon portefolio</h1>
+						
+						<ul class="simple-list">
+							<li><a href="#">Mon profil</a></li>
+							<li><a href="#">Mon compte</a></li>
+							<li><a href="#">Mon agenda</a></li>
+						</ul>
+				</div>
+			</div>
+			</section>
+			<section>
+			<div class="block-border">
+			<div class="block-content">
+						<h1>Messagerie</h1>
+						
+						<ul class="simple-list">
+							<li><a href="#">Message recus</a></li>
+							<li><a href="#">Message envoyes</a></li>
+							<li><a href="#">Brouillon</a></li>
+							<li><a href="#">Nouveau message</a></li>
+							
+						</ul>
+				</div>
+			</div>
+			</section>
+			<section>
+			<div class="block-border">
+			<div class="block-content">
+						<h1>Mes Contacts</h1>
+						
+						<ul class="simple-list">
+							<ul class="simple-list">
+							<li><a href="#">Faire une demande</a></li>
+							<li><a href="#">Mes affiliés</a></li>
+							
+						</ul>
+						</ul>
+				</div>
+			</div>
+			</section>
+			
+			<section>
+			<div class="block-border">
+			<div class="block-content">
+			<div id="madiv" style="height:200pt;overflow:auto">
+				<h1>Discussion <img src="images/icons/fugue/status.png" width="16" height="16"></h1>
+						
+						
+					<ul class="simple-list">
+						<ul class="simple-list">
+						<li><a href="#" title="Discuter"><img src="images/icons/fugue/user.png" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 1 <img src="images/icons/fugue/status.png" width="16" height="16" align="right"></a></li>
+						<li><a href="#" title="Discuter"><img src="images/icons/fugue/user.png" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 2 <img src="images/icons/fugue/status-busy.png" width="16" height="16" align="right"></a></li>
+						<li><a href="#" title="Discuter"><img src="images/icons/fugue/user-nude-female.png" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 3 <img src="images/icons/fugue/status.png" width="16" height="16" align="right"></a></li>
+						<li><a href="#" title="Discuter"><img src="images/icons/fugue/user.png" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 4 <img src="images/icons/fugue/status-away.png" width="16" height="16" align="right"></a></li>
+						<li><a href="#" title="Discuter"><img src="images/icons/fugue/user-nude-female.png" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 5 <img src="images/icons/fugue/status.png" width="16" height="16" align="right"></a></li>							
+						<li><a href="#" title="Discuter"><img src="images/icons/fugue/user.png" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 6 <img src="images/icons/fugue/status.png" width="16" height="16" align="right"></a></li>	
+						<li><a href="#" title="Discuter"><img src="images/icons/fugue/user-nude-female.png" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 7 <img src="images/icons/fugue/status-busy.png" width="16" height="16" align="right"></a></li>
+						<li><a href="#" title="Discuter"><img src="images/icons/fugue/user-red-female.png" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 8 <img src="images/icons/fugue/status.png" width="16" height="16" align="right"></a></li>
+						<li><a href="#" title="Discuter"><img src="images/icons/fugue/user-yellow-female.png" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 9 <img src="images/icons/fugue/status.png" width="16" height="16" align="right"></a></li>
+						<li><a href="#" title="Discuter"><img src="images/icons/fugue/user-nude-female.png" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 10 <img src="images/icons/fugue/status-away.png" width="16" height="16" align="right"></a></li>
+						</ul>
+					</ul>
+										
+						<br><br>
+				</div></div>
+			</div>
+			</section>
+			
+		</section>
+<!--fin block droit-->
+
+
+{% endblock %}
