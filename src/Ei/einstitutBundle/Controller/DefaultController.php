@@ -16,7 +16,7 @@ class DefaultController extends Controller
     }
     public function pageAction()
     {
-        return $this->render('EieinstitutBundle:Pages:index.html.twig');
+        return $this->render('EieinstitutBundle::Sub-Master-Right.html.twig');
     }
 
 	public function espace_personnelAction()
