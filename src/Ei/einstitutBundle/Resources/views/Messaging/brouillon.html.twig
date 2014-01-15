@@ -1,20 +1,16 @@
-{# empty Twig template #}
 {% extends "EieinstitutBundle::Master-Base.html.twig" %}
 
 
 {% block content %}
 
-<section class="grid_9">
-			<div class="block-border">
-			    <div class="block-content">
 
-			      
-					
-				
-						
+
+<section class="grid_9">
+		<div class="block-border">
+			
 						<!--<div class="task with-legend">-->
 					<!--<section class="grid_12">-->
-			<div class="block-border"><form class="block-content form" id="table_form" method="post" action="">
+			<form class="block-content form" id="table_form" method="post" action="">
 				<h1>Brouillon</h1>
 				
 				<div class="block-controls">
@@ -161,19 +157,20 @@
 						<option value="">Action</option>
 						<option value="validate">Valider</option>
 						<option value="delete">Supprimer</option>
+					</select>
 					
 					<button type="submit" class="small">Ok</button>
 				</div>
 					
-			</form></div>
-		<!--</section> -->
-					
-			<!--</div>-->	
-					
-			    </div>
-				
-			</div>
- 
-		</section>
-    
-{% endblock %}
+				</form>
+		</div>
+	</section>
+		
+
+
+
+
+<div class="clear"></div>
+<!-- End content -->
+
+        {% endblock %}
