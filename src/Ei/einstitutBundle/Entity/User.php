@@ -5,7 +5,7 @@ namespace Ei\einstitutBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections ;
+use Doctrine\Common\Collections;
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateur")
@@ -15,7 +15,23 @@ class User extends BaseUser
 
 
     /**
-    * @ORM\OneToMany(targetEntity="Tutoriels_EnLigne", mappedBy="user_tuto")
+    * @ORM\ManyToMany(targetEntity="Evenements", inversedBy="users")
+    * @ORM\JoinTable(name="Partage_evenements_Utilisateurs")
+    */
+
+    protected $evenements;
+
+
+    /**
+    * @ORM\OneToMany(targetEntity="Evenements", mappedBy="evenements_user")
+    */
+    private $evenement;
+
+
+
+
+    /**
+    * @ORM\OneToMany(targetEntity="TutorielsEnLigne", mappedBy="user_tuto")
     */
     protected $user_tuto_en_ligne;
 

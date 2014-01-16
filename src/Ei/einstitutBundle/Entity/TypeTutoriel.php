@@ -8,15 +8,15 @@ use Doctrine\ORM\Mapping as ORM;
  * Type_Tutoriel
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\Type_TutorielRepository")
+ * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\TypeTutorielRepository")
  */
-class Type_Tutoriel
+class TypeTutoriel
 {
 
 
 
      /**
-    * @ORM\OneToMany(targetEntity="Tutoriels_EnLigne", mappedBy="type_tutoriel")
+    * @ORM\OneToMany(targetEntity="TutorielsEnLigne", mappedBy="type_tutoriel")
     */
     protected $tuto_en_ligne;
 

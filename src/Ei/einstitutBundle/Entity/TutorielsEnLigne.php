@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
  * Tutoriels_EnLigne
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\Tutoriels_EnLigneRepository")
+ * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\TutorielsEnLigneRepository")
  */
-class Tutoriels_EnLigne
+class TutorielsEnLigne
 {
 
 
@@ -18,7 +18,7 @@ class Tutoriels_EnLigne
 
 
     /**
-    * @ORM\ManyToOne(targetEntity="Type_Tutoriel", inversedBy="tuto_en_ligne")
+    * @ORM\ManyToOne(targetEntity="TypeTutoriel", inversedBy="tuto_en_ligne")
     * @ORM\JoinColumn(name="type_tutoriel_id", referencedColumnName="id")
     */
 

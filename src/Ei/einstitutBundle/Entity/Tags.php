@@ -21,7 +21,7 @@ class Tags
     private $tag;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Tutoriels_EnLigne", mappedBy="tutoriel_enligne_tag")
+    * @ORM\ManyToMany(targetEntity="TutorielsEnLigne", mappedBy="tutoriel_enligne_tag")
     */
     private $tag_tutoriel;
 
