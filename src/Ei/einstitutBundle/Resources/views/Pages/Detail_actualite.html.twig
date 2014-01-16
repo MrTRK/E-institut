@@ -1,0 +1,44 @@
+{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+
+
+{% block content %}
+    <!--section detail-->	
+		
+<section class="grid_4">
+<small> <a href="{{ path('Page') }}">E-institut </a> > Actualité </small>
+</section>
+    <div class="clear"></div>
+		<section class="grid_9">
+			<div class="block-border"><div class="block-content">
+				<h1>Actualités</h1>																	
+				<div class="block-controls">
+					<ul class="controls-buttons">
+						<li><a href="#" title="Previous page"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png') }}" width="16" height="16"></a></li>
+						<li class="sep"></li>
+						<li><a href="#"><strong>Les actualités</strong></a></li>
+						<li class="sep"></li>
+						<li><a href="#" title="Next page"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png') }}" width="16" height="16"></a></li>
+					</ul>
+				</div>
+				
+					
+					<h2 class="bigger">Titre de actualité</h2>
+					<div style="margin-left:40%;">
+					<a href="#"><img src="{{ asset('bundles/eieinstitut/images/demo/files/file1-mini.png') }}" width="80" height="80"></a>		
+					</div>
+					<dl class="accordion">
+					<dt><span class="number">Date</span> 01/01/2014</dt>
+					<dd>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.</p>
+						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</dd>	
+					<dd >	
+					<ul class="float-right" style="display:flex"><li>Editeur: </li><li><a href="#" >superman</a></li></ul></dd><div class="clear"></div>
+					
+					</dl>
+			
+			</div></div>
+		</section>
+
+		<!--fin section lioste des publications -->	
+{% endblock %}
