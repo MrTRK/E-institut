@@ -1,22 +1,74 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
 
-{% block fos_user_content %}
-{% if error %}
-    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
-{% endif %}
-Test e-intitut
+{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+
+
+
+{% block content %}
+
+
+   
+
+{% if app.user %}
+
+{% else %}
+<section class="grid_4"></section>
+		<section class="grid_4">
+			<div class="block-border">
+			    <div class="block-content no-title">
+			    	<h3>Autentification</h3>
+					
+
+				
+
+
 <form action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+<div class="form required">
+    	<div class="columns">
+                <p class="colx-left">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                </p>
+        </div>
+            <div class="columns">
+                            <p class="colx-left">
+                                    <label for="username">Identifiant</label>
+                                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="full-width" />
 
-    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                                    
+                                    
+                            </p>
+                    </div>
+                    <div class="columns">
+                            <p class="colx-left">
+                                    <label for="_password">Mot de passe</label>
+                                    <input type="password" id="password" name="_password" required="required" class="full-width"/>
+                                    
+                                    
+                            </p>
+                    </div>
+                    <div class="columns">
+                            <p class="colx2-left">
 
-    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-    <input type="password" id="password" name="_password" required="required" />
+                                    <ul class="simple-list">
+                                        <li><a href="#" title="Mdp">Mot de passe oublié ?</a></li>
+                                    </ul>
+                                    <p class="one-line-input grey-bg small-margin">
+                                       <!-- <input type="checkbox" id="remember_me" name="_remember_me" value="on" />-->
+                                        <label for="remember_me" class="float-left">Maintenir la connexion</label>
+                                        <input type="checkbox" name="_remember_me" id="remember_me" value="on" class="mini-switch" style="display: none;" checked/>
+                                    </p>
+                            </p>
+                    </div>
+    </div>
+        <button type="submit" id="_submit" name="_submit" class="small">Connexion</button>
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+        
 </form>
-{% endblock fos_user_content %}
+ 
+        </div>
+    </div>
+</section>
+<section class="grid_4"></section>                       
+                                
+ {% endif %}
+
+{% endblock content %}
