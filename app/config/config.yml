@@ -71,3 +71,10 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Ei\einstitutBundle\Entity\User
+
+services:
+    salavert.twig.time_ago:
+        class: Salavert\Twig\Extension\TimeAgoExtension
+        arguments: [@translator]
+        tags:
+        - { name: twig.extension }
