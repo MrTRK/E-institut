@@ -103,9 +103,25 @@
 
                                 </div>
                                 <form class="form" id="tab-stats" method="post" action="">
+                                    
+                                    
+                                  	<p>
+						<label for="simple-calendar">Mots Clés</label>
+						<span class="input-type-text margin-right  relative">
+                                                    <input type="text" name="simple-calendar" id="simple-calendar" value="">
+                                              
+                                                    <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png')}}" width="16" height="16" >
+                                                    </span> 
+						<button type="button" class="grey">Rechercher</button>
+					</p>
+                                    
+                                 
+                                          
+                                    
         <!--recherche avancée-->				
-                                <fieldset class="grey-bg">
-                                        <legend><a href="#">Recherche avancée</a></legend><a href="#">
+                                <fieldset class="grey-bg collapsed">
+                                        <legend><a href="#">Recherche avancée</a></legend>
+                                     
                                         <div class="columns">
                                                 <div class="float-left">
                                                         <span class="label">Domaine</span>
@@ -180,39 +196,48 @@
 
 
 
-                                </a></fieldset><a href="#">
+                              
+                                </fieldset>
+        
+        
+        
+        
+        
+        <div class="block-controls">
+             <div class="controls-buttons">
+                                            
+                                            <!-- The class sub-hover removes the hover effect for the whole div -->
+                                            <div class="sub-hover">
+                                                    <a href="#" class="disabled">Libellé</a>
+                                                    <a href="#">Date</a>
+                                                    <a href="#">Domaine</a>
+                                                    <a href="#">Link 2</a>
+                                                    <a href="#">Link 2</a>
+                                            </div>
+                                           
+                                            
+                                    </div>
+					
+					<ul class="controls-buttons">
+						<li>
+                                                    <label for="show-empty">Trier par</label>
+                                                </li>
+						<li class="sep"></li>
+						
+						
+                                                    
+                                               
+					</ul>
+                                       
+					
+				</div>
+        
+        
 
-
-
-
-                                </a><div class="head"><a href="#">
-
-                                        <div class="black-cell">Trier par</div>
-                                        </a><div><a href="#">
-                                                <span class="column-sort">
-                                                        </span></a><a href="#" title="Sort up" class="sort-up active"></a>
-                                                        <a href="#" title="Sort down" class="sort-down"></a>
-
-                                                Libellé
-                                        </div>
-                                        <div>
-                                                <span class="column-sort">
-                                                        <a href="#" title="Sort up" class="sort-up"></a>
-                                                        <a href="#" title="Sort down" class="sort-down"></a>
-                                                </span>
-                                                Date
-                                        </div>
-                                        <div>
-                                                <span class="column-sort">
-                                                        <a href="#" title="Sort up" class="sort-up"></a>
-                                                        <a href="#" title="Sort down" class="sort-down"></a>
-                                                </span>
-                                                Domaine
-                                        </div>
-                                </div>
+        
 
                 <!--fin recherche avancée-->	
-                                <div id="chart_div" style="height:30px;"></div>
+                               
 
                         </form>
                                 <div class="task with-legend">

@@ -21,12 +21,16 @@
 	<nav id="main-nav">
 		<ul class="container_12">
 			
-			<li class="accueil current"><a href="#" title="">Accueil</a></li>
+			<li class="accueil current"><a href="{{path('eieinstitut_homepage')}}" title="">Accueil</a></li>
+                        {% if app.user %}
 			<li class="users" title="Espace personnel"><a href="#" title="">Espace personnel</a></li>
-			<li class="medias" title="Ressources"><a href="#" title="">Ressources</a></li>
+                        {% endif %}
+			<li class="medias" title="Ressources"><a href="{{ path('Ressources') }}" title="">Ressources</a></li>
+                        {% if app.user %}
 			<li class="comments" title="Tutoriels en ligne"><a href="#" title="">Tutoriels en ligne</a></li>
 			<li class="contacts" title="Annuaire"><a href="#" title="">Annuaire</a></li>
-			<li class="settings" title="Forum"><a href="#" title="">Forum</a></li>
+                        {% endif %}
+			<li class="settings" title="Forum"><a href="{{ path('Forum') }}" title="">Forum</a></li>
 		</ul>
 	</nav>
 		
@@ -50,7 +54,10 @@
 		<div class="container_12">
 
 			<ul id="status-infos">
-			<li class="spaced">Bonjour  <strong>Jean</strong></li>
+                            {% if app.user %}
+                            <li class="spaced">Bonjour  <strong>{{ app.user.username }}</strong></li>
+                           
+                                
 			<li>
 				<a href="#" class="button" title="2 messages"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" width="16" height="16"> <strong>2</strong></a>
 				<div id="messages-list" class="result-block" style="display: none;">
@@ -91,7 +98,12 @@
 					<p id="comments-info" class="result-info"><a href="#">Voir tous les commentaires</a></p>
 				</div>
 			</li>
-			<li><a href="#" class="button red" title="Déconnexion"><span class="smaller">Déconnexion</span></a></li>
+			
+                        <li><a href="{{ path('logout') }}" class="button red" title="DÃ©connexion"><span class="smaller">DÃ©connexion</span></a></li>
+                        {% else %}
+                            <li><a href="#" onclick="inscriptionModal(); return false;" class="button grey" title="Inscription"><span class="smaller">Inscription</span></a></li>
+                            <li><a href="{{ path('login') }}"  class="button red" title="Connexion"><span class="smaller">Connexion</span></a></li>
+                         {% endif %}
 		</ul>
 			
 			<ul id="breadcrumb">

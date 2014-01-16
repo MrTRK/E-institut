@@ -101,23 +101,380 @@
 	
 
 
-		  <!-- <script type='text/javascript' src='js/camera.slide/jquery.min.js'></script>-->
-	<script type='text/javascript' src='{{ asset('bundles/eieinstitut/js/camera.slide/jquery.mobile.customized.min.js') }}'></script>
-	<script type='text/javascript' src='{{ asset('bundles/eieinstitut/js/camera.slide/jquery.easing.1.3.js') }}'></script>
-	<script type='text/javascript' src='{{ asset('bundles/eieinstitut/js/camera.slide/camera.min.js') }}'></script>
-	<script>
-		jQuery(function(){
-			jQuery('#camera_wrap_1').camera({
-				thumbnails: true
-			});
-		});
-	</script>
+	
 
 	<!-- Charts library -->
 	<!--Load the AJAX API-->
 	<script src="http://www.google.com/jsapi"></script>
+        
+        
+        
+        <script>
+		
+		/*
+		 * This script shows how to setup the various template plugins and functions
+		 */
+		
+		$(document).ready(function()
+		{
+			/*
+			 * Example context menu
+			 */
+			
+			// Context menu for all favorites
+			$('.favorites li').bind('contextMenu', function(event, list)
+			{
+				var li = $(this);
+				
+				// Add links to the menu
+				if (li.prev().length > 0)
+				{
+					list.push({ text: 'Move up', link:'#', icon:'up' });
+				}
+				if (li.next().length > 0)
+				{
+					list.push({ text: 'Move down', link:'#', icon:'down' });
+				}
+				list.push(false);	// Separator
+				list.push({ text: 'Delete', link:'#', icon:'delete' });
+				list.push({ text: 'Edit', link:'#', icon:'edit' });
+			});
+			
+			// Extra options for the first one
+			$('.favorites li:first').bind('contextMenu', function(event, list)
+			{
+				list.push(false);	// Separator
+				list.push({ text: 'Settings', icon:'terminal', link:'#', subs:[
+					{ text: 'General settings', link: '#', icon: 'blog' },
+					{ text: 'System settings', link: '#', icon: 'server' },
+					{ text: 'Website settings', link: '#', icon: 'network' }
+				] });
+			});
+			
+			/*
+			 * Dynamic tab content loading
+			 */
+			
+			$('#tab-comments').onTabShow(function()
+			{
+				$(this).loadWithEffect('ajax-tab.html', function()
+				{
+					notify('Content loaded via ajax');
+				});
+			}, true);
+			
+			/*
+			 * Table sorting
+			 */
+			
+			// A small classes setup...
+			$.fn.dataTableExt.oStdClasses.sWrapper = 'no-margin last-child';
+			$.fn.dataTableExt.oStdClasses.sInfo = 'message no-margin';
+			$.fn.dataTableExt.oStdClasses.sLength = 'float-left';
+			$.fn.dataTableExt.oStdClasses.sFilter = 'float-right';
+			$.fn.dataTableExt.oStdClasses.sPaging = 'sub-hover paging_';
+			$.fn.dataTableExt.oStdClasses.sPagePrevEnabled = 'control-prev';
+			$.fn.dataTableExt.oStdClasses.sPagePrevDisabled = 'control-prev disabled';
+			$.fn.dataTableExt.oStdClasses.sPageNextEnabled = 'control-next';
+			$.fn.dataTableExt.oStdClasses.sPageNextDisabled = 'control-next disabled';
+			$.fn.dataTableExt.oStdClasses.sPageFirst = 'control-first';
+			$.fn.dataTableExt.oStdClasses.sPagePrevious = 'control-prev';
+			$.fn.dataTableExt.oStdClasses.sPageNext = 'control-next';
+			$.fn.dataTableExt.oStdClasses.sPageLast = 'control-last';
+			
+			// Apply to table
+			$('.sortable').each(function(i)
+			{
+				// DataTable config
+				var table = $(this),
+					oTable = table.dataTable({
+						/*
+						 * We set specific options for each columns here. Some columns contain raw data to enable correct sorting, so we convert it for display
+						 * @url http://www.datatables.net/usage/columns
+						 */
+						aoColumns: [
+							{ bSortable: false },	// No sorting for this columns, as it only contains checkboxes
+							{ sType: 'string' },
+							{ bSortable: false },
+							{ sType: 'numeric', bUseRendered: false, fnRender: function(obj) // Append unit and add icon
+								{
+									return '<small><img src="images/icons/fugue/image.png" width="16" height="16" class="picto"> '+obj.aData[obj.iDataColumn]+' Ko</small>';
+								}
+							},
+							{ sType: 'date' },
+							{ sType: 'numeric', bUseRendered: false, fnRender: function(obj) // Size is given as float for sorting, convert to format 000 x 000
+								{
+									return obj.aData[obj.iDataColumn].split('.').join(' x ');
+								}
+							},
+							{ bSortable: false }	// No sorting for actions column
+						],
+						
+						/*
+						 * Set DOM structure for table controls
+						 * @url http://www.datatables.net/examples/basic_init/dom.html
+						 */
+						sDom: '<"block-controls"<"controls-buttons"p>>rti<"block-footer clearfix"lf>',
+						
+						/*
+						 * Callback to apply template setup
+						 */
+						fnDrawCallback: function()
+						{
+							this.parent().applyTemplateSetup();
+						},
+						fnInitComplete: function()
+						{
+							this.parent().applyTemplateSetup();
+						}
+					});
+				
+				// Sorting arrows behaviour
+				table.find('thead .sort-up').click(function(event)
+				{
+					// Stop link behaviour
+					event.preventDefault();
+					
+					// Find column index
+					var column = $(this).closest('th'),
+						columnIndex = column.parent().children().index(column.get(0));
+					
+					// Send command
+					oTable.fnSort([[columnIndex, 'asc']]);
+					
+					// Prevent bubbling
+					return false;
+				});
+				table.find('thead .sort-down').click(function(event)
+				{
+					// Stop link behaviour
+					event.preventDefault();
+					
+					// Find column index
+					var column = $(this).closest('th'),
+						columnIndex = column.parent().children().index(column.get(0));
+					
+					// Send command
+					oTable.fnSort([[columnIndex, 'desc']]);
+					
+					// Prevent bubbling
+					return false;
+				});
+			});
+			
+			/*
+			 * Datepicker
+			 * Thanks to sbkyle! http://themeforest.net/user/sbkyle
+			 */
+			$('.datepicker').datepick({
+				alignment: 'bottom',
+				showOtherMonths: true,
+				selectOtherMonths: true,
+				renderer: {
+					picker: '<div class="datepick block-border clearfix form"><div class="mini-calendar clearfix">' +
+							'{months}</div></div>',
+					monthRow: '{months}', 
+					month: '<div class="calendar-controls" style="white-space: nowrap">' +
+								'{monthHeader:M yyyy}' +
+							'</div>' +
+							'<table cellspacing="0">' +
+								'<thead>{weekHeader}</thead>' +
+								'<tbody>{weeks}</tbody></table>', 
+					weekHeader: '<tr>{days}</tr>', 
+					dayHeader: '<th>{day}</th>', 
+					week: '<tr>{days}</tr>', 
+					day: '<td>{day}</td>', 
+					monthSelector: '.month', 
+					daySelector: 'td', 
+					rtlClass: 'rtl', 
+					multiClass: 'multi', 
+					defaultClass: 'default', 
+					selectedClass: 'selected', 
+					highlightedClass: 'highlight', 
+					todayClass: 'today', 
+					otherMonthClass: 'other-month', 
+					weekendClass: 'week-end', 
+					commandClass: 'calendar', 
+					commandLinkClass: 'button',
+					disabledClass: 'unavailable'
+				}
+			});
+		});
+		
+		// Demo modal
+		function openModal()
+		{
+			$.modal({
+				content: '<p>This is an example of modal window. You can open several at the same time (click button below!), move them and resize them.</p>'+
+						  '<p>The plugin provides several other functions to control them, try below:</p>'+
+						  '<ul class="simple-list with-icon">'+
+						  '    <li><a href="javascript:void(0)" onclick="$(this).getModalWindow().setModalTitle(\'\')">Remove title</a></li>'+
+						  '    <li><a href="javascript:void(0)" onclick="$(this).getModalWindow().setModalTitle(\'New title\')">Change title</a></li>'+
+						  '    <li><a href="javascript:void(0)" onclick="$(this).getModalWindow().loadModalContent(\'ajax-modal.html\')">Load Ajax content</a></li>'+
+						  '</ul>',
+				title: 'Example modal window',
+				maxWidth: 500,
+				buttons: {
+					'Open new modal': function(win) { openModal(); },
+					'Close': function(win) { win.closeModal(); }
+				}
+			});
+		}
+		
+		//login Modal
+		function login()
+		{
+			$.modal({
+				content: '<form action="{{ path("fos_user_security_check") }}" method="post">'+
+    						'<label for="username">{{ "security.login.username"|trans({}, "FOSUserBundle") }}</label>'+
+    						'<input type="text" id="username" name="_username" required="required" />'+
+						    '<label for="password">{{ "security.login.password"|trans({}, "FOSUserBundle") }}</label>'+
+						    '<input type="password" id="password" name="_password" required="required" />'+
+
+						    '<input type="checkbox" id="remember_me" name="_remember_me" value="on" />'+
+						    '<label for="remember_me">Maintenire la connexion</label>'+
+
+						    '<input type="submit" id="_submit" name="_submit" value="Connexion" />'+
+						'</form>'
+						  ,
+				title: 'Connexion',
+				maxWidth: 300,
+				buttons: {
+					'Se connecter': function(win) { 
+					// Action login
+					 },
+					'Fermer': function(win) { win.closeModal(); }
+				}
+			});
+		}
+		
+		
+		//Mot de passe oublié
+		
+		/*function ForgetMdp() 
+		{
+				
+				$.modal({
+					
+					content: '<div class="form">'+
+				
+				'<fieldset class="grey-bg">'+
+							'<legend>Entrez votre email</legend>'+
+							'<div class="colx4-left-double required">'+
+										'<label for="complex-fr-title">Email</label>'+
+										'<span class="relative">'+
+										'<input type="text" name="nom" id="complex-fr-title" value="Email" class="full-width">'+
+									'<span class="check-ok"></span>'+
+								'</span>'+
+							'</div><br>'+
+						'</fieldset>'+
+						
+						'',
+						title: 'Mot de passe oublié',
+						maxWidth: 500,
+						buttons: {
+							'Validé': function(win) { 
+							//action ici
+							},
+							'Annuler': function(win) { win.closeModal(); }
+						}
+				});
+		} */
+		
+		
+			// inscription modal
+		function inscriptionModal()
+		{
+			$.modal({
+				content: '<div class="form">'+
+				
+				'<fieldset class="grey-bg">'+
+							'<legend>Vos informations</legend>'+
+							'<div class="colx4-left-double required">'+
+										'<label for="complex-fr-title">Nom</label>'+
+										'<span class="relative">'+
+										'<input type="text" name="nom" id="complex-fr-title" value="Votre nom" class="full-width">'+
+									'<span class="check-ok"></span>'+
+								'</span>'+
+							'</div><br>'+
+							'<div class="colx4-right-double required">'+
+										'<label for="complex-fr-title">Prénom</label>'+
+										'<span class="relative">'+
+										'<input type="text" name="prenom" id="complex-fr-title" value="Votre prénom" class="full-width">'+
+									'<span class="check-ok"></span>'+
+								'</span>'+
+							'</div><br>'+
+							'<div class=" required">'+
+										'<label for="complex-fr-title">Adresse mail</label>'+
+										'<span class="relative">'+
+										'<input type="text" name="nom" id="complex-fr-title" value="Votre adresse mail" class="full-width">'+
+									'<span class="check-ok"></span>'+
+								'</span>'+
+							'</div>'+
+					'</fieldset>'+
+					
+					'<fieldset class="grey-bg">'+
+							'<legend>Votre compte</legend>'+
+							'<div class=" required">'+
+										'<label for="complex-fr-title">Identifiant</label>'+
+										'<span class="relative">'+
+										'<input type="text" name="nom" id="complex-fr-title" value="votre identifiant" class="full-width">'+
+									'<span class="check-ok"></span>'+
+								'</span>'+
+							'</div><br>'+
+							'<div class=" required">'+
+										'<label for="complex-fr-title">Mot de passe</label>'+
+										'<span class="relative">'+
+										'<input type="text" name="prenom" id="complex-fr-title" value="Votre mot de passe" class="full-width">'+
+									'<span class="check-ok"></span>'+
+								'</span>'+
+							'</div><br>'+
+							'<div class=" required">'+
+										'<label for="complex-fr-title">Saisir à nouveau le mot de passe</label>'+
+										'<span class="relative">'+
+										'<input type="text" name="nom" id="complex-fr-title" value="Votre mot de passe" class="full-width">'+
+									'<span class="check-ok"></span>'+
+								'</span>'+
+							'</div>'+
+					'</fieldset>'+
+					
+							
+							'<fieldset class="grey-bg with-legend">'+
+								
+										
+											'<input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-1" value="1">'+
+										 '&nbsp;' + '<label for="simple-checkbox-1">J\'ai lu et j\'accepte les <a href="#" > Conditions d\'utilisations </a></label> <br><br><br>'+
+								
+								
+								
+								'<div id="captcha"> <img src="images/captcha.jpg"> </div>'+
+
+						
+							'</fieldset>'+
+
+							
+							
+
+
+
+			    	  
+				'',
+				title: 'Inscription',
+				maxWidth: 500,
+				buttons: {
+					'Validé': function(win) { 
+						//action ici
+					 },
+					'Annuler': function(win) { win.closeModal(); }
+				}
+			});
+		}
+	
+	</script>
+        
      {% block javascripts_Bottom %}
 
      {% endblock %}
+        
 </body>
 </html>
