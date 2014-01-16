@@ -1,6 +1,14 @@
 eieinstitut_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
     defaults: { _controller: EieinstitutBundle:Default:index }
+
+Ressources:
+    pattern:  /ressources
+    defaults: { _controller: EieinstitutBundle:Default:ressources }
+
+Forum:
+    pattern:  /forum
+    defaults: { _controller: EieinstitutBundle:Default:forum }
 
 eieinstitut_admin:
     pattern:  /admin
@@ -18,21 +26,18 @@ Test:
     pattern:  /test_page
     defaults: { _controller: EieinstitutBundle:Default:test_page }
 
-fos_user_security:
-    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+# Admin routes
+Admin_:
+    resource: "@EieinstitutBundle/Resources/config/routing/routing_admin.yml"
 
-fos_user_profile:
-    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
+# Usager routes
+Usager_:
+    resource: "@EieinstitutBundle/Resources/config/routing/routing_usager.yml"
 
-fos_user_register:
-    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
+# Istitution routes
+Istitution_:
+    resource: "@EieinstitutBundle/Resources/config/routing/routing_istitution.yml"
 
-fos_user_resetting:
-    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
-
-fos_user_change_password:
-    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile
+# Security routes
+Security_:
+    resource: "@EieinstitutBundle/Resources/config/routing/routing_security.yml"
