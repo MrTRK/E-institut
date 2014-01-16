@@ -105,7 +105,7 @@ class TimeAgoExtension extends \Twig_Extension
             return ($distance_in_minutes===0) ? $this->translator->trans('less than a minute ago', array()) : $this->translator->trans('1 minute ago', array());
         }
         elseif ($distance_in_minutes <= 45){
-            return $this->translator->trans('%minutes minutes ago', array('%minutes' => $distance_in_minutes));
+            return $this->translator->trans('il y a %minutes minutes', array('%minutes' => $distance_in_minutes));
         }
         elseif ($distance_in_minutes <= 90){
             return $this->translator->trans('about 1 hour ago');

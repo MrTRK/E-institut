@@ -249,6 +249,46 @@
                                
 
                         </form>
+                        {% for Fiche in Fiches %}
+                            
+                            <div class="task with-legend">
+                                           <!-- The legend -->
+                                           <div class="legend">
+                                               <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-pdf.png')}}" width="16" height="16"/> 
+                                               {{ Fiche.type }}
+                                           </div>
+
+                                           <div class="task-description">
+
+                                                   <!-- Task-list has special integration of the floating-tags class -->
+
+                                                   <div class="columns">
+                                                            <!--{{ Fiche.DateCreation|date('Y-m-d H:i') }}-->
+                                                           <ul class="floating-tags">
+                                                                   <li class="tag-time">{{ Fiche.DateCreation|time_ago_in_words  }}</li>
+                                                                   <li class="tag-user">{{ Fiche.user.UserName }}</li>
+                                                                   <li>Domaine </li>
+                                                                   <li>Théme</li>
+                                                           </ul>
+                                                           <h3><a href="#"> {{ Fiche.titre }}</a></h3>
+                                                           {{ Fiche.resume }}
+                                                   </div> 
+                                                   <div class="columns">
+                                                           <ul class="keywords">
+                                                                   <li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png')}}" width="16" height="16"> Sea</li>
+                                                                   <li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png')}}" width="16" height="16"> Fish</li>
+                                                                   <li><a href="#"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png')}}" width="16" height="16"> Bubble</a></li>
+                                                           </ul>
+                                                   </div>
+                                           </div>
+                                                   <ul class="mini-menu" style="opacity: 0;">
+                                                           <li><a href="#" title="Delete"> + Détails<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-000-white.png')}}" width="16" height="16"></a></li>
+                                                   </ul>
+                                           </div>	
+                        {% endfor %}
+                        
+                        
+                        
                                 <div class="task with-legend">
 
                                         <!-- The legend -->

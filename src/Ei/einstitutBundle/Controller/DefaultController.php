@@ -12,7 +12,13 @@ class DefaultController extends Controller
     }
     public function ressourcesAction()
     {
-        return $this->render('EieinstitutBundle:Ressources:listes_ressources.html.twig');
+        //EntityManager
+	$em = $this->getDoctrine()->getEntityManager();
+        $oFiches = $em->getRepository('EieinstitutBundle:Fiche')->findAll();
+        
+        return $this->render('EieinstitutBundle:Ressources:listes_ressources.html.twig',
+                array('Fiches'=> $oFiches)
+                );
     }
     public function ajouter_ressourceAction()
     {
