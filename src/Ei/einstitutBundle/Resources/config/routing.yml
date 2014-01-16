@@ -2,13 +2,28 @@ eieinstitut_homepage:
     pattern:  /
     defaults: { _controller: EieinstitutBundle:Default:index }
 
+Espace_Personnel:
+    pattern:  /espace_Personnel
+    defaults: { _controller: EieinstitutBundle:Default:espace_Personnel }
+
 Ressources:
     pattern:  /ressources
     defaults: { _controller: EieinstitutBundle:Default:ressources }
 
+Ressources_Ajouter:
+    pattern:  /ajouter_ressource
+    defaults: { _controller: EieinstitutBundle:Default:ajouter_ressource }
+
+
 Forum:
     pattern:  /forum
     defaults: { _controller: EieinstitutBundle:Default:forum }
+
+Annuaire:
+    pattern:  /annuaire
+    defaults: { _controller: EieinstitutBundle:Default:annuaire }
+
+
 
 eieinstitut_admin:
     pattern:  /admin

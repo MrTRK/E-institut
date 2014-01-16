@@ -1,10 +1,20 @@
-{# empty Twig template #}
-{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+{% extends "EieinstitutBundle::Sub-Master-Left.html.twig" %}
+{% block title %}
+     {{ parent() }}   | Annuaire
+{% endblock %}
+{% block stylesheets %}
 
+{% endblock %}
 
-{% block content %}
+{% block javascripts %}
 
-<section class="grid_6">
+{% endblock %}
+{% block Slide %}
+
+{% endblock %}
+{% block Sub_Content %}
+
+<section class="grid_9">
 			<div class="block-border">
 			    <div class="block-content">
 
@@ -26,36 +36,32 @@
 							</fieldset>
 						</form>
 						
-						<!-------------------------------
-						debut resultat recherche
+						 <div class="block-controls">
+             <div class="controls-buttons">
+                                            
+                                            <!-- The class sub-hover removes the hover effect for the whole div -->
+                                            <div class="sub-hover">
+                                                    <a href="#" class="disabled">Nom</a>
+                                                    <a href="#">Date</a>
+                                                    <a href="#">Statut</a>
+                                            </div>
+                                           
+                                            
+                                    </div>
+					
+					<ul class="controls-buttons">
+						<li>
+                                                    <label for="show-empty">Trier par</label>
+                                                </li>
+						<li class="sep"></li>
 						
-						----------------------------------->
-					<br><br><br>
-					<div class="head">
-						<div class="black-cell with-gap"><span class="success"></span></div>
-						<div class="black-cell">Trier Par</div>
-						<div>
-							<span class="column-sort">
-								<a href="#" title="Sort up" class="sort-up active"></a>
-								<a href="#" title="Sort down" class="sort-down"></a>
-							</span>
-							Nom
-						</div>
-						<div>
-							<span class="column-sort">
-								<a href="#" title="Sort up" class="sort-up"></a>
-								<a href="#" title="Sort down" class="sort-down"></a>
-							</span>
-							Date
-						</div>
-						<div>
-							<span class="column-sort">
-								<a href="#" title="Sort up" class="sort-up"></a>
-								<a href="#" title="Sort down" class="sort-down"></a>
-							</span>
-							Status
-						</div>
-					</div>
+						
+                                                    
+                                               
+					</ul>
+                                       
+					
+				</div>
 					
 			
 						<ul class="extended-list no-margin icon-user">
@@ -176,4 +182,8 @@
 				</div>
 			</div>			
 		</section>
+{% endblock %}
+
+{% block javascripts_Bottom %}
+
 {% endblock %}

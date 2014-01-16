@@ -1,10 +1,20 @@
 {# empty Twig template #}
-{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+{% extends "EieinstitutBundle::Sub-Master-Left.html.twig" %}
+{% block title %}
+     {{ parent() }}   | Espace personnel
+{% endblock %}
+{% block stylesheets %}
 
+{% endblock %}
 
-{% block content %}
+{% block javascripts %}
 
-<section class="grid_6">	
+{% endblock %}
+{% block Slide %}
+
+{% endblock %}
+{% block Sub_Content %}
+<section class="grid_9">	
 			<div class="block-border"><div class="block-content">
 				<h1>Ressources</h1>
 		
@@ -122,5 +132,8 @@
 
 			</div></div>
 		</section>
-    
+{% endblock %}
+
+{% block javascripts_Bottom %}
+
 {% endblock %}

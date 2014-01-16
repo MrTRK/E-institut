@@ -10,27 +10,35 @@
 			<div class="server-info"><a href="http://www.youtube.com/channel/UCNJWFhvZoYW_Qx-GoHHRBcw" target="_blank"><img src="{{ asset('bundles/eieinstitut/images/icons/social/yt.png')}}" width="24" height="24"></a></div>
 			<div class="server-info"><a href="https://plus.google.com/112849304228527795761/posts" target="_blank"><img src="{{ asset('bundles/eieinstitut/images/icons/social/goo.png')}}" width="24" height="24"></a></div>
 			<div class="server-info"><a href="#" target="_blank"><img src="{{ asset('bundles/eieinstitut/images/icons/social/rss.png')}}" width="24" height="24"></a></div>
-			
-		
 		</div>
-
 	</header>
 	<!-- End server status -->
 	
 	<!-- Main nav -->
 	<nav id="main-nav">
 		<ul class="container_12">
-			
 			<li class="accueil current"><a href="{{path('eieinstitut_homepage')}}" title="">Accueil</a></li>
                         {% if app.user %}
-			<li class="users" title="Espace personnel"><a href="#" title="">Espace personnel</a></li>
+			<li class="users" title="Espace personnel"><a href="{{ path('Espace_Personnel') }}" title="">Espace personnel</a></li>
                         {% endif %}
-			<li class="medias" title="Ressources"><a href="{{ path('Ressources') }}" title="">Ressources</a></li>
+			<li class="medias" title="Ressources"><a href="{{ path('Ressources') }}" title="">Ressources</a>
+                            <ul>
+                                <li><a href="{{ path('Ressources') }}" title="Articles">Ressources</a></li>
+                                <li><a href="{{ path('Ressources_Ajouter') }}" title="Add article">Ajouter Ressource</a></li>
+                            </ul>
+                        </li>
                         {% if app.user %}
-			<li class="comments" title="Tutoriels en ligne"><a href="#" title="">Tutoriels en ligne</a></li>
-			<li class="contacts" title="Annuaire"><a href="#" title="">Annuaire</a></li>
+			<li class="comments" title="Tutoriels en ligne"><a href="#" title="">Tutoriels en ligne</a>
+                            <ul>
+                                <li><a href="#" title="Articles">TBI & Visio</a></li>
+                                <li><a href="#" title="Add article">Tutoriels en cours</a></li>
+                                <li><a href="#" title="Add article">Demande en cours</a></li>
+                            </ul>
+                        </li>
+			<li class="contacts" title="Annuaire"><a href="{{ path('Annuaire') }}" title="">Annuaire</a></li>
                         {% endif %}
 			<li class="settings" title="Forum"><a href="{{ path('Forum') }}" title="">Forum</a></li>
+                        <li class="write"><a href="#" title="Actualités">Actualités</a></li>
 		</ul>
 	</nav>
 		

@@ -1,6 +1,10 @@
 {% extends "EieinstitutBundle::Master-Base.html.twig" %}
 
 
+            
+{% block title %}
+     {{ parent() }} 
+{% endblock %}
 {% block stylesheets %}
 
 {% endblock %}
@@ -13,12 +17,12 @@
 
 {% block content %}
 	<section class="grid_3">
-            {% include  "EieinstitutBundle:Block:Block.html.twig" %}
+        {% include  "EieinstitutBundle:Block:Block.html.twig" %}
 	{% block Slide %}
 
 	{% endblock %}
 	</section>
-	<section class="grid_9">
+	<!--<section class="grid_9">
 		<div class="block-border">
 			<div class="block-content">
 				<h1>Titre </h1>
@@ -28,14 +32,14 @@
 							<a href="#">link></a>
 						</div>
 					</div>
-				</div>
+				</div>-->
 	
 				{% block Sub_Content %}
 
 				{% endblock %}
-			</div>
+			<!--</div>
 		</div>
-    </section>
+    </section>-->
 {% endblock %}
 
 
