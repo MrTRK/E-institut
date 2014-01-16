@@ -1,9 +1,9 @@
-{% extends "EieinstitutBundle::Master-Base.html.twig" %}
 
 
-{% block content %}
-<section class="grid_3">
-    <section>
+
+<!--Block calendrier-->
+
+ 
         <div class="block-border">
             <div class="block-content">	
 
@@ -12,21 +12,21 @@
 
                 <div class="medium-calendar">
                     <div class="calendar-controls">
-                        <a href="#" class="calendar-prev" title="Previous month"><img src="images/cal-arrow-left.png" width="16" height="16"></a>
-                        <a href="#" class="calendar-next" title="Next month"><img src="images/cal-arrow-right.png" width="16" height="16"></a>
-                        Apr 2010
+                        <a href="#" class="calendar-prev" title="Previous month"><img src="{{ asset('bundles/eieinstitut/images/cal-arrow-left.png') }}" width="16" height="16"></a>
+                        <a href="#" class="calendar-next" title="Next month"><img src="{{ asset('bundles/eieinstitut/images/cal-arrow-right.png') }}" width="16" height="16"></a>
+                        Avril 2010
                     </div>
 
                     <table cellspacing="0">
                         <thead>
                             <tr>
-                                <th scope="col" class="week-end">Sun</th>
-                                <th scope="col">Mon</th>
-                                <th scope="col">Tue</th>
-                                <th scope="col">Wed</th>
-                                <th scope="col">Thu</th>
-                                <th scope="col">Fri</th>
-                                <th scope="col" class="week-end">Sat</th>
+                                <th scope="col" class="week-end">Dim</th>
+                                <th scope="col">Lun</th>
+                                <th scope="col">Mar</th>
+                                <th scope="col">Mer</th>
+                                <th scope="col">Jeu</th>
+                                <th scope="col">Ven</th>
+                                <th scope="col" class="week-end">Sam</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,7 +73,7 @@
                                 <td class="unavailable">28</td>
                                 <td><a href="#">29</a></td>
                                 <td><a href="#">30</a></td>
-                                <td class="week-end other-month"><div><span class="blue-corner">1</span><span class="nb-events">2</span></div></td><!-- div required to position elements -->
+                                <td class="week-end other-month"><div><span class="blue-corner">1</span><span class="nb-events">2</span></div></td>
                             </tr>
                         </tbody>
                     </table>
@@ -82,7 +82,5 @@
             </div></div>
 
 
-    </section>
-</section>
+  
 
-{% endblock %}

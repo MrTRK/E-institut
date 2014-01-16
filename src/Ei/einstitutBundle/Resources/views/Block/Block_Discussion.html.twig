@@ -1,16 +1,20 @@
-{% extends "EieinstitutBundle::Master-Base.html.twig" %}
 
 
-{% block content %}
-<section class="grid_3">
-    <section>
+    <!--Le block discussion-->
+    
+
         <div class="block-border">
             <div class="block-content">
-                <div id="madiv" style="height:200pt;overflow:auto" >
-                    <h1>Discussion <img src="images/icons/fugue/status.png" width="16" height="16"></h1> 		
-
+		<br/>
+		<div id="madiv" style="height:200pt;overflow:auto" >
+                    <h1>Discussion <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status.png') }}" width="16" height="16"></h1>
+                    
+                    <!--liste des affiliés connectés-->
+                    
                     <ul class="simple-list">
-                        <ul class="simple-list">
+                       
+                        <!-- Deux états : connecté = status et déconnecté = status-busy-->
+                        
                             <li><a href="#" title="Discuter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 1 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status.png') }}" width="16" height="16" align="right"></a></li>
                             <li><a href="#" title="Discuter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 2 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status-busy.png') }}" width="16" height="16" align="right"></a></li>
                             <li><a href="#" title="Discuter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user-nude-female.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 3 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status.png') }}" width="16" height="16" align="right"></a></li></a></li>
@@ -21,15 +25,14 @@
                             <li><a href="#" title="Discuter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user-red-female.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 8 <img src="{{  asset('bundles/eieinstitut/images/icons/fugue/status.png')}}"  width="16" height="16" align="right"></a></li></a></li>
                             <li><a href="#" title="Discuter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user-yellow-female.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 9 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status.png') }}" width="16" height="16" align="right"></a></li></a></li>
                             <li><a href="#" title="Discuter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user-nude-female.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 10 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status-away.png') }}" width="16" height="16" align="right"></a></li>
-                           
-                        </ul>
-                    </ul>
+                         </ul>
+                         <br><br>
+		</div>
+		<br><br>
+                
+                <!--Racourci pour se mettre en hors ligne-->
+                
+		<a href ="#" >Désactiver la discution en ligne </a></div>
+	</div>
 
-                    <br><br>
-                </div></div>
-        </div>
-    </section>
-</section>
-
-
-{% endblock %}
+    <!--Fin block discussion -->
