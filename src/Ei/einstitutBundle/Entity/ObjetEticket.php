@@ -5,22 +5,23 @@ namespace Ei\einstitutBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Type_Tutoriel
+ * ObjetEticket
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\TypeTutorielRepository")
+ * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\ObjetEticketRepository")
  */
-class TypeTutoriel
+class ObjetEticket
 {
 
 
 
+    
 
 
-     /**
-    * @ORM\OneToMany(targetEntity="TutorielsEnLigne", mappedBy="type_tutoriel")
+    /**
+    * @ORM\OneToMany(targetEntity="Eticket", mappedBy="eticket_objet")
     */
-    protected $tuto_en_ligne;
+    protected $objet_eticket;
 
 
 
@@ -38,9 +39,9 @@ class TypeTutoriel
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=255)
+     * @ORM\Column(name="objet", type="string", length=255)
      */
-    private $libelle;
+    private $objet;
 
     /**
      * @var string
@@ -61,33 +62,33 @@ class TypeTutoriel
     }
 
     /**
-     * Set libelle
+     * Set objet
      *
-     * @param string $libelle
-     * @return Type_Tutoriel
+     * @param string $objet
+     * @return ObjetEticket
      */
-    public function setLibelle($libelle)
+    public function setObjet($objet)
     {
-        $this->libelle = $libelle;
+        $this->objet = $objet;
     
         return $this;
     }
 
     /**
-     * Get libelle
+     * Get objet
      *
      * @return string 
      */
-    public function getLibelle()
+    public function getObjet()
     {
-        return $this->libelle;
+        return $this->objet;
     }
 
     /**
      * Set description
      *
      * @param string $description
-     * @return Type_Tutoriel
+     * @return ObjetEticket
      */
     public function setDescription($description)
     {
@@ -106,10 +107,10 @@ class TypeTutoriel
         return $this->description;
     }
 
-    public function __construct()
+     public function __construct()
     {
 
-        $this->tuto_en_ligne = new \Doctrine\Common\Collections\ArrayCollection(); 
+        $this->objet_eticket = new \Doctrine\Common\Collections\ArrayCollection(); 
          
         parent::__construct();
         // your own logic

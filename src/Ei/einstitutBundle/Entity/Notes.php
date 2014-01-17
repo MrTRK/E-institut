@@ -16,11 +16,6 @@ class Notes
 
 
 
-    
-
-
-
-
 
     /**
      * @var integer

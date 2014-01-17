@@ -3,6 +3,7 @@
 namespace Ei\einstitutBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections;
 
 /**
  * Fiche
@@ -17,7 +18,7 @@ class Fiche
 
 
     /**
-    * @ORM\OneToMany(targetEntity="Preconisation", mappedBy="fiche-preconisation")
+    * @ORM\OneToMany(targetEntity="Preconisation", mappedBy="fiche_preconisation")
     */
     protected $preconisation;
 
@@ -88,9 +89,9 @@ class Fiche
     private $resume;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="url", type="text", nullable=true)
      */
     private $url;
 
@@ -256,4 +257,14 @@ class Fiche
     {
         return $this->statut;
     }
+
+    public function __construct()
+    {
+                
+        $this->fiche = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->preconisation = new \Doctrine\Common\Collections\ArrayCollection();
+        parent::__construct();
+        // your own logic
+    }
+
 }

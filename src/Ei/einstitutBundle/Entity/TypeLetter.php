@@ -5,22 +5,22 @@ namespace Ei\einstitutBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Type_Tutoriel
+ * TypeLetter
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\TypeTutorielRepository")
+ * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\TypeLetterRepository")
  */
-class TypeTutoriel
+class TypeLetter
 {
 
 
+    
 
 
-
-     /**
-    * @ORM\OneToMany(targetEntity="TutorielsEnLigne", mappedBy="type_tutoriel")
+    /**
+    * @ORM\OneToMany(targetEntity="NewsLetters", mappedBy="newsletter_typeletter")
     */
-    protected $tuto_en_ligne;
+    protected $typeletter_newsletter;
 
 
 
@@ -42,13 +42,6 @@ class TypeTutoriel
      */
     private $libelle;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
-     */
-    private $description;
-
 
     /**
      * Get id
@@ -64,7 +57,7 @@ class TypeTutoriel
      * Set libelle
      *
      * @param string $libelle
-     * @return Type_Tutoriel
+     * @return TypeLetter
      */
     public function setLibelle($libelle)
     {
@@ -83,33 +76,10 @@ class TypeTutoriel
         return $this->libelle;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Type_Tutoriel
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
     public function __construct()
     {
 
-        $this->tuto_en_ligne = new \Doctrine\Common\Collections\ArrayCollection(); 
+        $this->typeletter_newsletter = new \Doctrine\Common\Collections\ArrayCollection(); 
          
         parent::__construct();
         // your own logic

@@ -5,24 +5,24 @@ namespace Ei\einstitutBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Type_Tutoriel
+ * Roles
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\TypeTutorielRepository")
+ * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\RolesRepository")
  */
-class TypeTutoriel
+class Roles
 {
 
 
 
+   
 
 
-     /**
-    * @ORM\OneToMany(targetEntity="TutorielsEnLigne", mappedBy="type_tutoriel")
+
+    /**
+    * @ORM\OneToMany(targetEntity="Privileges", mappedBy="privileges_roles")
     */
-    protected $tuto_en_ligne;
-
-
+    protected $roles_privileges;
 
 
 
@@ -34,6 +34,13 @@ class TypeTutoriel
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
 
     /**
      * @var string
@@ -61,10 +68,33 @@ class TypeTutoriel
     }
 
     /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Roles
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
      * Set libelle
      *
      * @param string $libelle
-     * @return Type_Tutoriel
+     * @return Roles
      */
     public function setLibelle($libelle)
     {
@@ -87,7 +117,7 @@ class TypeTutoriel
      * Set description
      *
      * @param string $description
-     * @return Type_Tutoriel
+     * @return Roles
      */
     public function setDescription($description)
     {
@@ -106,10 +136,10 @@ class TypeTutoriel
         return $this->description;
     }
 
-    public function __construct()
+     public function __construct()
     {
 
-        $this->tuto_en_ligne = new \Doctrine\Common\Collections\ArrayCollection(); 
+        $this->roles_privileges = new \Doctrine\Common\Collections\ArrayCollection();
          
         parent::__construct();
         // your own logic

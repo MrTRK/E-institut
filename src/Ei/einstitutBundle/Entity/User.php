@@ -5,13 +5,85 @@ namespace Ei\einstitutBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateur")
  */
 class User extends BaseUser
 {
+
+    
+    
+
+
+
+
+    /**
+    * @ORM\OneToMany(targetEntity="CommentaireForum", mappedBy="comment_user")
+    */
+    protected $comentforum;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Forum", mappedBy="forum_user")
+    */
+    protected $user_forum;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Contact", mappedBy="contact_user2")
+    */
+    protected $user_contact1;
+
+     /**
+    * @ORM\OneToMany(targetEntity="Contact", mappedBy="contact_user1")
+    */
+    protected $user_contact;
+
+
+     /**
+    * @ORM\OneToMany(targetEntity="Actualites", mappedBy="user")
+    */
+    protected $user_actualite;
+
+
+
+    /**
+    * @ORM\OneToMany(targetEntity="Messages", mappedBy="messages_user")
+    */
+    protected $user_messages;
+
+
+    /**
+    * @ORM\OneToMany(targetEntity="Eticket", mappedBy="eticket_user")
+    */
+    protected $user_eticket;
+
+
+
+    /**
+    * @ORM\OneToMany(targetEntity="Cercles", mappedBy="cercles_user")
+    */
+    protected $user_cercles;
+
+
+
+    /**
+    * @ORM\ManyToMany(targetEntity="Cercles", inversedBy="users")
+    * @ORM\JoinTable(name="Partage_Utilisateurs_Cercles")
+    */
+
+    protected $cercle;
+
+
+
+
+    /**
+    * @ORM\ManyToMany(targetEntity="Messages", inversedBy="users")
+    * @ORM\JoinTable(name="To_Users")
+    */
+
+    protected $message;
+
 
 
     /**
@@ -37,7 +109,7 @@ class User extends BaseUser
 
 
     /**
-    * @ORM\OneToMany(targetEntity="Preconisation", mappedBy="user-preconisation")
+    * @ORM\OneToMany(targetEntity="Preconisation", mappedBy="user_preconisation")
     */
     protected $preconisation;
 
@@ -75,42 +147,42 @@ class User extends BaseUser
      /**
      * @var string
      *
-     * @ORM\Column(name="Avatar", type="string", length=255)
+     * @ORM\Column(name="Avatar", type="string", length=255, nullable=true)
      */
     private $avatar;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Sexe", type="string", length=255)
+     * @ORM\Column(name="Sexe", type="string", length=255, nullable=true)
      */
     private $sexe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Tel", type="string", length=255)
+     * @ORM\Column(name="Tel", type="string", length=255, nullable=true)
      */
     private $tel;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Pays", type="string", length=255)
+     * @ORM\Column(name="Pays", type="string", length=255, nullable=true)
      */
     private $pays;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Ville", type="string", length=255)
+     * @ORM\Column(name="Ville", type="string", length=255, nullable=true)
      */
     private $ville;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Adresse", type="string", length=300)
+     * @ORM\Column(name="Adresse", type="string", length=300 , nullable=true)
      */
     private $adresse;
 
@@ -266,10 +338,24 @@ class User extends BaseUser
 
     public function __construct()
     {
-        $this->fiche = new ArrayCollection();   
+
+        $this->evenements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->message = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cercle = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fiche = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comentforum = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user_forum = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user_contact1 = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user_contact = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user_actualite = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user_messages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user_eticket = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user_cercles = new \Doctrine\Common\Collections\ArrayCollection(); 
+
         parent::__construct();
         // your own logic
     }
+
 
     
 }

@@ -3,6 +3,7 @@
 namespace Ei\einstitutBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections;
 
 /**
  * Tutoriels_EnLigne
@@ -213,5 +214,14 @@ class TutorielsEnLigne
     public function getStatut()
     {
         return $this->statut;
+    }
+
+
+     public function __construct()
+    {
+
+        $this->tutoriel_enligne_tag = new ArrayCollection();   
+        parent::__construct();
+        // your own logic
     }
 }
