@@ -26,13 +26,73 @@
                         <h1> Filtre </h1>
 
                         <div class="block-controls">
-                                <ul class="controls-buttons">
-                                        <li><a href="#"><strong>Expand all</strong></a></li>
+                                <!--<ul class="controls-buttons">
+                                        <li><a href="#"><strong>Afficher tout</strong></a></li>
                                         <li class="sep"></li>
                                         <li><a href="#" title="Actualiser"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/arrow-circle.png')}}" width="16" height="16"></a></li>
-                                </ul>
+                                </ul>-->
                         </div>
-                        <ul class="collapsible-list with-bg">
+                    <form class="form" id="tab-stats" method="post" action="">
+                        <label for="simple-calendar">Mots Clés</label>
+                        <p class="input-type-text">
+                            
+
+                            <input type="text" name="simple-search" id="simple-search" value="" style="width:90%" title="Filter results">
+                            <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png')}}" width="16" height="16" class="float-right">
+
+                        </p>
+
+
+                        
+                        <div class="columns">                  
+                        <span class="label">Domaine</span>
+                        <select name="Domaine" id="stats-sites-0" class="full-width">
+                            <option value="-1">--->Choisissez<---</option>
+                                <option value="0">Informatique</option>
+                                <option value="0">Economie</option>
+                        </select>
+                        </div>
+           
+
+                    <div class="columns">
+                    <span class="label">Théme</span>
+                    <select name="theme" id="stats-sites-0" class="full-width">
+                        <option value="-1">--->Choisissez<---</option>
+                            <option value="0">Développemnt</option>
+                            <option value="0">Réseau</option>
+                    </select>
+            
+                    </div>
+            
+            
+                    <div class="columns">
+                            <span class="label">Type</span>
+                            <select name="type" id="stats-sites-0" class="full-width">
+                                <option value="-1">--->Choisissez<---</option>
+                                    <option value="0">Vidéo</option>
+                                    <option value="0">Document PDF</option>
+                            </select>                  
+                    </div>
+            
+                    
+                                        
+
+
+                                      
+
+
+                        
+                       
+                    
+
+                       
+                   
+                      <div class="clear"></div>
+               
+
+                </form>
+
+                     <ul class="collapsible-list with-bg">
                                 <li>
                                         <b class="toggle"></b>
                                         <span>Type</span>
@@ -92,7 +152,52 @@
                                                 </li>
                                         </ul>
                                 </li>
+
+                                <li class="closed">
+                                <b class="toggle"></b>
+                                <span >Pour préparer</span>
+                                    <ul>
+                                                
+                                                        <ul class="checkable-list">
+                                                                <li class="closed"><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"> Mes cours</label></li>
+                                                                <li class="closed"><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2"> Mes travaux dirigés</label></li>
+                                                                <li class="closed"><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2"> Mes expériences </label></li> 
+                                                                <li class="closed"><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2"> Mes exposés scientifiques</label></li>                                      
+                                                        </ul>
+                                    </ul>
+
+                                        
+                                </li>
+
+                                <li class="closed">
+                                <b class="toggle"></b>
+                                <span >Pour donner des compléments documentaires à</span>
+                                        <ul class="checkable-list">
+                                            <li class="closed"><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1"> Mes cours</label></li>
+                                            <li class="closed"><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2"> Mes travaux dirigés</label></li>
+                                            <li class="closed"><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2"> Mes expériences </label></li> 
+                                            <li class="closed"><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2"> Mes exposés scientifiques</label></li>                                      
+                                         </ul>
+                                </li>
+
+                                <li class="closed">
+                                <b class="toggle"></b>
+                                <span >Choix des base</span>
+
+                                <ul class="checkable-list">
+                                                                        <li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-0" value="0">&nbsp;<label for="stats-display-0">Pour comprendre les bases d'un sujet</label></li>
+                                                                        <li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-1" value="1">&nbsp;<label for="stats-display-1">Pour approfondir mes connaissances sur un sujet</label></li>
+                                                                        <li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-0" value="0">&nbsp;<label for="stats-display-0">Pour résoudre les problèmes du domaine</label> </li>
+                                                                        <li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-1" value="1">&nbsp;<label for="stats-display-1">Pour s'exercer</label></li>                                         
+                                                        </ul>
+                            </li>
                         </ul>
+                         <div class="float-right" >
+                             <button type="button" class="grey" >Rechercher</button>
+                         </div>
+
+                         <div class="clear"></div>
+                
 
                 </div></div>
         </section>
@@ -114,7 +219,7 @@
                                 <form class="form" id="tab-stats" method="post" action="">
                                     
                                     
-                                  	<p>
+                                  <!--	<p>
 						<label for="simple-calendar">Mots Clés</label>
 						<span class="input-type-text margin-right  relative">
                                                     <input type="text" name="simple-calendar" id="simple-calendar" value="">
@@ -128,7 +233,7 @@
                                           
                                     
         <!--recherche avancée-->				
-                                <fieldset class="grey-bg collapsed">
+                               <!-- <fieldset class="grey-bg collapsed">
                                         <legend><a href="#">Recherche avancée</a></legend>
                                      
                                         <div class="columns">
@@ -206,7 +311,7 @@
 
 
                               
-                                </fieldset>
+                                </fieldset> -->
         
         
         
@@ -214,7 +319,8 @@
         
         <div class="block-controls">
              <div class="controls-buttons">
-                                            
+                                        
+
                                             <!-- The class sub-hover removes the hover effect for the whole div -->
                                             <div class="sub-hover">
                                                     <a href="#" class="disabled">Libellé</a>
@@ -228,19 +334,25 @@
                                     </div>
 					
 					<ul class="controls-buttons">
-						<li>
-                                                    <label for="show-empty">Trier par</label>
-                                                </li>
-						<li class="sep"></li>
 						
-						
-                                                    
-                                               
+						 
+                          <li><a href="#" title="Précédent"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png')}}" width="16" height="16"> Précédent</a></li>
+                                        <li><a href="#" title="Page 1"><b>1</b></a></li>
+                                        <li><a href="#" title="Page 2" class="current"><b>2</b></a></li>
+                                        <li><a href="#" title="Page 3"><b>3</b></a></li>
+                                        <li><a href="#" title="Page 4"><b>4</b></a></li>
+                                        <li><a href="#" title="Page 5"><b>5</b></a></li>
+                                        <li><a href="#" title="suivant">Suivant <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png')}}" width="16" height="16"></a></li>
+                                        <li class="sep"></li>   
+                        <li>
+                             <label for="show-empty">Trier par</label>
+                        </li>  
+                        <li class="sep"></li>                 
 					</ul>
                                        
 					
 				</div>
-        
+      
         
 
         
