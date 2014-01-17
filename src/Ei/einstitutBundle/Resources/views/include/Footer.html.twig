@@ -64,8 +64,8 @@
 								<h2 id="step7">E-institut</h2>
 							    <ul class="bullet-list">
 							   
-								   <li><a href="#">À propos</a></li>
-								   <li><a href="#">Concept</a></li>
+								   <li><a href="{{ path('A_propos') }}">À propos</a></li>
+								   <li><a href="{{ path('Concept') }}">Concept</a></li>
 								   <li><a href="#">Presse</a></li>
 								   <li><a href="#">Le blog</a></li>
 								</ul>
@@ -76,10 +76,10 @@
 						
 						<h2 id="step7">Aide</h2>
 						 <ul class="bullet-list">
-							<li><a href="#">F.A.Q</a></li> 
-							<li><a href="#">Charte d'utilisation</a> </li>
-							<li><a href="#">Sécurité </a></li>
-							<li><a href="#">Contact </a></li>	
+							<li><a href="{{ path('AIDE_FAQ') }}">F.A.Q</a></li> 
+                                                        <li><a href="{{ path('AIDE_Charte') }}">Charte d'utilisation</a> </li>
+                                                        <li><a href="{{ path('AIDE_Security') }}">Sécurité </a></li>
+                                                        <li><a href="{{ path('AIDE_Contact') }}">Contact </a></li> 
 					   </ul>
 						<div class="clear"></div>
 							
@@ -88,11 +88,11 @@
                         		<h2 id="step7">Légal</h2>					   	
 							 <ul class="bullet-list">
 							   					
-								<li><a href="#">Condition d'utilisation</a></li>
-								<li><a href="#">Vie privée</a></li>
-								<li><a href="#">Licences ouvertures</a></li>
-								<li><a href="#">Signaler</a></li>
-								<li><a href="#">Mentios légales</a></li>								
+								<li><a href="{{ path('Legal_Condition') }}">Condition d'utilisation</a></li>
+								<li><a href="{{ path('Legal_Vie_privee') }}">Vie privée</a></li>
+								<li><a href="{{ path('Legal_Licence') }}">Licences ouvertures</a></li>
+								<li><a href="{{ path('Legal_Signaler') }}">Signaler</a></li>
+								<li><a href="{{ path('Legal_Mention') }}">Mentions légales</a></li>								
                             </ul>
 							<div class="clear"></div>
                        </div>

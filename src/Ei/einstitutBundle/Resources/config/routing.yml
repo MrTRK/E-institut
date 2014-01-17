@@ -41,6 +41,10 @@ Test:
     pattern:  /test_page
     defaults: { _controller: EieinstitutBundle:Default:test_page }
 
+# footer routes
+Footer_:
+    resource: "@EieinstitutBundle/Resources/config/routing/routing_footer.yml"
+
 # Admin routes
 Admin_:
     resource: "@EieinstitutBundle/Resources/config/routing/routing_admin.yml"
