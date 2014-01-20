@@ -150,7 +150,23 @@ class User extends BaseUser
      * @ORM\Column(name="Avatar", type="string", length=255, nullable=true)
      */
     private $avatar;
-
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Nom", type="string", length=255, nullable=true)
+     */
+    private $nom;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Prenom", type="string", length=255, nullable=true)
+     */
+    private $prenom;
+    
+    
+    
     /**
      * @var string
      *
@@ -219,6 +235,54 @@ class User extends BaseUser
     {
         return $this->avatar;
     }
+    
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Ut
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+    
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     * @return Ut
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string 
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+    
+    
 
     /**
      * Set sexe

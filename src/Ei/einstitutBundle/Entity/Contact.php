@@ -28,6 +28,24 @@ class Contact
 
     protected $contact_user1;
 
+    
+    
+    public function getContact_user2() {
+         return $this->contact_user2;
+    }
+
+    public function setContact_user2(User $u2) {
+        $this->contact_user2 = $u2;
+    }
+    
+    public function getContact_user1() {
+         return $this->contact_user1;
+    }
+
+    public function setContact_user1(User $u1) {
+        $this->contact_user1 = $u1;
+    }
+    
 
     /**
      * @var integer
