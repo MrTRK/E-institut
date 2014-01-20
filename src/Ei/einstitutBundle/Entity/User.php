@@ -398,6 +398,392 @@ class User extends BaseUser
     {
         return $this->adresse;
     }
+    
+    
+    
+    
+    /**
+     * Set ComentForum
+     *
+     * @param string $comentForum
+     * @return Ut
+     */
+    public function setCommentForm($comentForum)
+    {
+        $this->comentForum = $comentForum;
+    
+        return $this;
+    }
+
+    /**
+     * Get comentForum
+     *
+     * @return string 
+     */
+    public function getComentForum()
+    {
+        return $this->comentforum;
+    }
+
+
+    /**
+     * Set userForum
+     *
+     * @param string $userForum
+     * @return Ut
+     */
+    public function setUserForum($userForum)
+    {
+        $this->user_forum = $userForum;
+    
+        return $this;
+    }
+
+    /**
+     * Get userForum
+     *
+     * @return string 
+     */
+    public function getUserForum()
+    {
+        return $this->user_forum;
+    }
+
+
+
+    /**
+     * Set fiche
+     *
+     * @param string $fiche
+     * @return Ut
+     */
+    public function setFiche($fiche)
+    {
+        $this->fiche = $fiche;
+    
+        return $this;
+    }
+
+    /**
+     * Get fiche
+     *
+     * @return string 
+     */
+    public function getFiche()
+    {
+        return $this->fiche;
+    }
+
+
+    /**
+     * Set fiches
+     *
+     * @param string $fiches
+     * @return Ut
+     */
+    public function setFiches($fiches)
+    {
+        $this->fiches = $fiches;
+    
+        return $this;
+    }
+
+    /**
+     * Get fiches
+     *
+     * @return string 
+     */
+    public function getFiches()
+    {
+        return $this->fiches;
+    }
+
+
+    /**
+     * Set preconisation
+     *
+     * @param string $preconisation
+     * @return Ut
+     */
+    public function setPreconisation($preconisation)
+    {
+        $this->preconisation = $preconisation;
+    
+        return $this;
+    }
+
+    /**
+     * Get preconisation
+     *
+     * @return string 
+     */
+    public function getPreconisation()
+    {
+        return $this->preconisation;
+    }
+
+
+
+    /**
+     * Set userTutoEnLigne
+     *
+     * @param string $user_tuto_en_ligne
+     * @return Ut
+     */
+    public function setUserTutoEnLigne($user_tuto_en_ligne)
+    {
+        $this->user_tuto_en_ligne = $user_tuto_en_ligne;
+    
+        return $this;
+    }
+
+    /**
+     * Get userTutoEnLigne
+     *
+     * @return string 
+     */
+    public function getUserTutoEnLigne()
+    {
+        return $this->user_tuto_en_ligne;
+    }
+
+
+    /**
+     * Set evenement
+     *
+     * @param string $evenement
+     * @return Ut
+     */
+    public function setEvenement($evenement)
+    {
+        $this->evenement = $evenement;
+    
+        return $this;
+    }
+
+    /**
+     * Get evenement
+     *
+     * @return string 
+     */
+    public function getEvenement()
+    {
+        return $this->evenement;
+    }
+
+
+    /**
+     * Set evenements
+     *
+     * @param string $evenements
+     * @return Ut
+     */
+    public function setEvenements($evenements)
+    {
+        $this->evenements = $evenements;
+    
+        return $this;
+    }
+
+    /**
+     * Get evenements
+     *
+     * @return string 
+     */
+    public function getEvenements()
+    {
+        return $this->evenements;
+    }
+
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     * @return Ut
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+    
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+
+    /**
+     * Set cercle
+     *
+     * @param string $cercle
+     * @return Ut
+     */
+    public function setCercle($cercle)
+    {
+        $this->cercle = $cercle;
+    
+        return $this;
+    }
+
+    /**
+     * Get cercle
+     *
+     * @return string 
+     */
+    public function getCercle()
+    {
+        return $this->cercle;
+    }
+
+
+    /**
+     * Set userCercles
+     *
+     * @param string $user_cercles
+     * @return Ut
+     */
+    public function setUserCercles($user_cercles)
+    {
+        $this->user_cercles = $user_cercles;
+    
+        return $this;
+    }
+
+    /**
+     * Get userCercles
+     *
+     * @return string 
+     */
+    public function getUserCercles()
+    {
+        return $this->user_cercles;
+    }
+
+    /**
+     * Set userEticket
+     *
+     * @param string $user_eticket
+     * @return Ut
+     */
+    public function setUserEticket($user_eticket)
+    {
+        $this->user_eticket = $user_eticket;
+    
+        return $this;
+    }
+
+    /**
+     * Get userEticket
+     *
+     * @return string 
+     */
+    public function getUserEticket()
+    {
+        return $this->user_messages;
+    }
+
+    /**
+     * Set userMessage
+     *
+     * @param string $user_messages
+     * @return Ut
+     */
+    public function setUserMessage($user_messages)
+    {
+        $this->user_messages = $user_messages;
+    
+        return $this;
+    }
+
+    /**
+     * Get userMessage
+     *
+     * @return string 
+     */
+    public function getUserMessage()
+    {
+        return $this->user_messages;
+    }
+
+    /**
+     * Set userActualite
+     *
+     * @param string $user_actualite
+     * @return Ut
+     */
+    public function setUserActualite($user_actualite)
+    {
+        $this->user_actualite = $user_actualite;
+    
+        return $this;
+    }
+
+    /**
+     * Get userActualite
+     *
+     * @return string 
+     */
+    public function getUserActualite()
+    {
+        return $this->user_actualite;
+    }
+
+    /**
+     * Set userContact
+     *
+     * @param string $user_contact
+     * @return Ut
+     */
+    public function setUserContact($user_contact)
+    {
+        $this->user_contact = $user_contact;
+    
+        return $this;
+    }
+
+    /**
+     * Get userContact
+     *
+     * @return string 
+     */
+    public function getUserContact()
+    {
+        return $this->user_contact;
+    }
+
+    /**
+     * Set userContact1
+     *
+     * @param string $user_contact1
+     * @return Ut
+     */
+    public function setUserContact1($user_contact1)
+    {
+        $this->user_contact1 = $user_contact1;
+    
+        return $this;
+    }
+
+    /**
+     * Get userContact1
+     *
+     * @return string 
+     */
+    public function getUserContact1()
+    {
+        return $this->user_contact1;
+    }
+    
+    
+    
 
 
     public function __construct()
