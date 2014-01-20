@@ -20,7 +20,7 @@ class Clics
     * @ORM\JoinColumn(name="newsletters_id", referencedColumnName="id")
     */
 
-    protected $clic_newsletter;
+    private $clic_newsletter;
 
 
 
@@ -29,7 +29,7 @@ class Clics
     * @ORM\JoinColumn(name="base_contact_id", referencedColumnName="id")
     */
 
-    protected $clic_base_contacts;
+    private $clic_base_contacts;
 
 
 

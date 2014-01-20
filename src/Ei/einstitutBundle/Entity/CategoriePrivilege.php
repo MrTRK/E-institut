@@ -20,7 +20,34 @@ class CategoriePrivilege
     /**
     * @ORM\OneToMany(targetEntity="Privileges", mappedBy="categorie_privileges_roles")
     */
-    protected $roles_categorie_privileges;
+    private $roles_categorie_privileges;
+    
+    
+    /**
+     * Set Rolescategorieprivileges
+     *@param string $rolescategorieprivileges
+     * 
+     * @return Ut
+     */
+    
+    public function setRolescategorieprivileges($rolescategorieprivileges)
+    {
+        $this->roles_categorie_privileges = $rolescategorieprivileges;
+    
+        return $this;
+    }
+
+    /**
+     * Get Rolescategorieprivileges
+     *
+     * @return string 
+     */
+    public function getRolescategorieprivileges()
+    {
+        return $this->roles_categorie_privileges;
+    }
+    
+    
 
     
 

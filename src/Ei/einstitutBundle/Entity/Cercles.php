@@ -20,7 +20,7 @@ class Cercles
     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
     */
 
-    protected $cercles_user;
+    private $cercles_user;
 
 
 
@@ -28,6 +28,30 @@ class Cercles
     * @ORM\ManyToMany(targetEntity="User", mappedBy="cercle")
     */
     private $users;
+    
+    /**
+     * Set usersC
+     *@param string $usersC
+     * 
+     * @return Ut
+     */
+    
+    public function setUsersC($usersC)
+    {
+        $this->users = $usersC;
+    
+        return $this;
+    }
+
+    /**
+     * Get usersC
+     *
+     * @return string 
+     */
+    public function getUsersC()
+    {
+        return $this->users;
+    }
 
 
     /**
@@ -35,7 +59,33 @@ class Cercles
     * @ORM\JoinTable(name="To_Cercles")
     */
 
-    protected $message;
+    private $message;
+    
+    
+    
+    /**
+     * Set usersC
+     *@param string $usersC
+     * 
+     * @return Ut
+     */
+    
+    public function setMessageC($messageC)
+    {
+        $this->message = $messageC;
+    
+        return $this;
+    }
+
+    /**
+     * Get usersC
+     *
+     * @return string 
+     */
+    public function getMessageC()
+    {
+        return $this->message;
+    }
 
 
 

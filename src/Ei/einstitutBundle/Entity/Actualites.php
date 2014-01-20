@@ -19,7 +19,7 @@ class Actualites
     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
     */
 
-    protected $user;
+    private $user;
 
     /**
      * @var integer

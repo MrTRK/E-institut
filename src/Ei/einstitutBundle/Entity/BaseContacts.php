@@ -22,13 +22,38 @@ class BaseContacts
     * @ORM\JoinColumn(name="listes_id", referencedColumnName="id")
     */
 
-    protected $base_contact_listes;
+    private $base_contact_listes;
 
 
     /**
     * @ORM\OneToMany(targetEntity="Clics", mappedBy="clic_base_contacts")
     */
-    protected $base_contacts_clic;
+    private $base_contacts_clic;
+    
+    
+    /**
+     * Set BaseContactsClic
+     *@param string $basecontacts_clic
+     * 
+     * @return Ut
+     */
+    
+    public function setBaseContactsClic($basecontacts_clic)
+    {
+        $this->base_contacts_clic = $basecontacts_clic;
+    
+        return $this;
+    }
+
+    /**
+     * Get BaseContactsClic
+     *
+     * @return string 
+     */
+    public function getBaseContactsClic()
+    {
+        return $this->base_contacts_clic;
+    }
 
 
 

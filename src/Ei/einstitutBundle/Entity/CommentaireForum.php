@@ -19,7 +19,7 @@ class CommentaireForum
     * @ORM\JoinColumn(name="forum_id", referencedColumnName="id")
     */
 
-    protected $forum_comment;
+    private $forum_comment;
 
 
      /**
@@ -27,7 +27,7 @@ class CommentaireForum
     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
     */
 
-    protected $comment_user;
+    private $comment_user;
 
 
     /**
