@@ -17,7 +17,7 @@ class Tags
 
 
     /**
-    * @ORM\ManyToMany(targetEntity="Fiche", mappedBy="fiche")
+    * @ORM\ManyToMany(targetEntity="Fiche", mappedBy="fiche_tags")
     */
     private $tag;
 
