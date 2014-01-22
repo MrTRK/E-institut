@@ -5,3 +5,36 @@ list_contact:
 supprimer_contact:
     pattern:  /user/supprimer_contact/{contact}
     defaults: { _controller: EieinstitutBundle:Usager:supprimer_contact }
+demande_contact:
+    pattern:  /demande_contact
+    defaults: { _controller: EieinstitutBundle:Default:demande_contact}
+liste_contact:
+    pattern:  /liste_contact
+    defaults: { _controller: EieinstitutBundle:Default:liste_contact}
+mon_compte:
+    pattern:  /mon_compte
+    defaults: { _controller: EieinstitutBundle:Default:mon_compte}
+profil:
+    pattern:  /profil
+    defaults: { _controller: EieinstitutBundle:Default:profil}
+agenda:
+    pattern:  /agenda
+    defaults: { _controller: EieinstitutBundle:Default:agenda}    
+detail_ressource:
+    pattern:  /detail_ressource/{fiche}
+    defaults: { _controller: EieinstitutBundle:Default:detail_ressource} 
+recherche_ressource:
+    pattern:  /recherche_ressource
+    defaults: { _controller: EieinstitutBundle:Default:recherche_ressource} 
+nouveau_message:
+    pattern:  /nouveau_message
+    defaults: { _controller: EieinstitutBundle:Default:nouveau_message} 
+messages_envoyes:
+    pattern:  /messages_envoyes
+    defaults: { _controller: EieinstitutBundle:Default:messages_envoyes} 
+messages_recus:
+    pattern:  /messages_recus
+    defaults: { _controller: EieinstitutBundle:Default:messages_recus} 
+brouillon:
+    pattern:  /brouillon
+    defaults: { _controller: EieinstitutBundle:Default:brouillon} 	

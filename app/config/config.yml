@@ -78,3 +78,5 @@ services:
         arguments: [@translator]
         tags:
         - { name: twig.extension }
+parameters:
+        max_articles_on_listepage: 2

@@ -1,7 +1,18 @@
-{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+{% extends "EieinstitutBundle::Sub-Master-Left.html.twig" %}
+{% block title %}
+     {{ parent() }}   | Ajouter une ressource
+{% endblock %}
+{% block stylesheets %}
 
+{% endblock %}
 
-{% block content %}	
+{% block javascripts %}
+
+{% endblock %}
+{% block Slide %}
+
+{% endblock %}
+{% block Sub_Content %}
 
 <section class="grid_6">
     <div class="block-border">
@@ -9,7 +20,7 @@
 
 
             <div class="block-controls">
-                <h1>Mon profil </h1>  <br><br>
+                <h1>Mon compte </h1>  <br><br>
 
             </div>
             <form class="form" id="tab-stats" method="post" action="">
@@ -60,5 +71,8 @@
         </div>
     </div>
 </section>
+{% endblock %}
+     
+{% block javascripts_Bottom %}
 
 {% endblock %}

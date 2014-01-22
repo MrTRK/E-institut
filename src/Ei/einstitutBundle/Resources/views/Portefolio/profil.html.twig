@@ -1,8 +1,18 @@
-{# empty Twig template #}
-{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+{% extends "EieinstitutBundle::Sub-Master-Left.html.twig" %}
+{% block title %}
+     {{ parent() }}   | Ajouter une ressource
+{% endblock %}
+{% block stylesheets %}
 
+{% endblock %}
 
-{% block content %}
+{% block javascripts %}
+
+{% endblock %}
+{% block Slide %}
+
+{% endblock %}
+{% block Sub_Content %}
 
 <section class="grid_6">
 		<div class="task with-legend">
@@ -71,4 +81,8 @@
 					
 		</section>
     
+{% endblock %}
+     
+{% block javascripts_Bottom %}
+
 {% endblock %}

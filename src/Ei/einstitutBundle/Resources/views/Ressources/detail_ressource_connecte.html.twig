@@ -9,7 +9,7 @@
 			    <div class="block-content">
 
 					<div class="block-controls">
-						<h1>Design Patternes pour Java </h1>  <br><br>
+						<h1>{{ Fiches.titre }}</h1>  <br><br>
 					</div>
 				
 				<div class="fieldset  grey-bg clearfix">
@@ -19,22 +19,20 @@
 					
 					<ul class="simple-list with-icon">
 					
-						<li ><span>Mise en ligne : 25/10/2012</span></li>
-						<li ><span>Domaine : Informatique</span></li>
-						<li ><span>Thème : Programmation</span></li>
-						<li ><span>Type : pdf</span></li>
+						<li ><span>Mise en ligne : {{ Fiches.datecreation|time_ago_in_words }}</span></li>
+						<li ><span>Domaine : {{ Fiches.domaine }}</span></li>
+						<li ><span>Thème : {{ Fiches.theme }}</span></li>
+						<li ><span>Type : {{ Fiches.type }}</span></li>
 						
 					</ul>
+					</ul>
 				</div>
-					<p class="next-to-mini-calendar">Design patterns represent the best practices used by experienced object-oriented software developers. Design patterns are solutions to general problems that software developers faced during software development. These solutions were obtained by trial and error by numerous software developers over quite a substantial period of time.
-
-This tutorial will take you through step by step approach and examples using Java while learning Design Pattern concepts.</p>
-						<p> Adresse <a href="#">http://www.google.fr</a></p>
+					<p>{{ Fiches.resume }}</p>
+						<p> Adresse <a href="http://{{ Fiches.url }}" target="_blank" >{{ Fiches.url }}</a></p>
 					<p><ul class="keywords">
 						Tags
-							<li ><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png') }}" width="16" height="16">Design patterns</li>
-							<li ><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png') }}" width="16" height="16">Conception</li>
-							<li ><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png') }}" width="16" height="16">UML 2</li>
+							 {% for tag in Fiches.fiche_tags %}  <li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png')}}" width="16" height="16"> {{ tag.libelle }} </li>{% endfor %}
+							
 						</ul></p>
 					
 					<hr class="no-margin">

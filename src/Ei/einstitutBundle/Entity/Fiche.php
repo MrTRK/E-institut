@@ -28,7 +28,7 @@ class Fiche
     * @ORM\JoinTable(name="Fiche_has_Tags")
     */
 
-    protected $fiche;
+    protected $fiche_tags;
 
 
     /**
@@ -82,9 +82,9 @@ class Fiche
     private $dateCreation;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="resume", type="string", length=255)
+     * @ORM\Column(name="resume", type="text", nullable=true)
      */
     private $resume;
 
@@ -109,6 +109,67 @@ class Fiche
      */
     private $statut;
 
+
+    
+   
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="domaine", type="string")
+     */
+    private $domaine;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="theme", type="string")
+     */
+    private $theme;
+    
+     /**
+     * Get theme
+     *
+     * @return string
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * Set  theme
+     *
+     * @param string $theme
+     * @return Fiche
+     */
+    public function setTheme($theme)
+    {
+        return $this->theme;
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getDomaine()
+    {
+        return $this->domaine;
+    }
+
+    /**
+     * Set domaine
+     *
+     * @param string $domaine
+     * @return Fiche
+     */
+    public function setDomaine($domaine)
+    {
+        $this->domaine = $domaine;
+    
+        return $this;
+    }
 
     /**
      * Get id
@@ -257,10 +318,68 @@ class Fiche
     {
         return $this->statut;
     }
+    
+    
+     /**
+     * Set fiche_tags
+     *
+     * @param boolean $fiche_tags
+     * @return Ut
+     */
+    public function setFiche_tags($fiche_tags)
+    {
+        $this->fiche_tags = $fiche_tags;
+    
+    }
 
+    /**
+     * Get fiche_tags
+     *
+     * @return string
+     */
+    public function getFiche_tags()
+    {
+        return $this->fiche_tags;
+    }
+    
+    
+    
+    /**
+     * Add fiche_tags
+     *
+     * @param Tags $$tag
+     * @return Ut
+     */
+    public function addTags(Tags $tag)
+    {
+        $this->fiche_tags[] = $tag;
+    }
+
+     /**
+     * Get the paginated list of published articles
+     *
+     * @param int $page
+     * @param int $maxperpage
+     * @param string $sortby
+     * @return Paginator
+     */
+    public function getList($page=1, $maxperpage=10)
+    {
+        $q = $this->_em->createQueryBuilder()
+            ->select('fiche')
+            ->from('EieinstitutBundle:Entity','fiche')
+        ;
+ 
+        $q->setFirstResult(($page-1) * $maxperpage)
+            ->setMaxResults($maxperpage);
+ 
+        return new Paginator($q);
+    }
+    
+    
     public function __construct()
     {
-                
+        $this->fiche_tags = new \Doctrine\Common\Collections\ArrayCollection();        
         $this->fiche = new \Doctrine\Common\Collections\ArrayCollection();
         $this->preconisation = new \Doctrine\Common\Collections\ArrayCollection();
         parent::__construct();

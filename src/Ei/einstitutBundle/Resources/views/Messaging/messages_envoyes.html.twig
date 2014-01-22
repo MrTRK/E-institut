@@ -1,8 +1,18 @@
-{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+{% extends "EieinstitutBundle::Sub-Master-Left.html.twig" %}
+{% block title %}
+     {{ parent() }}   | Ajouter une ressource
+{% endblock %}
+{% block stylesheets %}
 
+{% endblock %}
 
-{% block content %}
+{% block javascripts %}
 
+{% endblock %}
+{% block Slide %}
+
+{% endblock %}
+{% block Sub_Content %}
 
 <section class="grid_9">
     <div class="block-border"><form class="block-content form" id="table_form" method="post" action="">
@@ -159,5 +169,8 @@
         </form></div>
 </section> 
 
+{% endblock %}
+     
+{% block javascripts_Bottom %}
 
-                    {% endblock %}
+{% endblock %}
