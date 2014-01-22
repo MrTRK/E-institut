@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Ei\einstitutBundle\EieinstitutBundle(),
             new FOS\UserBundle\FOSUserBundle(),
 
+            new Ei\AdministrationBundle\EiAdministrationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
