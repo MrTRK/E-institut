@@ -13,12 +13,12 @@ class DefaultController extends Controller
     public function ressourcesAction( $page)
     {
 		 $total             = $this->getDoctrine()->getRepository('EieinstitutBundle:fiche')->createQueryBuilder('p')->getQuery()->getResult();
-        /* total of résultat */
+        /* total of resultat */
         $total_articles    = count($total);
         $articles_per_page = $this->container->getParameter('max_articles_on_listepage');
         $last_page         = ceil($total_articles / $articles_per_page);
         $previous_page     = $page > 1 ? $page - 1 : 1;
-        $next_page         = $page < $last_page ? $page + 1 : $last_page;         /* résultat  à afficher*/         $entities          = $this->getDoctrine()->getRepository('EieinstitutBundle:fiche')->createQueryBuilder('p')->setFirstResult(($page * $articles_per_page) - $articles_per_page)->setMaxResults($this->container->getParameter('max_articles_on_listepage'))->getQuery()->getResult();
+        $next_page         = $page < $last_page ? $page + 1 : $last_page;         /* resultat  a afficher*/         $entities          = $this->getDoctrine()->getRepository('EieinstitutBundle:fiche')->createQueryBuilder('p')->setFirstResult(($page * $articles_per_page) - $articles_per_page)->setMaxResults($this->container->getParameter('max_articles_on_listepage'))->getQuery()->getResult();
         return $this->render('EieinstitutBundle:Ressources:listes_ressources.html.twig', array(
             'Fiches' => $entities,
             'last_page' => $last_page,
