@@ -82,9 +82,9 @@ class Fiche
     private $dateCreation;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="resume", type="string", length=255)
+     * @ORM\Column(name="resume", type="text", nullable=true)
      */
     private $resume;
 
@@ -355,7 +355,26 @@ class Fiche
         $this->fiche_tags[] = $tag;
     }
 
-   
+     /**
+     * Get the paginated list of published articles
+     *
+     * @param int $page
+     * @param int $maxperpage
+     * @param string $sortby
+     * @return Paginator
+     */
+    public function getList($page=1, $maxperpage=10)
+    {
+        $q = $this->_em->createQueryBuilder()
+            ->select('fiche')
+            ->from('EieinstitutBundle:Entity','fiche')
+        ;
+ 
+        $q->setFirstResult(($page-1) * $maxperpage)
+            ->setMaxResults($maxperpage);
+ 
+        return new Paginator($q);
+    }
     
     
     public function __construct()

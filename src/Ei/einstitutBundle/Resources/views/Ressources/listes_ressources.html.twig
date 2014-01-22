@@ -203,8 +203,6 @@
         </section>
         <!--fin section filtre -->	
 
-
-
         <!--section liste des publications-->	
 
         <section class="grid_9">
@@ -257,17 +255,15 @@
 					
 				</div>
       
-        
-
-        
 
                 <!--fin recherche avancée-->	
                                
 
-                        </form>
+                        </form>	<input type="texte"/>
                         {% for Fiche in Fiches %}
-                            
-                            <div class="task with-legend">
+                          {% if Fiche.statut==1  %}  
+                            <div class="task with-legend ">
+						
                                            <!-- The legend -->
                                            <div class="legend">
 												{% if Fiche.type=='document'  %}
@@ -294,9 +290,6 @@
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-text.png')}}" width="16" height="16"/> 
 												{% elseif Fiche.type=='database'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/database.png')}}" width="16" height="16"/> 
-												
-												
-												
 													
 												{% endif   %}
                                                {{ Fiche.type }}
@@ -325,25 +318,34 @@
                                                    </div>
                                            </div>
                                                    <ul class="mini-menu" style="opacity: 0;">
-                                                           <li><a href="{{ path('detail_ressource')}}" title="Delete"> + Détails<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-000-white.png')}}" width="16" height="16"></a></li>
+                                                           <li><a href="{{ path('detail_ressource',{'fiche': Fiche.id }) }}" title="Detail"> + Détails<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-000-white.png')}}" width="16" height="16"></a></li>
                                                    </ul>
                                            </div>	
-                        {% endfor %}
-                        
-                        
-                        
-                                
-                                <ul class="controls-buttons">
-                                        <li><a href="#" title="Précédent"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png')}}" width="16" height="16"> Précédent</a></li>
-                                        <li><a href="#" title="Page 1"><b>1</b></a></li>
-                                        <li><a href="#" title="Page 2" class="current"><b>2</b></a></li>
-                                        <li><a href="#" title="Page 3"><b>3</b></a></li>
-                                        <li><a href="#" title="Page 4"><b>4</b></a></li>
-                                        <li><a href="#" title="Page 5"><b>5</b></a></li>
-                                        <li><a href="#" title="suivant">Suivant <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png')}}" width="16" height="16"></a></li>
-
-                                </ul>
-                                <div class="clear"></div>
+                       {% endif   %}
+					   {% endfor %}
+                              
+						<ul class="controls-buttons">
+						<li>il y'a <strong>{{ total_articles }}</strong> ressources</li>
+								<li><a href="{{ path('Ressources', { 'page': 1 }) }}"> <span> |< </span> </a></li>
+								<li><a href="{{ path('Ressources', { 'page': previous_page }) }}" title="Précédent"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png')}}" width="16" height="16"> Précédent</a></li>
+								  {% for page in 1..last_page %}
+									{% if page == current_page %}
+									
+								<li><a  title="Page {{ page }}" class="current"><b>{{ page }}</b></a></li>
+								{% else %}
+								<li><a href="{{ path('Ressources', { 'page': page }) }}"  title="Page {{ page }}"><b>{{ page }}</b></a></li>
+								{% endif %}
+								{% endfor %}
+								<li><a href="{{ path('Ressources', { 'page': next_page }) }}" title="suivant">Suivant <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png')}}" width="16" height="16"></a></li>
+								<li><a href="{{ path('Ressources', { 'page': last_page }) }}" title="derniére page"> <span> >| </span> </a></li>
+												 			</ul> <div class="clear"></div> <center><div class="pagination_desc" > 
+								 {% if last_page > 1 %}
+								 - page <strong>{{ current_page }}/{{ last_page }}</strong> {% endif %} -</div></center>
+											
+						
+						<div class="clear"></div>
+					
+						
                     </div>
 
                 </div>

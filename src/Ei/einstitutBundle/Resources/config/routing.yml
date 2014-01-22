@@ -7,8 +7,8 @@ Espace_Personnel:
     defaults: { _controller: EieinstitutBundle:Default:espace_Personnel }
 
 Ressources:
-    pattern:  /ressources
-    defaults: { _controller: EieinstitutBundle:Default:ressources }
+    pattern:  /ressources{page}
+    defaults: { _controller: EieinstitutBundle:Default:ressources,page:1 }
 
 Ressources_Ajouter:
     pattern:  /ajouter_ressource

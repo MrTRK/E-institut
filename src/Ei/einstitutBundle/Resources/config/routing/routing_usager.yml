@@ -21,7 +21,7 @@ agenda:
     pattern:  /agenda
     defaults: { _controller: EieinstitutBundle:Default:agenda}    
 detail_ressource:
-    pattern:  /detail_ressources
+    pattern:  /detail_ressource/{fiche}
     defaults: { _controller: EieinstitutBundle:Default:detail_ressource} 
 recherche_ressource:
     pattern:  /recherche_ressource

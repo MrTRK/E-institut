@@ -10,16 +10,26 @@ class DefaultController extends Controller
     {
         return $this->render('EieinstitutBundle:Pages:index.html.twig');
     }
-    public function ressourcesAction()
+    public function ressourcesAction( $page)
     {
-        //EntityManager
-	$em = $this->getDoctrine()->getEntityManager();
-        $oFiches = $em->getRepository('EieinstitutBundle:Fiche')->findAll();
-        
-        return $this->render('EieinstitutBundle:Ressources:listes_ressources.html.twig',
-                array('Fiches'=> $oFiches)
-                );
+		 $total             = $this->getDoctrine()->getRepository('EieinstitutBundle:fiche')->createQueryBuilder('p')->getQuery()->getResult();
+        /* total of résultat */
+        $total_articles    = count($total);
+        $articles_per_page = $this->container->getParameter('max_articles_on_listepage');
+        $last_page         = ceil($total_articles / $articles_per_page);
+        $previous_page     = $page > 1 ? $page - 1 : 1;
+        $next_page         = $page < $last_page ? $page + 1 : $last_page;         /* résultat  à afficher*/         $entities          = $this->getDoctrine()->getRepository('EieinstitutBundle:fiche')->createQueryBuilder('p')->setFirstResult(($page * $articles_per_page) - $articles_per_page)->setMaxResults($this->container->getParameter('max_articles_on_listepage'))->getQuery()->getResult();
+        return $this->render('EieinstitutBundle:Ressources:listes_ressources.html.twig', array(
+            'Fiches' => $entities,
+            'last_page' => $last_page,
+            'previous_page' => $previous_page,
+            'current_page' => $page,
+            'next_page' => $next_page,
+            'total_articles' => $total_articles,
+        ));
+        return $this->render('EieinstitutBundle:Ressources:listes_ressources.html.twig');
     }
+    
     public function ajouter_ressourceAction()
     {
         return $this->render('EieinstitutBundle:Ressources:ajouter_ressource.html.twig');
@@ -59,9 +69,10 @@ class DefaultController extends Controller
         return $this->render('EieinstitutBundle:portefolio:agenda.html.twig');
     } 
     
-    public function detail_ressourceAction()
-    {
-        return $this->render('EieinstitutBundle:Ressources:detail_ressource.html.twig');
+    public function detail_ressourceAction($fiche)
+    {	$em = $this->getDoctrine()->getEntityManager();
+        $oFiches = $em->getRepository('EieinstitutBundle:Fiche')->findOneBy(array('id'=>$fiche));
+        return $this->render('EieinstitutBundle:Ressources:detail_ressource_connecte.html.twig',array('Fiches'=>$oFiches));
     } 
     public function recherche_ressourceAction()
     {
