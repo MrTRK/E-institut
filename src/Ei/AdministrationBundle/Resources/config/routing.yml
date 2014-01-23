@@ -1,3 +1,6 @@
 ei_administration_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
     defaults: { _controller: EiAdministrationBundle:Default:index }
+eieinstitut:
+    resource: "@EieinstitutBundle/Resources/config/routing.yml"
+    prefix:   /
