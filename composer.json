@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
 
         "friendsofsymfony/user-bundle": "*",
-        "salavert/time-ago-in-words": "1.*"
+        "salavert/time-ago-in-words": "1.*",
+        "winzou/console-bundle": "1.*"
     },
     "scripts": {
         "post-install-cmd": [
