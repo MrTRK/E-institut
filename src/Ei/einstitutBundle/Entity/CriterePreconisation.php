@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
  * Critere_has_preconisation
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\Critere_has_preconisationRepository")
+ * @ORM\Entity(repositoryClass="Ei\einstitutBundle\Entity\CriterePreconisationRepository")
  */
-class Critere_has_preconisation
+class CriterePreconisation
 {
 
 
@@ -24,12 +24,30 @@ class Critere_has_preconisation
     **/
         private $criteres;
 
+     public function getCriteres() {
+         return $this->criteres;
+    }
+
+    public function setCriteres($u2) {
+        $this->criteres = $u2;
+    }   
+
 
     /**
      * @ORM\ManyToOne(targetEntity="Notes")
      * @ORM\JoinColumn(name="notes_id", referencedColumnName="id")
     **/
          private $notes;
+
+
+    public function getNotes() {
+         return $this->notes;
+    }
+
+    public function setNotes($u2) {
+        $this->notes = $u2;
+    } 
+
      
     /**
      * @ORM\ManyToOne(targetEntity="Preconisation")
@@ -37,7 +55,13 @@ class Critere_has_preconisation
     **/     
          private $preconisation;
 
+    public function getPreconisation() {
+         return $this->preconisation;
+    }
 
+    public function setPreconisation($u2) {
+        $this->preconisation = $u2;
+    }
 
 
 
@@ -59,5 +83,14 @@ class Critere_has_preconisation
     public function getId()
     {
         return $this->id;
+    }
+    
+     public function __construct()
+    {
+
+        $this->preconisation = new \Doctrine\Common\Collections\ArrayCollection();
+
+        parent::__construct();
+        // your own logic
     }
 }

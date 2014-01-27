@@ -23,12 +23,58 @@ class Fiche
     protected $preconisation;
 
 
+     public function setPreconisation(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $preconisation){
+            $this->addPreconisation($preconisation);
+        }
+    }
+
+    public function getPreconisation()
+    {
+        return $this->preconisation;
+    }
+
+     public function addPreconisation( $value)
+    {
+        $this->preconisation[] = $value;
+    }
+
+     public function removePreconisation($value)
+    {
+        $this->preconisation->removeElement($value);
+    } 
+
+
     /**
     * @ORM\ManyToMany(targetEntity="Tags", inversedBy="tag")
     * @ORM\JoinTable(name="Fiche_has_Tags")
     */
 
     protected $fiche_tags;
+
+
+    public function setFicheTags(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $fiche_tags){
+            $this->addFicheTags($fiche_tags);
+        }
+    }
+
+    public function getFicheTags()
+    {
+        return $this->fiche_tags;
+    }
+
+     public function addFicheTags( $value)
+    {
+        $this->fiche_tags[] = $value;
+    }
+
+     public function removeFicheTags($value)
+    {
+        $this->fiche_tags->removeElement($value);
+    } 
 
 
     /**
@@ -48,7 +94,7 @@ class Fiche
          return $this->user;
     }
 
-    public function setUser(User $u) {
+    public function setUser($u) {
         $this->user = $u;
     }
 

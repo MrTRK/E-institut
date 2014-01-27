@@ -23,12 +23,29 @@ class Eticket
     protected $eticket_objet;
 
 
+    public function getEticketObjet() {
+         return $this->eticket_objet;
+    }
+
+    public function setEticketObjet($u2) {
+        $this->eticket_objet = $u2;
+    }
+
+
     /**
     * @ORM\ManyToOne(targetEntity="User", inversedBy="user_eticket")
     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
     */
 
     protected $eticket_user;
+
+    public function getEticketUser() {
+         return $this->eticket_user;
+    }
+
+    public function setEticketUser($u2) {
+        $this->eticket_user = $u2;
+    }
 
 
 

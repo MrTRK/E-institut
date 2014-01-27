@@ -24,11 +24,57 @@ class Listes
     protected $listes_base_contact;
 
 
+     public function setListesBaseContacts(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $listes_base_contact){
+            $this->addListesBaseContacts($listes_base_contact);
+        }
+    }
+
+    public function getListesBaseContacts()
+    {
+        return $this->listes_base_contact;
+    }
+
+     public function addListesBaseContacts( $value)
+    {
+        $this->listes_base_contact[] = $value;
+    }
+
+     public function removeListesBaseContacts($value)
+    {
+        $this->listes_base_contact->removeElement($value);
+    } 
+
+
 
      /**
     * @ORM\OneToMany(targetEntity="Envoye", mappedBy="envoye_listes")
     */
     protected $listes_envoye;
+
+
+    public function setListesEnvoye(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $listes_envoye){
+            $this->addListesBaseContacts($listes_envoye);
+        }
+    }
+
+    public function getListesEnvoye()
+    {
+        return $this->listes_envoye;
+    }
+
+     public function addListesEnvoye( $value)
+    {
+        $this->listes_envoye[] = $value;
+    }
+
+     public function removeListesEnvoye($value)
+    {
+        $this->listes_envoye->removeElement($value);
+    } 
 
 
 

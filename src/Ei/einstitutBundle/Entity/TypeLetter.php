@@ -24,6 +24,31 @@ class TypeLetter
 
 
 
+     public function setTypeLetterNewsLetters(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $typeletter_newsletter){
+            $this->addTypeLetterNewsLetters($typeletter_newsletter);
+        }
+    }
+
+    public function getTypeLetterNewsLetters()
+    {
+        return $this->typeletter_newsletter;
+    }
+
+     public function addTypeLetterNewsLetters( $value)
+    {
+        $this->typeletter_newsletter[] = $value;
+    }
+
+     public function removeTypeLetterNewsLetters($value)
+    {
+        $this->typeletter_newsletter->removeElement($value);
+    } 
+
+
+
+
 
 
     /**

@@ -21,10 +21,55 @@ class Tags
     */
     private $tag;
 
+     public function setTag(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $tag){
+            $this->addTag($tag);
+        }
+    }
+
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+     public function addTag( $value)
+    {
+        $this->tag[] = $value;
+    }
+
+     public function removeTag($value)
+    {
+        $this->tag->removeElement($value);
+    } 
+
     /**
     * @ORM\ManyToMany(targetEntity="TutorielsEnLigne", mappedBy="tutoriel_enligne_tag")
     */
     private $tag_tutoriel;
+
+
+     public function setTagTutoriel(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $tag_tutoriel){
+            $this->addTagTutoriel($tag_tutoriel);
+        }
+    }
+
+    public function getTagTutoriel()
+    {
+        return $this->tag_tutoriel;
+    }
+
+     public function addTagTutoriel( $value)
+    {
+        $this->tag_tutoriel[] = $value;
+    }
+
+     public function removeTagTutoriel($value)
+    {
+        $this->tag_tutoriel->removeElement($value);
+    } 
 
 
 

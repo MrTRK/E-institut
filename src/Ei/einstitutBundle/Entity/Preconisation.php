@@ -25,6 +25,15 @@ class Preconisation
 
 
 
+    public function getFichePreconisation() {
+         return $this->fiche_preconisation;
+    }
+
+    public function setFichePreconisation($u2) {
+        $this->fiche_preconisation = $u2;
+    }
+
+
 
     /**
     * @ORM\ManyToOne(targetEntity="User", inversedBy="preconisation")
@@ -32,6 +41,14 @@ class Preconisation
     */
 
     protected $user_preconisation;
+
+    public function getUserPreconisation() {
+         return $this->user_preconisation;
+    }
+
+    public function setUserPreconisation($u2) {
+        $this->user_preconisation = $u2;
+    }
 
 
 

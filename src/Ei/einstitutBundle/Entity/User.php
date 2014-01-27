@@ -24,15 +24,82 @@ class User extends BaseUser
     */
     protected $comentforum;
 
+    public function setCommentaireForum(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $comentforum){
+            $this->addCommentaireForum($comentforum);
+        }
+    }
+
+    public function getCommentaireForum()
+    {
+        return $this->comentforum;
+    }
+
+     public function addCommentaireForum( $value)
+    {
+        $this->comentforum[] = $value;
+    }
+
+     public function removeCommentaireForum($value)
+    {
+        $this->comentforum->removeElement($value);
+    } 
+
     /**
     * @ORM\OneToMany(targetEntity="Forum", mappedBy="forum_user")
     */
     protected $user_forum;
 
+
+    public function setForum(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $user_forum){
+            $this->addForum($user_forum);
+        }
+    }
+
+    public function getForum()
+    {
+        return $this->user_forum;
+    }
+
+     public function addForum( $value)
+    {
+        $this->user_forum[] = $value;
+    }
+
+     public function removeForum($value)
+    {
+        $this->user_forum->removeElement($value);
+    } 
+
     /**
     * @ORM\OneToMany(targetEntity="Contact", mappedBy="contact_user2")
     */
     protected $user_contact1;
+
+     public function setContact1(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $user_contact1){
+            $this->addContact1($user_contact1);
+        }
+    }
+
+    public function getContact1()
+    {
+        return $this->user_contact1;
+    }
+
+     public function addContact1( $value)
+    {
+        $this->user_contact1[] = $value;
+    }
+
+     public function removeContact1($value)
+    {
+        $this->user_contact1->removeElement($value);
+    } 
 
      /**
     * @ORM\OneToMany(targetEntity="Contact", mappedBy="contact_user1")
@@ -40,10 +107,61 @@ class User extends BaseUser
     protected $user_contact;
 
 
+    public function setContacts(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $user_contact){
+            $this->addContact($user_contact);
+        }
+    }
+
+    public function getContacts()
+    {
+        return $this->user_contact;
+    }
+
+     public function addContact( $value)
+    {
+        $this->user_contact[] = $value;
+    }
+
+     public function removeContact($value)
+    {
+        $this->user_contact->removeElement($value);
+    } 
+
+
      /**
     * @ORM\OneToMany(targetEntity="Actualites", mappedBy="user")
     */
-    protected $user_actualite;
+    protected $actualites;
+
+
+
+
+    public function setActualites(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $actualite){
+            $this->addActualite($actualite);
+        }
+    }
+
+    public function getActualites()
+    {
+        return $this->actualites;
+    }
+
+     public function addActualite( $value)
+    {
+        $this->actualites[] = $value;
+    }
+
+     public function removeActualite($value)
+    {
+        $this->actualites->removeElement($value);
+    } 
+   
+
+
 
 
 
@@ -53,10 +171,56 @@ class User extends BaseUser
     protected $user_messages;
 
 
+    public function setMessage(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $user_messages){
+            $this->addMessage($user_messages);
+        }
+    }
+
+    public function getMessage()
+    {
+        return $this->user_messages;
+    }
+
+     public function addMessage( $value)
+    {
+        $this->user_messages[] = $value;
+    }
+
+     public function removeMessage($value)
+    {
+        $this->user_messages->removeElement($value);
+    } 
+
+
     /**
     * @ORM\OneToMany(targetEntity="Eticket", mappedBy="eticket_user")
     */
     protected $user_eticket;
+
+
+    public function setEtickets(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $user_eticket){
+            $this->addEticket($user_eticket);
+        }
+    }
+
+    public function getEtickets()
+    {
+        return $this->user_eticket;
+    }
+
+     public function addEticket( $value)
+    {
+        $this->user_eticket[] = $value;
+    }
+
+     public function removeEticket($value)
+    {
+        $this->user_eticket->removeElement($value);
+    } 
 
 
 
@@ -64,6 +228,29 @@ class User extends BaseUser
     * @ORM\OneToMany(targetEntity="Cercles", mappedBy="cercles_user")
     */
     protected $user_cercles;
+
+
+     public function setCercles(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $user_cercles){
+            $this->addCercles($user_cercles);
+        }
+    }
+
+    public function getCercles()
+    {
+        return $this->user_cercles;
+    }
+
+     public function addCercles( $value)
+    {
+        $this->user_cercles[] = $value;
+    }
+
+     public function removeCercles($value)
+    {
+        $this->user_cercles->removeElement($value);
+    } 
 
 
 
@@ -75,6 +262,29 @@ class User extends BaseUser
     protected $cercle;
 
 
+    
+    public function setCercle(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $cercle){
+            $this->addCercle($cercle);
+        }
+    }
+
+    public function getCercle()
+    {
+        return $this->cercle;
+    }
+
+     public function addCercle($value)
+    {
+        $this->cercle[] = $value;
+    }
+
+     public function removeCercle($value)
+    {
+        $this->cercle->removeElement($value);
+    } 
+
 
 
     /**
@@ -83,6 +293,29 @@ class User extends BaseUser
     */
 
     protected $message;
+
+
+    public function setMessages(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $message){
+            $this->addMessages($message);
+        }
+    }
+
+    public function getMessages()
+    {
+        return $this->message;
+    }
+
+     public function addMessages( $value)
+    {
+        $this->message[] = $value;
+    }
+
+     public function removeMessages($value)
+    {
+        $this->message->removeElement($value);
+    } 
 
 
 
@@ -94,10 +327,56 @@ class User extends BaseUser
     protected $evenements;
 
 
+    public function setEvenements(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $evenements){
+            $this->addEvenement($evenements);
+        }
+    }
+
+    public function getEvenements()
+    {
+        return $this->evenements;
+    }
+
+     public function addEvenement( $value)
+    {
+        $this->evenements[] = $value;
+    }
+
+     public function removeEvenements($value)
+    {
+        $this->evenements->removeElement($value);
+    } 
+
+
     /**
-    * @ORM\OneToMany(targetEntity="Evenements", mappedBy="evenements_user")
+    * @ORM\OneToMany(targetEntity="Evenements", mappedBy="user")
     */
-    private $evenement;
+    private $evenements_user;
+
+
+    public function setEvenementsUser(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $evenements_user){
+            $this->addEvenementsUser($evenements_user);
+        }
+    }
+
+    public function getEvenementsUser()
+    {
+        return $this->evenements_user;
+    }
+
+     public function addEvenementsUser($value)
+    {
+        $this->evenements_user[] = $value;
+    }
+
+     public function removeEvenementsUser($value)
+    {
+        $this->evenements_user->removeElement($value);
+    } 
 
 
 
@@ -106,6 +385,28 @@ class User extends BaseUser
     * @ORM\OneToMany(targetEntity="TutorielsEnLigne", mappedBy="user_tuto")
     */
     protected $user_tuto_en_ligne;
+
+    public function setTutorielsEnLigne(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $user_tuto_en_ligne){
+            $this->addEvenementsUser($user_tuto_en_ligne);
+        }
+    }
+
+    public function getTutorielsEnLigne()
+    {
+        return $this->user_tuto_en_ligne;
+    }
+
+     public function addTutorielsEnLigne($value)
+    {
+        $this->user_tuto_en_ligne[] = $value;
+    }
+
+     public function removeTutorielsEnLigne($value)
+    {
+        $this->user_tuto_en_ligne->removeElement($value);
+    } 
 
 
     /**
@@ -124,6 +425,29 @@ class User extends BaseUser
     */
 
     protected $fiche;
+
+
+    public function setFiche(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $fiche){
+            $this->addFiche($fiche);
+        }
+    }
+
+    public function getFiche()
+    {
+        return $this->fiche;
+    }
+
+     public function addFiche( $value)
+    {
+        $this->fiche[] = $value;
+    }
+
+     public function removeFiche($value)
+    {
+        $this->fiche->removeElement($value);
+    } 
     
    
 
@@ -134,6 +458,27 @@ class User extends BaseUser
     
     
 
+    public function setFiches(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $fiches){
+            $this->addFiches($fiches);
+        }
+    }
+
+    public function getFiches()
+    {
+        return $this->fiches;
+    }
+
+     public function addFiches( $value)
+    {
+        $this->fiches[] = $value;
+    }
+
+     public function removeFiches($value)
+    {
+        $this->fiches->removeElement($value);
+    } 
 
 
 
@@ -402,385 +747,9 @@ class User extends BaseUser
     
     
     
-    /**
-     * Set ComentForum
-     *
-     * @param string $comentForum
-     * @return Ut
-     */
-    public function setCommentForm($comentForum)
-    {
-        $this->comentForum = $comentForum;
+
     
-        return $this;
-    }
 
-    /**
-     * Get comentForum
-     *
-     * @return string 
-     */
-    public function getComentForum()
-    {
-        return $this->comentforum;
-    }
-
-
-    /**
-     * Set userForum
-     *
-     * @param string $userForum
-     * @return Ut
-     */
-    public function setUserForum($userForum)
-    {
-        $this->user_forum = $userForum;
-    
-        return $this;
-    }
-
-    /**
-     * Get userForum
-     *
-     * @return string 
-     */
-    public function getUserForum()
-    {
-        return $this->user_forum;
-    }
-
-
-
-    /**
-     * Set fiche
-     *
-     * @param string $fiche
-     * @return Ut
-     */
-    public function setFiche($fiche)
-    {
-        $this->fiche = $fiche;
-    
-        return $this;
-    }
-
-    /**
-     * Get fiche
-     *
-     * @return string 
-     */
-    public function getFiche()
-    {
-        return $this->fiche;
-    }
-
-
-    /**
-     * Set fiches
-     *
-     * @param string $fiches
-     * @return Ut
-     */
-    public function setFiches($fiches)
-    {
-        $this->fiches = $fiches;
-    
-        return $this;
-    }
-
-    /**
-     * Get fiches
-     *
-     * @return string 
-     */
-    public function getFiches()
-    {
-        return $this->fiches;
-    }
-
-
-    /**
-     * Set preconisation
-     *
-     * @param string $preconisation
-     * @return Ut
-     */
-    public function setPreconisation($preconisation)
-    {
-        $this->preconisation = $preconisation;
-    
-        return $this;
-    }
-
-    /**
-     * Get preconisation
-     *
-     * @return string 
-     */
-    public function getPreconisation()
-    {
-        return $this->preconisation;
-    }
-
-
-
-    /**
-     * Set userTutoEnLigne
-     *
-     * @param string $user_tuto_en_ligne
-     * @return Ut
-     */
-    public function setUserTutoEnLigne($user_tuto_en_ligne)
-    {
-        $this->user_tuto_en_ligne = $user_tuto_en_ligne;
-    
-        return $this;
-    }
-
-    /**
-     * Get userTutoEnLigne
-     *
-     * @return string 
-     */
-    public function getUserTutoEnLigne()
-    {
-        return $this->user_tuto_en_ligne;
-    }
-
-
-    /**
-     * Set evenement
-     *
-     * @param string $evenement
-     * @return Ut
-     */
-    public function setEvenement($evenement)
-    {
-        $this->evenement = $evenement;
-    
-        return $this;
-    }
-
-    /**
-     * Get evenement
-     *
-     * @return string 
-     */
-    public function getEvenement()
-    {
-        return $this->evenement;
-    }
-
-
-    /**
-     * Set evenements
-     *
-     * @param string $evenements
-     * @return Ut
-     */
-    public function setEvenements($evenements)
-    {
-        $this->evenements = $evenements;
-    
-        return $this;
-    }
-
-    /**
-     * Get evenements
-     *
-     * @return string 
-     */
-    public function getEvenements()
-    {
-        return $this->evenements;
-    }
-
-
-    /**
-     * Set message
-     *
-     * @param string $message
-     * @return Ut
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-    
-        return $this;
-    }
-
-    /**
-     * Get message
-     *
-     * @return string 
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
-
-    /**
-     * Set cercle
-     *
-     * @param string $cercle
-     * @return Ut
-     */
-    public function setCercle($cercle)
-    {
-        $this->cercle = $cercle;
-    
-        return $this;
-    }
-
-    /**
-     * Get cercle
-     *
-     * @return string 
-     */
-    public function getCercle()
-    {
-        return $this->cercle;
-    }
-
-
-    /**
-     * Set userCercles
-     *
-     * @param string $user_cercles
-     * @return Ut
-     */
-    public function setUserCercles($user_cercles)
-    {
-        $this->user_cercles = $user_cercles;
-    
-        return $this;
-    }
-
-    /**
-     * Get userCercles
-     *
-     * @return string 
-     */
-    public function getUserCercles()
-    {
-        return $this->user_cercles;
-    }
-
-    /**
-     * Set userEticket
-     *
-     * @param string $user_eticket
-     * @return Ut
-     */
-    public function setUserEticket($user_eticket)
-    {
-        $this->user_eticket = $user_eticket;
-    
-        return $this;
-    }
-
-    /**
-     * Get userEticket
-     *
-     * @return string 
-     */
-    public function getUserEticket()
-    {
-        return $this->user_messages;
-    }
-
-    /**
-     * Set userMessage
-     *
-     * @param string $user_messages
-     * @return Ut
-     */
-    public function setUserMessage($user_messages)
-    {
-        $this->user_messages = $user_messages;
-    
-        return $this;
-    }
-
-    /**
-     * Get userMessage
-     *
-     * @return string 
-     */
-    public function getUserMessage()
-    {
-        return $this->user_messages;
-    }
-
-    /**
-     * Set userActualite
-     *
-     * @param string $user_actualite
-     * @return Ut
-     */
-    public function setUserActualite($user_actualite)
-    {
-        $this->user_actualite = $user_actualite;
-    
-        return $this;
-    }
-
-    /**
-     * Get userActualite
-     *
-     * @return string 
-     */
-    public function getUserActualite()
-    {
-        return $this->user_actualite;
-    }
-
-    /**
-     * Set userContact
-     *
-     * @param string $user_contact
-     * @return Ut
-     */
-    public function setUserContact($user_contact)
-    {
-        $this->user_contact = $user_contact;
-    
-        return $this;
-    }
-
-    /**
-     * Get userContact
-     *
-     * @return string 
-     */
-    public function getUserContact()
-    {
-        return $this->user_contact;
-    }
-
-    /**
-     * Set userContact1
-     *
-     * @param string $user_contact1
-     * @return Ut
-     */
-    public function setUserContact1($user_contact1)
-    {
-        $this->user_contact1 = $user_contact1;
-    
-        return $this;
-    }
-
-    /**
-     * Get userContact1
-     *
-     * @return string 
-     */
-    public function getUserContact1()
-    {
-        return $this->user_contact1;
-    }
     
     
     
@@ -797,7 +766,7 @@ class User extends BaseUser
         $this->user_forum = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user_contact1 = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user_contact = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->user_actualite = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->actualites = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user_messages = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user_eticket = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user_cercles = new \Doctrine\Common\Collections\ArrayCollection(); 

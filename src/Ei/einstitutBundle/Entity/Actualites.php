@@ -15,11 +15,34 @@ class Actualites
 
 
     /**
-    * @ORM\ManyToOne(targetEntity="User", inversedBy="user_actualite")
+    * @ORM\ManyToOne(targetEntity="User", inversedBy="actualites")
     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
     */
 
     private $user;
+
+
+    /**
+     * Get user
+     *
+     * @return User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set user
+     *
+     * @param User $value
+     */
+    public function setUser($value)
+    {
+        $this->user = $value;
+    }
+
+
 
     /**
      * @var integer
@@ -33,42 +56,42 @@ class Actualites
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255)
+     * @ORM\Column(name="titre", type="string", length=255, nullable=true)
      */
     private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="contenu", type="string", length=255)
+     * @ORM\Column(name="contenu", type="string", length=255, nullable=true)
      */
     private $contenu;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_actualite", type="datetime")
+     * @ORM\Column(name="date_actualite", type="datetime", nullable=true)
      */
     private $dateActualite;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_expiration", type="datetime")
+     * @ORM\Column(name="date_expiration", type="datetime", nullable=true)
      */
     private $dateExpiration;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="url_image", type="string", length=255)
+     * @ORM\Column(name="url_image", type="string", length=255, nullable=true)
      */
     private $urlImage;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="statut", type="integer")
+     * @ORM\Column(name="statut", type="integer", nullable=true)
      */
     private $statut;
 

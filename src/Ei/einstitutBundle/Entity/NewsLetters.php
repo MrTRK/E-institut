@@ -24,6 +24,28 @@ class NewsLetters
     protected $newsletter_envoye;
 
 
+     public function setNewsLettersEnvoye(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $newsletter_envoye){
+            $this->addNewsLettersEnvoye($newsletter_envoye);
+        }
+    }
+
+    public function getNewsLettersEnvoye()
+    {
+        return $this->newsletter_envoye;
+    }
+
+     public function addNewsLettersEnvoye( $value)
+    {
+        $this->newsletter_envoye[] = $value;
+    }
+
+     public function removeNewsLettersEnvoye($value)
+    {
+        $this->newsletter_envoye->removeElement($value);
+    } 
+
 
 
     /**
@@ -33,12 +55,42 @@ class NewsLetters
 
     protected $newsletter_typeletter;
 
+    public function getNewsLettersTypeLetter() {
+         return $this->newsletter_typeletter;
+    }
+
+    public function setNewsLettersTypeLetter($u2) {
+        $this->newsletter_typeletter = $u2;
+    }
+
 
 
     /**
     * @ORM\OneToMany(targetEntity="Clics", mappedBy="clic_newsletter")
     */
     protected $newsletter_clic;
+
+     public function setNewsLettersClic(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $newsletter_clic){
+            $this->addNewsLettersClic($newsletter_clic);
+        }
+    }
+
+    public function getNewsLettersClic()
+    {
+        return $this->newsletter_clic;
+    }
+
+     public function addNewsLettersClic( $value)
+    {
+        $this->newsletter_clic[] = $value;
+    }
+
+     public function removeNewsLettersClic($value)
+    {
+        $this->newsletter_clic->removeElement($value);
+    } 
 
 
 

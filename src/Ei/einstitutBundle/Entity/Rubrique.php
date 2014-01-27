@@ -23,6 +23,28 @@ class Rubrique
     */
     protected $rubrique_forum;
 
+    
+     public function setRubriqueForum(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $rubrique_forum){
+            $this->addRubriqueForum($rubrique_forum);
+        }
+    }
+
+    public function getRubriqueForum()
+    {
+        return $this->rubrique_forum;
+    }
+
+     public function addRubriqueForum( $value)
+    {
+        $this->rubrique_forum[] = $value;
+    }
+
+     public function removeRubriqueForum($value)
+    {
+        $this->rubrique_forum->removeElement($value);
+    } 
 
 
     /**

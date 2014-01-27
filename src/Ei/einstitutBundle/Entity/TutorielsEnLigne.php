@@ -26,6 +26,15 @@ class TutorielsEnLigne
     protected $type_tutoriel;
 
 
+    public function getTypeTutoriel() {
+         return $this->type_tutoriel;
+    }
+
+    public function setTypeTutoriel($u2) {
+        $this->type_tutoriel = $u2;
+    }
+
+
 
 
     /**
@@ -36,6 +45,15 @@ class TutorielsEnLigne
     protected $user_tuto;
 
 
+    public function getUserTuto() {
+         return $this->user_tuto;
+    }
+
+    public function setUserTuto($u2) {
+        $this->user_tuto = $u2;
+    }
+
+
 
     /**
     * @ORM\ManyToMany(targetEntity="Tags", inversedBy="tag_tutoriel")
@@ -43,6 +61,29 @@ class TutorielsEnLigne
     */
 
     protected $tutoriel_enligne_tag;
+
+
+     public function setTutorielsEnLigneTags(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $tutoriel_enligne_tag){
+            $this->addTutorielsEnLigneTags($tutoriel_enligne_tag);
+        }
+    }
+
+    public function getTutorielsEnLigneTags()
+    {
+        return $this->tutoriel_enligne_tag;
+    }
+
+     public function addTutorielsEnLigneTags( $value)
+    {
+        $this->tutoriel_enligne_tag[] = $value;
+    }
+
+     public function removeTutorielsEnLigneTags($value)
+    {
+        $this->tutoriel_enligne_tag->removeElement($value);
+    } 
 
 
 

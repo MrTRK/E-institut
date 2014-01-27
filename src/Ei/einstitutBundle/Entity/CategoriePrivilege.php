@@ -18,34 +18,32 @@ class CategoriePrivilege
 
 
     /**
-    * @ORM\OneToMany(targetEntity="Privileges", mappedBy="categorie_privileges_roles")
+    * @ORM\OneToMany(targetEntity="Privileges", mappedBy="categorie_privileges")
     */
-    private $roles_categorie_privileges;
+    private $privileges;
     
     
-    /**
-     * Set Rolescategorieprivileges
-     *@param string $rolescategorieprivileges
-     * 
-     * @return Ut
-     */
-    
-    public function setRolescategorieprivileges($rolescategorieprivileges)
+    public function setPrivileges(\Doctrine\Common\Collections\ArrayCollection $values)
     {
-        $this->roles_categorie_privileges = $rolescategorieprivileges;
-    
-        return $this;
+        foreach($values as $privileges){
+            $this->addPrivileges($privileges);
+        }
     }
 
-    /**
-     * Get Rolescategorieprivileges
-     *
-     * @return string 
-     */
-    public function getRolescategorieprivileges()
+    public function getPrivileges()
     {
-        return $this->roles_categorie_privileges;
+        return $this->privileges;
     }
+
+     public function addPrivileges( $value)
+    {
+        $this->privileges[] = $value;
+    }
+
+     public function removePrivileges($value)
+    {
+        $this->privileges->removeElement($value);
+    } 
     
     
 

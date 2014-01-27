@@ -22,6 +22,15 @@ class Envoye
     protected $envoye_listes;
 
 
+    public function getEnvoyeListes() {
+         return $this->envoye_listes;
+    }
+
+    public function setEnvoyeListes($u2) {
+        $this->envoye_listes = $u2;
+    }
+
+
 
 
     /**
@@ -30,6 +39,15 @@ class Envoye
     */
 
     protected $envoye_newsletter;
+
+
+     public function getEnvoyeNewsLetters() {
+         return $this->envoye_newsletter;
+    }
+
+    public function setEnvoyeNewsLetters($u2) {
+        $this->envoye_newsletter = $u2;
+    }
 
 
 

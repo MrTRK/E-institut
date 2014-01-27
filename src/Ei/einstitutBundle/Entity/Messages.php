@@ -23,10 +23,42 @@ class Messages
     protected $messages_user;
 
 
+    public function getMessagesUser() {
+         return $this->messages_user;
+    }
+
+    public function setMessagesUser($u2) {
+        $this->messages_user = $u2;
+    }
+
+
+
     /**
     * @ORM\ManyToMany(targetEntity="User", mappedBy="message")
     */
     private $users;
+
+     public function setUsers(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $users){
+            $this->addUsers($users);
+        }
+    }
+
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+     public function addUsers( $value)
+    {
+        $this->users[] = $value;
+    }
+
+     public function removeUsers($value)
+    {
+        $this->users->removeElement($value);
+    } 
 
 
 
@@ -35,7 +67,27 @@ class Messages
     */
     private $cercle;
 
+     public function setCercle(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $cercle){
+            $this->addCercles($cercle);
+        }
+    }
 
+    public function getCercle()
+    {
+        return $this->cercle;
+    }
+
+     public function addCercle( $value)
+    {
+        $this->cercle[] = $value;
+    }
+
+     public function removeCercle($value)
+    {
+        $this->cercle->removeElement($value);
+    } 
 
 
 

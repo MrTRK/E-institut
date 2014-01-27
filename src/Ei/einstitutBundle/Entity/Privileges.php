@@ -15,11 +15,20 @@ class Privileges
 
 
     /**
-    * @ORM\ManyToOne(targetEntity="CategoriePrivilege", inversedBy="roles_categorie_privileges")
+    * @ORM\ManyToOne(targetEntity="CategoriePrivilege", inversedBy="privileges")
     * @ORM\JoinColumn(name="categorie_privileges_id", referencedColumnName="id")
     */
 
-    protected $categorie_privileges_roles;
+    protected $categorie_privileges;
+
+
+    public function getCategoriePrivilege() {
+         return $this->categorie_privileges;
+    }
+
+    public function setCategoriePrivilege($u2) {
+        $this->categorie_privileges = $u2;
+    }
 
 
     /**
@@ -30,6 +39,13 @@ class Privileges
     protected $privileges_roles; 
 
 
+    public function getPrivilegeRoles() {
+         return $this->privileges_roles;
+    }
+
+    public function setPrivilegeRoles($u2) {
+        $this->privileges_roles = $u2;
+    }
 
 
     /**

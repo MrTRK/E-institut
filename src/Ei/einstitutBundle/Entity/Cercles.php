@@ -23,35 +23,41 @@ class Cercles
     private $cercles_user;
 
 
+    public function getCerclesUser() {
+         return $this->cercles_user;
+    }
+
+    public function setCerclesUser($u2) {
+        $this->cercles_user = $u2;
+    }
+
 
     /**
     * @ORM\ManyToMany(targetEntity="User", mappedBy="cercle")
     */
     private $users;
     
-    /**
-     * Set usersC
-     *@param string $usersC
-     * 
-     * @return Ut
-     */
-    
-    public function setUsersC($usersC)
+     public function setUser(\Doctrine\Common\Collections\ArrayCollection $values)
     {
-        $this->users = $usersC;
-    
-        return $this;
+        foreach($values as $users){
+            $this->addUser($users);
+        }
     }
 
-    /**
-     * Get usersC
-     *
-     * @return string 
-     */
-    public function getUsersC()
+    public function getUser()
     {
         return $this->users;
     }
+
+     public function addUser( $value)
+    {
+        $this->users[] = $value;
+    }
+
+     public function removeUser($value)
+    {
+        $this->users->removeElement($value);
+    } 
 
 
     /**
@@ -63,29 +69,27 @@ class Cercles
     
     
     
-    /**
-     * Set usersC
-     *@param string $usersC
-     * 
-     * @return Ut
-     */
-    
-    public function setMessageC($messageC)
+     public function setMessages(\Doctrine\Common\Collections\ArrayCollection $values)
     {
-        $this->message = $messageC;
-    
-        return $this;
+        foreach($values as $message){
+            $this->addMessages($message);
+        }
     }
 
-    /**
-     * Get usersC
-     *
-     * @return string 
-     */
-    public function getMessageC()
+    public function getMessages()
     {
         return $this->message;
     }
+
+     public function addMessages( $value)
+    {
+        $this->message[] = $value;
+    }
+
+     public function removeMessages($value)
+    {
+        $this->message->removeElement($value);
+    } 
 
 
 

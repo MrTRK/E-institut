@@ -23,6 +23,29 @@ class TypeTutoriel
     protected $tuto_en_ligne;
 
 
+     public function setTutoEnLigne(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $tuto_en_ligne){
+            $this->addTutoEnLigne($tuto_en_ligne);
+        }
+    }
+
+    public function getTutoEnLigne()
+    {
+        return $this->tuto_en_ligne;
+    }
+
+     public function addTutoEnLigne( $value)
+    {
+        $this->tuto_en_ligne[] = $value;
+    }
+
+     public function removeTutoEnLigne($value)
+    {
+        $this->tuto_en_ligne->removeElement($value);
+    } 
+
+
 
 
 

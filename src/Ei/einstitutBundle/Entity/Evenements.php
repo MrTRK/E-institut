@@ -20,14 +20,52 @@ class Evenements
     */
     private $users;
 
+
+
+    public function setUsers(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $users){
+            $this->addUsers($users);
+        }
+    }
+
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+     public function addUsers( $value)
+    {
+        $this->users[] = $value;
+    }
+
+     public function removeUsers($value)
+    {
+        $this->users->removeElement($value);
+    } 
+
+
     /**
-    * @ORM\ManyToOne(targetEntity="User", inversedBy="evenement")
+    * @ORM\ManyToOne(targetEntity="User", inversedBy="evenements_user")
     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
     */
 
-    protected $evenements_user;
+    protected $user;
 
+    public function getUser()
+    {
+        return $this->user;
+    }
 
+    /**
+     * Set user
+     *
+     * @param User $value
+     */
+    public function setUser($value)
+    {
+        $this->user = $value;
+    }
 
 
 
@@ -259,5 +297,16 @@ class Evenements
     public function getUrl()
     {
         return $this->url;
+    }
+
+
+    public function __construct()
+    {
+
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        
+
+        parent::__construct();
+        // your own logic
     }
 }

@@ -24,36 +24,46 @@ class BaseContacts
 
     private $base_contact_listes;
 
+    public function getBaseContactListes() {
+         return $this->base_contact_listes;
+    }
+
+    public function setBaseContactListes($u2) {
+        $this->base_contact_listes = $u2;
+    }
+
 
     /**
     * @ORM\OneToMany(targetEntity="Clics", mappedBy="clic_base_contacts")
     */
     private $base_contacts_clic;
+
+    
+
+
     
     
-    /**
-     * Set BaseContactsClic
-     *@param string $basecontacts_clic
-     * 
-     * @return Ut
-     */
-    
-    public function setBaseContactsClic($basecontacts_clic)
+    public function setBaseContactClics(\Doctrine\Common\Collections\ArrayCollection $values)
     {
-        $this->base_contacts_clic = $basecontacts_clic;
-    
-        return $this;
+        foreach($values as $base_contacts_clic){
+            $this->addBaseContactClics($base_contacts_clic);
+        }
     }
 
-    /**
-     * Get BaseContactsClic
-     *
-     * @return string 
-     */
-    public function getBaseContactsClic()
+    public function getBaseContactClics()
     {
         return $this->base_contacts_clic;
     }
+
+     public function addBaseContactClics( $value)
+    {
+        $this->base_contacts_clic[] = $value;
+    }
+
+     public function removeBaseContactClics($value)
+    {
+        $this->base_contacts_clic->removeElement($value);
+    } 
 
 
 

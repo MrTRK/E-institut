@@ -21,6 +21,15 @@ class CommentaireForum
 
     private $forum_comment;
 
+    public function getForumComment() {
+         return $this->forum_comment;
+    }
+
+    public function setForumComment($u2) {
+        $this->forum_comment = $u2;
+    }
+
+
 
      /**
     * @ORM\ManyToOne(targetEntity="User", inversedBy="comentforum")
@@ -28,6 +37,15 @@ class CommentaireForum
     */
 
     private $comment_user;
+
+    public function getCommentUser() {
+         return $this->comment_user;
+    }
+
+    public function setCommentUser($u2) {
+        $this->comment_user = $u2;
+    }
+
 
 
     /**

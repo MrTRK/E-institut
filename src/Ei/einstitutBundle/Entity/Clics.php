@@ -23,6 +23,15 @@ class Clics
     private $clic_newsletter;
 
 
+    public function getClicsNewsLetters() {
+         return $this->clic_newsletter;
+    }
+
+    public function setClicsNewsLetters($u2) {
+        $this->clic_newsletter = $u2;
+    }
+
+
 
     /**
     * @ORM\ManyToOne(targetEntity="BaseContacts", inversedBy="base_contacts_clic")
@@ -31,7 +40,13 @@ class Clics
 
     private $clic_base_contacts;
 
+    public function getClicsBaseContacts() {
+         return $this->clic_base_contacts;
+    }
 
+    public function setClicsBaseContacts($u2) {
+        $this->clic_base_contacts = $u2;
+    }
 
 
     /**

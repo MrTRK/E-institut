@@ -25,6 +25,29 @@ class Roles
     protected $roles_privileges;
 
 
+     public function setRolesPrivileges(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $roles_privileges){
+            $this->addRolesPrivileges($roles_privileges);
+        }
+    }
+
+    public function getRolesPrivileges()
+    {
+        return $this->roles_privileges;
+    }
+
+     public function addRolesPrivileges( $value)
+    {
+        $this->roles_privileges[] = $value;
+    }
+
+     public function removeRolesPrivileges($value)
+    {
+        $this->roles_privileges->removeElement($value);
+    } 
+
+
 
     /**
      * @var integer

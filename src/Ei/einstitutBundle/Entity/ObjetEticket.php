@@ -23,6 +23,28 @@ class ObjetEticket
     */
     protected $objet_eticket;
 
+     public function setObjetEticket(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $objet_eticket){
+            $this->addObjetEticket($objet_eticket);
+        }
+    }
+
+    public function getObjetEticket()
+    {
+        return $this->objet_eticket;
+    }
+
+     public function addObjetEticket( $value)
+    {
+        $this->objet_eticket[] = $value;
+    }
+
+     public function removeObjetEticket($value)
+    {
+        $this->objet_eticket->removeElement($value);
+    } 
+
 
 
 

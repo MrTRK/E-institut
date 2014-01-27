@@ -22,6 +22,29 @@ class Forum
     protected $comment_forum;
 
 
+     public function setCommentForum(\Doctrine\Common\Collections\ArrayCollection $values)
+    {
+        foreach($values as $comment_forum){
+            $this->addCommentForum($comment_forum);
+        }
+    }
+
+    public function getCommentForum()
+    {
+        return $this->comment_forum;
+    }
+
+     public function addCommentForum( $value)
+    {
+        $this->comment_forum[] = $value;
+    }
+
+     public function removeCommentForum($value)
+    {
+        $this->comment_forum->removeElement($value);
+    } 
+
+
     /**
     * @ORM\ManyToOne(targetEntity="Rubrique", inversedBy="rubrique_forum")
     * @ORM\JoinColumn(name="rubrique_id", referencedColumnName="id")
@@ -29,12 +52,32 @@ class Forum
 
     protected $forum_rubrique;
 
+    public function getForumRubrique() {
+         return $this->forum_rubrique;
+    }
+
+    public function setForumRubrique($u2) {
+        $this->forum_rubrique = $u2;
+    }
+
+
+
+
      /**
     * @ORM\ManyToOne(targetEntity="User", inversedBy="user_forum")
     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
     */
 
     protected $forum_user;
+
+
+    public function getForumUser() {
+         return $this->forum_user;
+    }
+
+    public function setForumUser($u2) {
+        $this->forum_user = $u2;
+    }
 
     /**
      * @var integer
