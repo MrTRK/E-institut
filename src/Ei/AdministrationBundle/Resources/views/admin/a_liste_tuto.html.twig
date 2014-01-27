@@ -1,0 +1,497 @@
+{% extends "EiAdministrationBundle::Master-Base-Admin.html.twig" %}
+
+{% block title %}
+     {{ parent() }}   | Tutoriels
+{% endblock %}
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+{% block content %}
+     
+     
+<section class="grid_9">
+			
+				
+			<div class="fieldset with-legend grey-bg ">
+				<div class="legend">Tutoriels en ligne</div>
+					
+			
+			
+			
+			
+			<div class="block-border" id="status-bar">
+	
+		<a href="javascript:void(0)" class="button" title="Ajouter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png') }}" width="16" height="16"> <strong>Nouveau tutoriel</strong></a>
+
+			
+			<span class="float-left">Liste des tutoriels</span>
+	
+	</div>
+	
+	
+	<br><br>
+			
+			
+				<div id="tab-global" class="tabs-content" style="height: 590px;">
+							
+							<ul class="tabs js-tabs same-height">
+								<li class="current"><a href="#tab-passe" title="Commentaires">Passés</a></li>
+								<li><a href="#tab-encour" title="Options">En cours</a></li>
+								<li><a href="#tab-avenir" title="Options">A venir</a></li>
+							
+								
+							</ul>
+							
+							<div class="tabs-content">
+								<!--commentaires-->
+								<div id="tab-passe" style="height: 519px;">
+									
+								<form class="block-content form" id="table_form" method="post" action="">
+				
+				
+				<div class="block-controls">
+					
+					<ul class="controls-buttons">
+						<li><a href="#" title="Previous"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png') }}" width="16" height="16"> Prec</a></li>
+						<li><a href="#" title="Page 1"><b>1</b></a></li>
+						<li><a href="#" title="Page 2" class="current"><b>2</b></a></li>
+						<li><a href="#" title="Page 3"><b>3</b></a></li>
+						<li><a href="#" title="Page 4"><b>4</b></a></li>
+						<li><a href="#" title="Page 5"><b>5</b></a></li>
+						<li><a href="#" title="Next">Suiv <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png') }}" width="16" height="16"></a></li>
+						<li class="sep"></li>
+						<li><a href="#"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/arrow-circle.png') }}" width="16" height="16"></a></li>
+					</ul>
+					
+				</div>
+			
+				<div class="no-margin"><table class="table" cellspacing="0" width="100%">
+				
+					<thead>
+						<tr>
+							
+							<th scope="col">
+								
+								Tuteur
+							</th>
+							<th scope="col"  width="500">Sujet</th>
+							<th scope="col"  style="width: 279px;">Tags</th>
+							<th scope="col">
+								
+								Date et heure
+							</th>								
+						</tr>
+					</thead>
+					
+					<tbody>
+						
+					
+						
+						<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li><a href="#">Java</a></li>
+								<li class="orange-keyword"><a href="#">J2EE</a></li>
+						</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+							<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li class="purple-keyword">lol</li>
+								<li>dada</li>
+								<li>toto</li>
+						</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+						
+						
+							<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li>Sea</li>
+								<li>Fish</li>
+								<li>Bubble</li>
+							</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+						
+							<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li>Sea</li>
+								<li>Fish</li>
+								<li>Bubble</li>
+							</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+						
+						
+						
+					</tbody>
+				
+				</table></div>
+				
+				<ul class="message no-margin">
+					<li>Results 1 - 5 out of 23</li>
+				</ul>
+				
+				
+			</form>
+							</div>
+								
+							<!--statistiques voir "drawVisitorsChart()"-->
+								<div id="tab-encour" style="height: 519px; display: none;">
+									<form class="block-content form" id="table_form" method="post" action="">
+				
+                                                                            
+				
+				<div class="block-controls">
+					
+					<ul class="controls-buttons">
+						<li><a href="#" title="Previous"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png') }}" width="16" height="16"> Prec</a></li>
+						<li><a href="#" title="Page 1"><b>1</b></a></li>
+						<li><a href="#" title="Page 2" class="current"><b>2</b></a></li>
+						<li><a href="#" title="Page 3"><b>3</b></a></li>
+						<li><a href="#" title="Page 4"><b>4</b></a></li>
+						<li><a href="#" title="Page 5"><b>5</b></a></li>
+						<li><a href="#" title="Next">Suiv <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png') }}" width="16" height="16"></a></li>
+						<li class="sep"></li>
+						<li><a href="#"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/arrow-circle.png') }}" width="16" height="16"></a></li>
+					</ul>
+					
+				</div>
+			
+				<div class="no-margin"><table class="table" cellspacing="0" width="100%">
+				
+					<thead>
+						<tr>
+							
+							<th scope="col">
+								
+								Tuteur
+							</th>
+							<th scope="col"  width="500">Sujet</th>
+							<th scope="col"  style="width: 279px;">Tags</th>
+							<th scope="col">
+								
+								Date et heure
+							</th>								
+						</tr>
+					</thead>
+					
+					<tbody>
+						
+					
+						
+						<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li><a href="#">Java</a></li>
+								<li class="orange-keyword"><a href="#">J2EE</a></li>
+						</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+							<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li class="purple-keyword">lol</li>
+								<li>dada</li>
+								<li>toto</li>
+						</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+						
+						
+							<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li>Sea</li>
+								<li>Fish</li>
+								<li>Bubble</li>
+							</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+						
+							<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li>Sea</li>
+								<li>Fish</li>
+								<li>Bubble</li>
+							</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+						
+						
+						
+					</tbody>
+				
+				</table></div>
+				
+				<ul class="message no-margin">
+					<li>Results 1 - 5 out of 23</li>
+				</ul>
+				
+				
+			</form>
+								</div>	
+								
+								<!--actualités-->
+								<div id="tab-avenir" style="height: 519px; display: none;">
+								
+								<form class="block-content form" id="table_form" method="post" action="">
+				
+				
+				<div class="block-controls">
+					
+					<ul class="controls-buttons">
+						<li><a href="#" title="Previous"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png') }}" width="16" height="16"> Prec</a></li>
+						<li><a href="#" title="Page 1"><b>1</b></a></li>
+						<li><a href="#" title="Page 2" class="current"><b>2</b></a></li>
+						<li><a href="#" title="Page 3"><b>3</b></a></li>
+						<li><a href="#" title="Page 4"><b>4</b></a></li>
+						<li><a href="#" title="Page 5"><b>5</b></a></li>
+						<li><a href="#" title="Next">Suiv <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png') }}" width="16" height="16"></a></li>
+						<li class="sep"></li>
+						<li><a href="#"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/arrow-circle.png') }}" width="16" height="16"></a></li>
+					</ul>
+					
+				</div>
+			
+				<div class="no-margin"><table class="table" cellspacing="0" width="100%">
+				
+					<thead>
+						<tr>
+							
+							<th scope="col">
+								
+								Tuteur
+							</th>
+							<th scope="col"  width="500">Sujet</th>
+							<th scope="col"  style="width: 279px;">Tags</th>
+							<th scope="col">
+								
+								Date et heure
+							</th>								
+						</tr>
+					</thead>
+					
+					<tbody>
+						
+					
+						
+						<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li><a href="#">Java</a></li>
+								<li class="orange-keyword"><a href="#">J2EE</a></li>
+						</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+							<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li class="purple-keyword">lol</li>
+								<li>dada</li>
+								<li>toto</li>
+						</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+						
+						
+							<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li>Sea</li>
+								<li>Fish</li>
+								<li>Bubble</li>
+							</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+						
+							<tr>
+							<th>E-institut</th>
+							<td><strong>Settings</strong><br>
+						<small>System &gt; Settings</small>
+						
+						<a href="#" title="Suivre" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/control.png') }}" width="16" height="16"></a>
+						
+						</td>
+						<td><ul class="keywords">
+								<li>Sea</li>
+								<li>Fish</li>
+								<li>Bubble</li>
+							</ul></td>	
+						<td>24-03-2010 <br>
+							10h00
+						
+						</td>
+							
+						</tr>
+						
+						
+						
+						
+					</tbody>
+				
+				</table></div>
+				
+				<ul class="message no-margin">
+					<li>Results 1 - 5 out of 23</li>
+				</ul>
+				
+				
+			</form>
+								
+								</div>		
+								
+								
+								
+						
+								
+								
+								
+								
+								
+								
+				</div>
+			
+			
+			
+			
+			
+			
+			</div>
+		
+		</div></section>     
+          
+{% endblock %}
+{% block javascripts_Bottom %}
+
+{% endblock %}     

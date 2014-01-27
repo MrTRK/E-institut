@@ -1,0 +1,190 @@
+{% extends "EiAdministrationBundle::Master-Base-Admin.html.twig" %}
+
+{% block title %}
+     {{ parent() }}   | Table du board
+{% endblock %}
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+{% block content %}
+	     
+
+<section class="grid_9">			   	
+
+        <div class="block-border"> 
+            <div class="block-content"> <h1>Rapport d'activités</h1>	
+					<div id="tab-global" class="tabs-content" style="height: 590px;">
+							
+							<ul class="tabs js-tabs same-height">
+								<li class="current"><a href="#tab-comment" title="Commentaires">Commentaires</a></li>
+								<li><a href="#tab-tuto" title="Options">Tuto</a></li>							
+								<li><a href="#tab-preconisations" title="Options">Préconisations</a></li>
+								<li><a href="#tab-user" title="Options">Utilisateurs connectés</a></li>								
+							</ul>
+							
+							<div class="tabs-content">
+								
+								<div id="tab-comment" style="height: 519px;">
+								
+									<ul class="task-dialog">
+										<li>
+											<strong>Marc:</strong> Don't forget to tell the client <em>- Yesterday</em>
+											
+										</li>
+										<li>
+											<strong>John:</strong> I suggest you could ask Dan or Sandy for a little help <em>- 2 hours ago</em>
+											
+										</li>
+										
+									</ul>
+												
+									
+									
+								</div>	
+																							
+								
+								<div id="tab-tuto" style="height: 419px; display: none;">
+									<ul class="extended-list no-margin icon-user">
+										<li>
+											<a href="#">
+												<span class="icon"></span>
+												TD<br>
+												<small>Ce cours est pour les étudiants </small>
+											</a>
+											<ul class="extended-options">
+												<li>
+													Temps: <strong>5/9</strong><br>
+													<span class="progress-bar"><span style="width:56%"></span></span>
+												</li>
+												<li>
+													Participants: <strong>10</strong><br>
+													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-half.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-empty.png') }}" width="16" height="16">
+												</li>
+											</ul>
+										</li>								
+									</ul>
+									<ul class="extended-list no-margin icon-user">
+										<li>
+											<a href="#">
+												<span class="icon"></span>
+												TP<br>
+												<small>Ce cours est pour les étudiants </small>
+											</a>
+											<ul class="extended-options">
+												<li>
+													Temps: <strong>5/9</strong><br>
+													<span class="progress-bar"><span style="width:56%"></span></span>
+												</li>
+												<li>
+													Participants: <strong>10</strong><br>
+													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-half.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-empty.png') }}" width="16" height="16">
+												</li>
+											</ul>
+										</li>
+									
+										
+										
+									</ul>
+									
+								</div>
+								
+								<div id="tab-preconisations" style="height: 419px; display: none;">
+									<div class="task with-legend">
+
+								<!-- The legend -->
+									<div class="legend"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-pdf.png') }}" width="16" height="16"> Type de fiche</div>
+								 
+									<div class="task-description">
+										 
+										<!-- Task-list has special integration of the floating-tags class -->
+										
+										<div class="columns">
+											<ul class="floating-tags">
+												<li class="tag-time">5 days ago</li>
+												<li class="tag-user">You</li>
+												<li>Domaine</li>
+												<li>Théme</li>
+											</ul>
+											<h3><a href="#">Fiche 1</a></h3>
+											Small task description ...
+										</div> 
+										<div class="columns">
+											<ul class="keywords">
+												<li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png') }}" width="16" height="16"> Sea</li>
+												<li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png') }}" width="16" height="16"> Fish</li>
+												<li><a href="#"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png') }}" width="16" height="16"> Bubble</a></li>
+											</ul>
+										</div>
+									</div>
+										<ul class="mini-menu" style="opacity: 0;">
+											<li><a href="#" title="Delete"> + Détails<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-000-white.png') }}" width="16" height="16"></a></li>
+										</ul>
+									</div>
+									
+									
+									<div class="task with-legend">
+
+										<!-- The legend -->
+										<div class="legend"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/film.png') }}" width="16" height="16"> Type de fiche</div>
+										 
+										<div class="task-description">
+											 
+											<!-- Task-list has special integration of the floating-tags class -->
+											
+											<div class="columns">
+												<ul class="floating-tags">
+													<li class="tag-time">5 days ago</li>
+													<li class="tag-user">You</li>
+													<li>Domaine</li>
+													<li>Théme</li>
+												</ul>
+												<h3><a href="#">Fiche 1</a></h3>
+												Small task description ...
+											</div> 
+											<div class="columns">
+												<ul class="keywords">
+													<li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png') }}" width="16" height="16"> Sea</li>
+													<li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png') }}" width="16" height="16"> Fish</li>
+													<li><a href="#"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png') }}" width="16" height="16"> Bubble</a></li>
+												</ul>
+											</div>
+										</div>
+										<ul class="mini-menu" style="opacity: 0;">
+											<li><a href="#" title="Delete"> + Détails<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-000-white.png') }}" width="16" height="16"></a></li>
+										</ul>
+									</div>
+								</div>
+								
+								<div id="tab-user" style="height: 419px; display: none;">
+								
+										<div id="madiv" style="overflow:auto">
+											
+												<ul class="simple-list">
+													<ul class="simple-list">
+													<li><a href="#" title="Voir"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 1 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status.png') }}" width="16" height="16" align="right"></a></li>
+													<li><a href="#" title="Voir"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 2 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status-busy.png') }}" width="16" height="16" align="right"></a></li>
+													<li><a href="#" title="Voir"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user-nude-female.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 3 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status.png') }}" width="16" height="16" align="right"></a></li>
+													<li><a href="#" title="Voir"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 4 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status-away.png') }}" width="16" height="16" align="right"></a></li>
+													<li><a href="#" title="Voir"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/user-nude-female.png') }}" height="16" width="16"> &nbsp;&nbsp;&nbsp;Affilié 5 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/status.png') }}" width="16" height="16" align="right"></a></li>							
+													</ul>
+												</ul>					
+										</div>
+								
+								</div>
+								
+								
+								
+							</div>
+						</div>
+					
+			</div>
+        </div>									
+		</section>		               
+{% endblock %}
+{% block javascripts_Bottom %}
+
+{% endblock %} 
