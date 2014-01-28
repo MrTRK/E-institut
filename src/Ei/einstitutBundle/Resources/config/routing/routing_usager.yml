@@ -1,16 +1,40 @@
+#/list_contact:
+#    pattern:  /user/liste_contact
+##    defaults: { _controller: EieinstitutBundle:Usager:liste_contact }
+
+#supprimer_contact:
+#    pattern:  /user/supprimer_contact/{contact}
+#    defaults: { _controller: EieinstitutBundle:Usager:supprimer_contact }
+#demande_contact:
+  #  pattern:  /demande_contact
+  #  defaults: { _controller: EieinstitutBundle:Default:demande_contact}
+#liste_contact:
+  #  pattern:  /liste_contact
+  #  defaults: { _controller: EieinstitutBundle:Default:liste_contact}
+    
+    
+# Contact ***********************************
 list_contact:
     pattern:  /user/liste_contact
     defaults: { _controller: EieinstitutBundle:Usager:liste_contact }
 
 supprimer_contact:
-    pattern:  /user/supprimer_contact/{contact}
+    pattern:  /user/supprimer_contact/
     defaults: { _controller: EieinstitutBundle:Usager:supprimer_contact }
+    
 demande_contact:
-    pattern:  /demande_contact
-    defaults: { _controller: EieinstitutBundle:Default:demande_contact}
-liste_contact:
-    pattern:  /liste_contact
-    defaults: { _controller: EieinstitutBundle:Default:liste_contact}
+    pattern:  /user/demande_contact
+    defaults: { _controller: EieinstitutBundle:Usager:demande_contact }
+
+ajouter_contact:
+    pattern:  /user/ajouter_contact
+    defaults: { _controller: EieinstitutBundle:Usager:ajouter_contact }
+    
+profile_contact:
+    pattern:  /user/profile_contact/{profile}
+    defaults: { _controller: EieinstitutBundle:Usager:profile_contact }
+# End Contact ***********************************
+
 mon_compte:
     pattern:  /mon_compte
     defaults: { _controller: EieinstitutBundle:Default:mon_compte}

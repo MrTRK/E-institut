@@ -18,7 +18,7 @@
 			<div class="block-border"><form class="block-content form" name="table_form" id="table_form" method="post" action="">
 				<h1>
 					Mes contacts
-					<a href="#"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle-blue.png') }}" width="16" height="16"> Ajouter contact</a>
+					<a href="{{path('demande_contact')}}"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle-blue.png') }}" width="16" height="16"> Ajouter contact</a>
 				</h1>
                                         
                                      
@@ -61,7 +61,8 @@
 					</div>
 					
 					<ul class="grid dark-grey-gradient">
-						{% for Contact in Contacts %}      
+						{% for Contact in Contacts %}    
+                                                
                                         
                                          
 						<li>
@@ -72,12 +73,14 @@
 								Gender: <b>male</b><br>
 								Country: <b>USA</b></p>
 							</div>
+                                                         {% set contact=Contact.contact_user2.username %}
 							<ul class="grid-actions">
-								<li><a href="#" title="Modifier" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/pencil.png') }}" width="16" height="16"></a></li>
-								<li><a href="{{ path('supprimer_contact',{'contact':  Contact.contact_user2.username  }) }}" title="Supprimer" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a></li>
+								<li><a href="{{ path('profile_contact',{'profile':  Contact.contact_user2.id  }) }}" name="profil"  title="Voire profil" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png') }}" width="16" height="16"></a></li>
+								<li><a onclick="SupprimerContact({{ Contact.id }})" title="Supprimer" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a></li>
 								<li><input title="Blocké" class="with-tip" type="checkbox" name="selected[]" id="grid-selected-1" value="1"></li>
 							</ul>
 						</li>
+                                               
 						{% endfor %} 
 						
 						
@@ -107,7 +110,36 @@
 
     </section>
 {% endblock %}
-
 {% block javascripts_Bottom %}
+    <script>
+    
+    function SupprimerContact(id)
+    {
+        var confirmation=confirm("Voulez-vous supprimer:"+id);
+        if (confirmation){
+            console.log("test supp",id);
+            $.post(
+                    "{{ path('supprimer_contact') }}",
+                    {idContact:id},
+                        function(result){
+                            console.log("bien");
+                            //location.reload();
+                            $('html').load('{{ path('list_contact') }}');
+                            });
+          //action à faire pour la valeur true 
+        }else{
+          //action à faire pour la valeur false
+        }
+    }
+    </script> 
+    
+    
+    <script>
+    
+    
+    </script>
 
+    </script>
 {% endblock %}
+
+

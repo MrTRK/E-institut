@@ -4,12 +4,13 @@ namespace Ei\einstitutBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use \Ei\einstitutBundle\Entity\Contact;
 class UsagerController extends Controller
 {
     public function liste_contactAction()
     {
         
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         
         
         $User = $this->get('security.context')->getToken()->getUser();
@@ -19,30 +20,112 @@ class UsagerController extends Controller
         
         return $this->render('EieinstitutBundle:Contact:liste_contact.html.twig', array("Contacts"=> $Contacts));
     }
-    public function supprimer_contactAction($contact)
-    {
-         $em = $this->getDoctrine()->getEntityManager();
-         $request = $this->getRequest();
-         
-         $User = $em->getRepository('EieinstitutBundle:User')->findOneBy(array('username'=> $contact));
-         
-         $action = $request->request->get('submit_delete');
-         $Contact = null;
-          if(isset($action))
-         {
-            $UserConnect = $this->get('security.context')->getToken()->getUser();
-            $Contact = $em->getRepository('EieinstitutBundle:Contact')
-                          ->findOneBy(
-                                  array(  'contact_user2'=> $User,
-                                          'contact_user1'=> $UserConnect ));
-            //suppression
-            $em->persist($Contact);
-            $em->remove($Contact);
-            $em->flush();
-         }
-         //$iduser =   $request->request->get('idContact');  
+    public function demande_contactAction()
+    { 
+ 
+             /*$Contacts = $em->getRepository('EieinstitutBundle:Contact')->findBy(array('contact_user1' => $User ));
+            */
+            $em = $this->getDoctrine()->getManager();
+             $Userconnecte = $this->get('security.context')->getToken()->getUser();
+            $request = $this->getRequest();
+            $btn_search = $request->request->get('search');
+            $btn_ajout = $request->request->get('ajout');
+            $txt_nom = "";
+             $Contacts = "";
+             $Users="";
+            if(isset($btn_search))
+            {
+                $txt_nom = $request->request->get('txt_nom');
+                $txt_prenom = $request->request->get('txt_prenom');
+                $txt_email = $request->request->get('txt_email');
+                
+                
+                
+                //$Users = $em->getRepository('EieinstitutBundle:User')->findall();
+                /*$ContactsConnecte = $em->createQuery('SELECT c FROM  EieinstitutBundle:Contact c WHERE c.parent_user_id = :idcontact')
+                                       ->setParameter('idcontact', '%'. $Userconnecte.'%')
+                                       ->getResult();*/
+               $Contacts = $em->getRepository('EieinstitutBundle:Contact')->findBy(array('contact_user1' => $Userconnecte ));
+                
+                $Users =  $em
+                            ->createQuery('SELECT u FROM EieinstitutBundle:User u WHERE  (u.nom LIKE :nom or u.prenom LIKE :prenom or u.email LIKE :email)')
+                            ->setParameter('nom', '%'. $txt_nom .'%')
+                            ->setParameter('prenom', '%'. $txt_nom .'%')
+                            ->setParameter('email', '%'. $txt_nom .'%')
+                            ->getResult();
+
+   
+           }
+            /*if(isset($btn_ajout)){
+                $UserChild = $em->getRepository('EieinstitutBundle:User')->findOneBy(array('id'=> $id));
+                $UserParent = $this->get('security.context')->getToken()->getUser();
+                $contact = new Contact;
+                $contact->setContact_user2($UserChild);
+                $contact->setContact_user1($UserParent);
+                $em->persist($contact);
+                $em->flush();
+               
+                
+            }*/
+            
         
-       return $this->render('EieinstitutBundle:Contact:supprimer_contact.html.twig', array('UserContact' => $User));
+        return $this->render('EieinstitutBundle:Contact:demande_contact.html.twig',array("Users"=>$Users, "mots"=>$txt_nom, "Contacts"=>$Contacts));
+    }
+    
+    public function supprimer_contactAction()
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->getRequest();
+        $idContact = $request->request->get('idContact');
+        if($idContact)
+            {
+                $Contact = $em->getRepository('EieinstitutBundle:Contact')->findOneBy(array('id'=> $idContact));
+                $em->remove($Contact);
+                $em->flush();
+               
+            }
+         return $this->redirect($this->generateUrl('list_contact'));
     }
 
+    public function ajouter_contactAction()
+    {
+            $em = $this->getDoctrine()->getManager();
+            $request = $this->getRequest();
+            $id = $request->request->get('id');
+            $UserChild = $em->getRepository('EieinstitutBundle:User')->findOneBy(array('id'=> $id));
+            $UserParent = $this->get('security.context')->getToken()->getUser();
+            $contact = new Contact;
+            $contact->setContact_user2($UserChild);
+            $contact->setContact_user1($UserParent);
+            $em->persist($contact);
+            $em->flush();
+         
+         //demande_contact         
+         
+    }
+    
+    public function profile_contactAction($profile)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->getRequest();
+        
+        
+        $profil = $request->request->get('profile');
+        
+        if($profile)
+            {
+                $Profiles =  $em
+                            ->createQuery('SELECT u FROM EieinstitutBundle:User u WHERE  (u.id = :profile)')
+                            ->setParameter('profile',  $profile)
+                            
+                            ->getResult();
+                return $this->render('EieinstitutBundle:Contact:profile_contact.html.twig', array("Profiles"=> $Profiles));
+            }
+         else{
+             return $this->redirect($this->generateUrl('list_contact'));
+         }
+
+    }
 }

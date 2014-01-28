@@ -1,6 +1,7 @@
-{% extends "EieinstitutBundle::Sub-Master-Left.html.twig" %}
+
+{% extends "EieinstitutBundle::Master-Base.html.twig" %}
 {% block title %}
-     {{ parent() }}   | Ajouter une ressource
+     {{ parent() }}   | Ajout contact
 {% endblock %}
 {% block stylesheets %}
 
@@ -12,193 +13,130 @@
 {% block Slide %}
 
 {% endblock %}
-{% block Sub_Content %}
-<section class="grid_6">
-    <div class="block-border">
-        <div class="block-content">
 
 
-            <div class="block-controls">
-                <h1>Rechercher</h1>  <br><br>
+{% block content %}
 
-            </div>
-            <form class="form" id="tab-stats" method="post" action="">
-                <fieldset class="grey-bg">
 
-                    <span class="label required">
-                        Nom
-                    </span>
-                    <input id="complex-fr-subtitle" class="full-width" type="text" value="" name="complex-fr-subtitle"></input> <br><br>
-                    <span class="label required">
-                        Pr&eacute;nom
-                    </span>
-                    <input id="complex-fr-subtitle" class="full-width" type="text" value="" name="complex-fr-subtitle"></input> <br><br>
-                    <span>
-                        Email
-                    </span>
-                    <input id="complex-fr-subtitle" class="full-width" type="text" value="" name="complex-fr-subtitle"></input> <br><br>
-                    <div class="float-right"><br>
-                        <button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png')}}" width="16" height="16"> Rechercher</button>
-                    </div>
-                </fieldset>
-            </form>
+    <section class="grid_9">
+        <div class="block-border">
+            <div class="block-content">
 
-            <!-------------------------------
-            debut resultat recherche
-            
-            ----------------------------------->
-            <br><br><br>
-            <div class="head">
-                <div class="black-cell with-gap"><span class="success"></span></div>
-                <div class="black-cell">Trier Par</div>
-                <div>
-                    <span class="column-sort">
-                        <a href="#" title="Sort up" class="sort-up active"></a>
-                        <a href="#" title="Sort down" class="sort-down"></a>
-                    </span>
-                    Nom
+
+                <div class="block-controls">
+                    <h1>Rechercher</h1>  <br><br>
+
                 </div>
-                <div>
-                    <span class="column-sort">
-                        <a href="#" title="Sort up" class="sort-up"></a>
-                        <a href="#" title="Sort down" class="sort-down"></a>
-                    </span>
-                    Date
-                </div>
-                <div>
-                    <span class="column-sort">
-                        <a href="#" title="Sort up" class="sort-up"></a>
-                        <a href="#" title="Sort down" class="sort-down"></a>
-                    </span>
-                    Status
-                </div>
-            </div>
+                <form class="form" id="tab-stats" method="post" action="{{ path('demande_contact') }}">
+                    <fieldset class="grey-bg">
+
+                        <span class="label required">
+                            Mots Clés
+
+                        </span>
+                        <input id="complex-fr-subtitle" class="full-width" type="text" value="{{ mots }}" name="txt_nom"></input> <br><br>
+
+                        <div class="float-right"><br>
+                            <button type="submit" name="search"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png')}}" width="16" height="16"> Rechercher</button>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <!-------------------------------
+                debut resultat recherche
+                
+                ----------------------------------->
 
 
-            <ul class="extended-list no-margin icon-user">
 
-                <li>
-                    <a href="#">
-                        <span class="icon"></span>
-                        John Doe<br>
-                        <small>nico@gmail.com</small><br>
+                <ul class="extended-list no-margin icon-user">
+                {% for User in Users %} 
+                
+                    {% if (app.user.id != User.id) %}
+                        
+                        <li>
+                            <a href="#">
+                                <span class="icon"></span>   </a>
+                        {{ User.prenom }}{{ User.nom  }}<br>
+                        <small>email</small><br>
                         <small>Etudiant </small>
-                    </a>
+                        
+                      {% for Contact in Contacts %} 
+                        
+                            {% set id1 = Contact.contact_user2.id %}
+                            {% set id3 = Contact.contact_user1.id %}
+                            {% set id2 = User.id %}
+                           
 
-                    <ul style="opacity: 0;" class="mini-menu">
-                        <li><a href="#" title="Ajouter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png')}}" height="16" width="16"></a></li>
-                        <li><a href="#" title="Envoyer mail"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" height="16" width="16"></a></li>
-                        <!--<li><a href="#" title="Delete"><img src="images/icons/fugue/cross-circle.png" height="16" width="16"> Delete</a></li>-->
-                    </ul>
+                            {% if  id2==id1 %}  
+                                <ul style="opacity: 0;" class="mini-menu">
+                                        <li><a href="#" title="Déjà ami(e) avec {{ User.nom }}" name="ajout"> <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png')}}" height="16" width="16"></a></li>
+                                        <li><a href="#" title="Envoyer mail"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" height="16" width="16"></a></li>
 
+                               </ul>
 
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"></span>
-                        John Doe<br>
-                        <small>nico@gmail.com</small><br>
-                        <small>Etudiant </small>
-                    </a>
+                            
+                                
 
-                    <ul style="opacity: 0;" class="mini-menu">
-                        <li><a href="#" title="Ajouter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png')}}" height="16" width="16"></a></li>
-                        <li><a href="#" title="Envoyer mail"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" height="16" width="16"></a></li>
-                        <!--<li><a href="#" title="Delete"><img src="images/icons/fugue/cross-circle.png" height="16" width="16"> Delete</a></li>-->
-                    </ul>
+                             {% elseif id2!=id1 %}
+                                <ul style="opacity: 0;" class="mini-menu" id="Action_{{ id2 }}">
 
+                                     <li><a  onclick="DemanderContact({{ User.id }})" title="Ajouter d'id {{ User.nom }}" name="_ajout"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png')}}" height="16" width="16"></a></li>
+                                     <li><a href="#" title="Envoyer mail"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" height="16" width="16"></a></li>
 
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"></span>
-                        John Doe<br>
-                        <small>nico@gmail.com</small><br>
-                        <small>Enseignant </small>
-                    </a>
+                                    </ul>
+                                
+                           {% endif %}
+                            
+                  {% endfor %}
+                            
+                    </li>
+                {% endif %}
 
-                    <ul style="opacity: 0;" class="mini-menu">
-                        <li><a href="#" title="Ajouter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png')}}" height="16" width="16"></a></li>
-                        <li><a href="#" title="Envoyer mail"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" height="16" width="16"></a></li>
-                        <!--<li><a href="#" title="Delete"><img src="images/icons/fugue/cross-circle.png" height="16" width="16"> Delete</a></li>-->
-                    </ul>
+                  {% endfor %}
+                </ul>
+                <ul class="controls-buttons">
+                    <li><a href="#" title="Précédent"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png')}}" width="16" height="16"> Precedent</a></li>
+                    <li><a href="#" title="Page 1"><b>1</b></a></li>
+                    <li><a href="#" title="Page 2" class="current"><b>2</b></a></li>
+                    <li><a href="#" title="Page 3"><b>3</b></a></li>
+                    <li><a href="#" title="Page 4"><b>4</b></a></li>
+                    <li><a href="#" title="Page 5"><b>5</b></a></li>
+                    <li><a href="#" title="suivant">Suivant <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png')}}" width="16" height="16"></a></li>
 
-
-
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"></span>
-                        John Doe<br>
-                        <small>nico@gmail.com</small><br>
-                        <small>Enseignant </small>
-                    </a>
-
-                    <ul style="opacity: 0;" class="mini-menu">
-                        <li><a href="#" title="ajouter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png')}}" height="16" width="16"></a></li>
-                        <li><a href="#" title="Envoyer mail"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" height="16" width="16"></a></li>
-                        <!--<li><a href="#" title="Delete"><img src="images/icons/fugue/cross-circle.png" height="16" width="16"> Delete</a></li>-->
-                    </ul>
-
-
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"></span>
-                        John Doe<br>
-                        <small>nico@gmail.com</small><br>
-                        <small>Enseignant </small>
-                    </a>
-
-                    <ul style="opacity: 0;" class="mini-menu">
-                        <li><a href="#" title="Ajouter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png')}}" height="16" width="16"></a></li>
-                        <li><a href="#" title="Envoyer mail"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" height="16" width="16"></a></li>
-                        <!--<li><a href="#" title="Delete"><img src="images/icons/fugue/cross-circle.png" height="16" width="16"> Delete</a></li>-->
-                    </ul>
-
-
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"></span>
-                        John Doe<br>
-                        <small>nico@gmail.com</small><br>
-                        <small>Enseignant </small>
-                    </a>
-
-                     <ul style="opacity: 0;" class="mini-menu">
-                        <li><a href="#" title="Ajouter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png')}}" height="16" width="16"></a></li>
-                        <li><a href="#" title="Envoyer mail"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" height="16" width="16"></a></li>
-                        <!--<li><a href="#" title="Delete"><img src="images/icons/fugue/cross-circle.png" height="16" width="16"> Delete</a></li>-->
-                    </ul>
-
-
-
-                </li>
-            </ul>
-            <ul class="controls-buttons">
-                <li><a href="#" title="Précédent"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png')}}" width="16" height="16"> Precedent</a></li>
-                <li><a href="#" title="Page 1"><b>1</b></a></li>
-                <li><a href="#" title="Page 2" class="current"><b>2</b></a></li>
-                <li><a href="#" title="Page 3"><b>3</b></a></li>
-                <li><a href="#" title="Page 4"><b>4</b></a></li>
-                <li><a href="#" title="Page 5"><b>5</b></a></li>
-                <li><a href="#" title="suivant">Suivant <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png')}}" width="16" height="16"></a></li>
-
-            </ul>
-            <div class="clear"></div>
-            <!--------------------
+                </ul>
+                <div class="clear"></div>
+                <!--------------------
 
 fin resultat recherche
 
 ---------------------->
 
-        </div>
-    </div>			
-</section>
+            </div>
+        </div>			
+    </section>
 
 {% endblock %}
      
+     
+     
 {% block javascripts_Bottom %}
-
+    <script>
+    
+    function DemanderContact(id)
+    {
+        console.log("Test",id );
+        $.post(
+               "{{ path('ajouter_contact') }}",
+                {id:id},
+                    function(result){
+                        
+                        console.log("Nice")
+                      
+                        $("#Action_"+id).remove();
+                    });
+    }
+  
+    
+    </script>
 {% endblock %}
