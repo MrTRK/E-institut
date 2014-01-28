@@ -151,22 +151,159 @@ class DefaultController extends Controller
     {
         return $this->render('EieinstitutBundle:Ressources:recherche_ressource.html.twig');
     } 
+	
+
+      public function repondre_messageAction()
+   {
+         $em = $this->getDoctrine()->getManager();
+      $request = $this->getRequest();
+      $action = $request->request->get('submit');
+        
+      if(isset($action))
+        {
+         $UserConnected = $this->get('security.context')->getToken()->getUser();
+          $Objet = $request->request->get('Objet');
+          $Message = $request->request->get('message');
+          $Dest = $request->request->get('A');
+          
+            $Messages = new Messages;
+            $Messages->setObjet($Objet);
+            $Messages->setMessage($Message);
+            $Messages->setDateMessage(new \DateTime());
+            $Messages->setEtat(0);
+            $FromUser = $UserConnected;
+            $Messages->setMessagesUser($FromUser);
+
+       
+           $ToUser1 = $em->getRepository('EieinstitutBundle:User')->findOneBy(array('id'=>$Dest));
+             $ToUser1->addMessages($Messages);
+            $Messages->addUsers($ToUser1);
+            $em->persist($ToUser1);
+
+            
+        $em->persist($Messages);
+            $em->flush();
+      
+
+
+        }
+
+       
+      return $this->render('EieinstitutBundle:messaging:repondre_message.html.twig');
+       
+   }
+  
+
 	public function messages_recusAction()
-    {
-        return $this->render('EieinstitutBundle:messaging:messages_recus.html.twig');
-    } 
-	public function messages_envoyesAction()
-    {
-        return $this->render('EieinstitutBundle:messaging:messages_envoyes.html.twig');
-    } 
-	public function brouillonAction()
-    {
-        return $this->render('EieinstitutBundle:messaging:brouillon.html.twig');
-    } 
-	public function nouveau_messageAction()
-    {
-        return $this->render('EieinstitutBundle:messaging:nouveau_message.html.twig');
-    } 
+   {
+      $em = $this->getDoctrine()->getManager();
+      $UserConnected = $this->get('security.context')->getToken()->getUser();
+      $messages_recus =  $em->getRepository('EieinstitutBundle:Messages')->MessageRecu($UserConnected->getId()); 
+
+
+	
+      return $this->render('EieinstitutBundle:Messaging:messages_recus.html.twig', array('messagesrecus'=> $messages_recus));
+   }
+	public function supprimer_messagesAction()
+   {
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->getRequest();
+        $idmessage = $request->request->get('param_idmessage');
+        $messages_recus = $em->getRepository('EieinstitutBundle:Messages')->findOneBy(array('id'=>$idmessage));
+        $em->remove($messages_recus);
+        $em->flush();
+       /* $em->getRepository('EieinstitutBundle:Messages')->SupprimerMessage(5);
+        
+         if(isset($idmessage))
+        {
+          
+        }*/
+        return $this->redirect($this->generateUrl('Recus'));
+       // return $this->render('EieinstitutBundle:Messaging:supprimer_messages.html.twig', array('messagesrecus'=> $messages_recus));
+   }
+
+   
+public function messages_envoyesAction()
+   {
+      $em = $this->getDoctrine()->getManager();
+      $UserConnected = $this->get('security.context')->getToken()->getUser();
+      $messages_envoyes =  $em->getRepository('EieinstitutBundle:Messages')->MessageEnvoyee($UserConnected->getId()); 
+      return $this->render('EieinstitutBundle:Messaging:messages_envoyes.html.twig', array('messagesenvoyes'=> $messages_envoyes));
+   } 
+   
+  
+public function brouillonAction()
+   {
+       return $this->render('EieinstitutBundle:messaging:brouillon.html.twig');
+   } 
+public function nouveau_messageAction()
+   {
+
+      $em = $this->getDoctrine()->getManager();
+      $request = $this->getRequest();
+      $action = $request->request->get('submit');
+        
+      if(isset($action))
+        {
+         $UserConnected = $this->get('security.context')->getToken()->getUser();
+          $Objet = $request->request->get('Objet');
+          $Message = $request->request->get('message');
+          $Dest = $request->request->get('A');
+          
+            $Messages = new Messages;
+            $Messages->setObjet($Objet);
+            $Messages->setMessage($Message);
+            $Messages->setDateMessage(new \DateTime());
+            $Messages->setEtat(0);
+            $FromUser = $UserConnected;//$em->getRepository('EieinstitutBundle:User')->findOneBy(array('id'=>1));
+            $Messages->setMessagesUser($FromUser);
+
+       
+           $ToUser1 = $em->getRepository('EieinstitutBundle:User')->findOneBy(array('id'=>$Dest));
+             $ToUser1->addMessages($Messages);
+            $Messages->addUsers($ToUser1);
+            $em->persist($ToUser1);
+
+            
+
+/*
+            $ToUser2 = $em->getRepository('EieinstitutBundle:User')->findOneBy(array('id'=>5));
+            $Messages->addUsers($ToUser2);
+            $ToUser2->addMessages($Messages);
+            $em->persist($ToUser2);
+*/
+            $em->persist($Messages);
+            $em->flush();
+      
+
+
+        }
+
+       return $this->render('EieinstitutBundle:messaging:nouveau_message.html.twig');
+   } 
+   
+    
+    public function details_messageAction($message)
+   {
+          $em = $this->getDoctrine()->getEntityManager();
+
+      
+       $details_message = $em->getRepository('EieinstitutBundle:Messages')->findOneBy(array('id'=>$message));
+       
+       return $this->render('EieinstitutBundle:Messaging:details_message.html.twig', array('detailsmessage'=> $details_message)); 
+       
+   }
+   
+       public function details_message1Action($message)
+   {
+          $em = $this->getDoctrine()->getEntityManager();
+
+      
+       $details_message1 = $em->getRepository('EieinstitutBundle:Messages')->findOneBy(array('id'=>$message));
+       
+       return $this->render('EieinstitutBundle:Messaging:details_message1.html.twig', array('detailsmessage1'=> $details_message1)); 
+       
+   }
     
     
 }
