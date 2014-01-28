@@ -26,7 +26,7 @@
 		<a href="javascript:void(0)" class="button" title="Ajouter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png') }}" width="16" height="16"> <strong>Ajouter</strong></a>
 		
 			
-			<span class="float-left">Toutes les actualités</span>
+			<span class="float-left">Toutes les actualités </span>
 	
 	</div>
 	
@@ -65,7 +65,7 @@
 								</span>
 								Titre
 							</th>
-							<th scope="col">Description</th>
+							
 							<th scope="col">
 							<span class="column-sort">
 									<a href="" title="Sort up" class="sort-up"></a>
@@ -83,57 +83,27 @@
 							<th scope="col" class="table-actions">Actions</th>
 						</tr>
 					</thead>
-					
+					{% for actualits in  actualite %}
 					<tbody>
 						
 						<tr>
 							<th scope="row" class="table-check-cell"><input type="checkbox" name="selected[]" id="table-selected-1" value="1"></th>
 							<td>Publié</td>
-							<td>Lorem ipsum sit amet</td>
-							<td> ma  description</td>
-							<td>Ali</td>
-							<td>02-05-2010</td>
+							<td>{{ actualits.titre }}</td>
+							
+							<td> {{ actualits.user.username }}</td>
+							<td>{{ actualits.dateActualite|date('d m Y') }}</td>
 							
 							<td class="table-actions">
-								<a href="javascript:void(0)" title="Modifier" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/pencil.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Afficher" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Metttre dans la corbeille" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a>
+                                                            <a href="{{ path('modifier_actualite',{'actualite':  actualits.id }) }}" title="Modifier" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/pencil.png') }}" width="16" height="16"></a>
+                                                            <a href="{{ path('detail_actualite',{'actualite':  actualits.id }) }}" title="Afficher" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png') }}" width="16" height="16"></a>
+                                                            <a  onclick="SupprimerActualite({{ actualits.id }})" title="Supprimer" title="Metttre dans la corbeille" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a>
 							</td>
 						</tr>
-						
-						<tr>
-							<th scope="row" class="table-check-cell"><input type="checkbox" name="selected[]" id="table-selected-1" value="1"></th>
-							<td>Publié</td>
-							<td>Lorem ipsum sit amet</td>
-							<td> ma  description</td>
-							<td>Ali</td>
-							<td>02-05-2010</td>
-							
-							<td class="table-actions">
-								<a href="javascript:void(0)" title="Modifier" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/pencil.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Afficher" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Metttre dans la corbeille" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a>
-							</td>
-						</tr>
-						
-						<tr>
-							<th scope="row" class="table-check-cell"><input type="checkbox" name="selected[]" id="table-selected-1" value="1"></th>
-							<td>Désactivé</td>
-							<td>Lorem ipsum sit amet</td>
-							<td> ma  description</td>
-							<td>Ali</td>
-							<td>02-05-2010</td>
-							
-							<td class="table-actions">
-								<a href="javascript:void(0)" title="Modifier" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/pencil.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Afficher" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Metttre dans la corbeille" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a>
-							</td>
-						</tr>
-						
-						
+	
 						
 					</tbody>
+                                        {% endfor %}
 				
 				</table></div>
 				
@@ -169,5 +139,28 @@
      
 {% endblock %}
 {% block javascripts_Bottom %}
+     
+     <script>
+    
+    function SupprimerActualite(id)
+    {
+        var confirmation=confirm("Voulez-vous supprimer:"+id);
+        if (confirmation){
+            console.log("test supp",id);
+            $.post(
+                    "{{ path('supprimer_actualite') }}",
+                    {idActualite:id},
+                        function(result){
+                            console.log("bien jouer");
+                            //location.reload();
+                            //$('html').load('{{ path('liste_actualite') }}');
+                            });
+          //action à faire pour la valeur true 
+        }else{
+          //action à faire pour la valeur false
+        }
+    }
+    </script> 
+    
 
 {% endblock %} 

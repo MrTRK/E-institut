@@ -23,5 +23,27 @@ ei_administration_listetuto:
     
 ei_administration_newsletter:
     pattern:  /admin/newsletter
-    defaults: { _controller: EiAdministrationBundle:Default:newsletter }    
+    defaults: { _controller: EiAdministrationBundle:Default:newsletter }
+
+############## Actualite
+
+ajouter_actualite:
+    pattern:  /ajouter_actualite
+    defaults: { _controller: EiAdministrationBundle:Default:ajouter_actualite}
+    
+liste_actualite:
+    pattern:  /liste_actualite
+    defaults: { _controller: EiAdministrationBundle:Default:liste_actualite}
+
+supprimer_actualite:
+    pattern:  /supprimer_actualite
+    defaults: { _controller: EiAdministrationBundle:Default:supprimer_actualite}
+    
+modifier_actualite:
+    pattern:  /modifier_actualite/{actualite}
+    defaults: { _controller: EiAdministrationBundle:Default:modifier_actualite}
+    
+detail_actualite:
+    pattern:  /detail_actualite/{actualite}
+    defaults: { _controller: EiAdministrationBundle:Default:detail_actualite}
     
