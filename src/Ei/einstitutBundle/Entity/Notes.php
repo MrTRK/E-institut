@@ -32,7 +32,7 @@ class Notes
      * @ORM\Column(name="libelle", type="string", length=255)
      */
     private $libelle;
-
+    
 
     /**
      * Get id
@@ -65,5 +65,37 @@ class Notes
     public function getLibelle()
     {
         return $this->libelle;
+    }
+    
+    
+    
+    
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="annotation", type="integer")
+     */
+    private $annotation;
+    
+    /**
+     * Get annotation
+     *
+     * @return integer 
+     */
+    public function getAnnotation()
+    {
+        return $this->annotation;
+    }
+     /**
+     * Set annotation
+     *
+     * @param integer $value
+     * @return Notes
+     */
+    public function setAnnotation($value)
+    {
+        $this->annotation = $value;
+    
+        return $this;
     }
 }

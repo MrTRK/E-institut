@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class CriterePreconisationRepository extends EntityRepository
 {
+    
+    public function PreconisationFiche($id)
+    {
+        $em = $this->getEntityManager();
+        
+        $query = $em->createQuery('SELECT c FROM EieinstitutBundle:criterepreconisation c 
+                                JOIN c.preconisation p 
+                                WHERE p.fiche_preconisation = :idfiche ')
+                    ->setParameter("idfiche", $id);
+        $oCrit_Preconisations = $query->getResult();
+        return $oCrit_Preconisations ;
+        
+    }
+    
 }

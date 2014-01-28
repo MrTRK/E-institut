@@ -70,10 +70,83 @@ class DefaultController extends Controller
     } 
     
     public function detail_ressourceAction($fiche)
-    {	$em = $this->getDoctrine()->getEntityManager();
+    {	
+        $em = $this->getDoctrine()->getEntityManager();
         $oFiches = $em->getRepository('EieinstitutBundle:Fiche')->findOneBy(array('id'=>$fiche));
-        return $this->render('EieinstitutBundle:Ressources:detail_ressource_connecte.html.twig',array('Fiches'=>$oFiches));
-    } 
+        
+        $oPreconisations='';
+       // $oCrit_Preconisations='';
+        
+        /*$query = $em->createQuery(
+                'SELECT c.id FROM EieinstitutBundle:fiche f 
+                    JOIN EieinstitutBundle:Preconisation p 
+                    JOIN EieinstitutBundle:CriterePreconisation c   
+                   ');
+       
+       $query =  $em->createQueryBuilder()
+                    ->select('c')
+                    ->from('EieinstitutBundle:CriterePreconisation', 'c')
+                    ->getQuery(); 
+        //use Doctrine\ORM\Query\Expr\Join;
+         
+        
+        $oCrit_Preconisations = $query->getResult();
+        */
+        
+        $oCrit_Preconisations = $em->getRepository('EieinstitutBundle:CriterePreconisation')->PreconisationFiche($fiche);
+        $oCrit = $em->getRepository('EieinstitutBundle:Criteres')->findAll();
+        $oFichePre = $em->getRepository('EieinstitutBundle:Preconisation')->findBy(array('fiche_preconisation'=>$fiche));
+        $sumNote = 0;
+        $NotePreconisation=null;
+        
+        
+        
+         foreach($oCrit as $c)
+            {
+                $id2 = $c->getId();
+                $sumNote = 0;
+                foreach($oCrit_Preconisations as $cp)
+               {
+                    $id1 = $cp->getCriteres()->getId();
+                     if( $id1 == $id2)
+                        {
+                            $oNote =  $cp->getNotes();
+                            $Note = $oNote->getAnnotation();
+                            $sumNote += $Note;
+                        }
+               }
+               //$NotePreconisation['Critere'] = $c->getLibelle();
+               if( $oFichePre)$sumNote = $sumNote / count($oFichePre);
+               
+             $NotePreconisation[$id2]= array('note'=>$sumNote,'NomCritere'=>$c->getLibelle());
+            }
+        
+        
+            //$oNote = new Notes();
+           
+          
+          
+              
+              
+            
+            
+       
+        
+       // echo $hello;
+       /* echo count($oFiches);
+       if ($oFiches) {
+           $oPreconisations = $em->getRepository('EieinstitutBundle:Preconisation')->findBy(array('fiche_preconisation'=>$oFiches));
+           $oCrit_Preconisations = $em->getRepository('EieinstitutBundle:CriterePreconisation')->findBy(array('preconisation'=>$oPreconisations)); 
+           
+       }
+       else
+       {
+           
+       }*/
+        
+        
+       return $this->render('EieinstitutBundle:Ressources:detail_ressource_connecte.html.twig',array('NotePreconisation'=>$NotePreconisation,'sumNote'=>$sumNote,'Fiches'=>$oFiches,'Preconisations'=>$oPreconisations,'Crit_Preconisations'=>$oCrit_Preconisations,'Criteres'=>$oCrit));
+    }
     public function recherche_ressourceAction()
     {
         return $this->render('EieinstitutBundle:Ressources:recherche_ressource.html.twig');
