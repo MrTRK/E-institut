@@ -1,7 +1,7 @@
 {% extends "EiAdministrationBundle::Master-Base-Admin.html.twig" %}
 
 {% block title %}
-     {{ parent() }}   | Table du board
+        Table du board | {{ parent() }}
 {% endblock %}
 {% block stylesheets %}
 
@@ -20,33 +20,13 @@
 					<div id="tab-global" class="tabs-content" style="height: 590px;">
 							
 							<ul class="tabs js-tabs same-height">
-								<li class="current"><a href="#tab-comment" title="Commentaires">Commentaires</a></li>
-								<li><a href="#tab-tuto" title="Options">Tuto</a></li>							
+								<li class="current"><a href="#tab-tuto" title="Options">Tuto</a></li>							
 								<li><a href="#tab-preconisations" title="Options">Préconisations</a></li>
 								<li><a href="#tab-user" title="Options">Utilisateurs connectés</a></li>								
 							</ul>
 							
 							<div class="tabs-content">
-								
-								<div id="tab-comment" style="height: 519px;">
-								
-									<ul class="task-dialog">
-										<li>
-											<strong>Marc:</strong> Don't forget to tell the client <em>- Yesterday</em>
-											
-										</li>
-										<li>
-											<strong>John:</strong> I suggest you could ask Dan or Sandy for a little help <em>- 2 hours ago</em>
-											
-										</li>
-										
-									</ul>
-												
-									
-									
-								</div>	
-																							
-								
+    
 								<div id="tab-tuto" style="height: 419px; display: none;">
 									<ul class="extended-list no-margin icon-user">
 										<li>

@@ -1,4 +1,4 @@
-{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+{% extends "EiAdministrationBundle::Master-Base-Admin.html.twig" %}
 {% block title %}
      {{ parent() }}   | Ajouter Page
 {% endblock %}
@@ -10,12 +10,8 @@
 
 {% endblock %}
 {% block content %}
-<h1>Tableau de bord</h1>
+
 <!--section block-->
-<section class="grid_3">
-{% include  "EiAdministrationBundle::Block_Contributor.html.twig" %} 
-<div class="clear"></div>
-</section>
 <section class="grid_9">			   	
 
         <div class="block-border"> 
@@ -94,7 +90,6 @@
                 
 						</div>										
 		<div class="clear"></div>								
-	</div>
 								
 </section>		               
 {% endblock %}

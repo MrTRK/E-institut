@@ -1,4 +1,4 @@
-{% extends "AdministrationBundle::Master-Base.html.twig" %}
+{% extends "EiAdministrationBundle::Master-Base-Admin.html.twig" %}
 
 {% block title %}
      {{ parent() }}   | Ajouter Actualité
@@ -11,12 +11,8 @@
 
 {% endblock %}
 {% block content %}
-<h1>Tableau de bord</h1>
+
 <!--section block-->
-<section class="grid_3">
-{% include  "AdministrationBundle:Admin_Cont:Block_Contributor.html.twig" %}  
-<div class="clear"></div>
-</section>
 <!--section contenu-->
 <section class="grid_9">			   	
 
@@ -56,7 +52,7 @@
 							Contenu
 						</span>
 						<textarea ></textarea>
-						</textarea><br><br>
+						<br><br>
 					
 					
 					
@@ -65,7 +61,7 @@
 									Date de publication
 						</span>
 						Du :<span class="input-type-text margin-right relative"><input type="text" name="simple-calendar" id="simple-calendar" value="" class="datepicker"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/calendar-month.png') }}" width="16" height="16"></span>
-						Au :<span class="input-type-text margin-right relative"><input type="text" name="simple-calendar" id="simple-calendar" value="" class="datepicker"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/calendar-month.png') }}" width="16" height="16"></span></span>
+						Au :<span class="input-type-text margin-right relative"><input type="text" name="simple-calendar" id="simple-calendar" value="" class="datepicker"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/calendar-month.png') }}" width="16" height="16"></span>
 						
 					</p>
 					
@@ -84,7 +80,7 @@
                 
 						</div>										
 		<div class="clear"></div>								
-	</div>
+
 								
 </section>		               
 {% endblock %}

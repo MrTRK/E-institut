@@ -2,8 +2,8 @@
 				<div class="block-border columns"><div class="block-content">
 					<h1>Contenu</h1>
 					<ul class="simple-list with-icon">
-						<li><a href="#">Actualités</a></li>
-						<li><a href="#">Pages</a></li>
+						<li><a href="{{ path('ei_administration_actualite') }}">Actualités</a></li>
+						<li><a href="{{ path('ei_administration_page') }}">Pages</a></li>
                                                 <li><a href="#">Partenaires</a></li>
                                                 <li><a href="#">Membres</a></li>
 						<li><a href="#">Diaporama</a></li>
@@ -15,7 +15,7 @@
 				<div class="block-border columns"><div class="block-content">
 					<h1>Ressources</h1>
 					<ul class="simple-list with-icon">
-						<li><a href="#">Toutes les ressources</a></li>
+						<li><a href="{{ path('ei_administration_ressources') }}">Toutes les ressources</a></li>
 					</ul>
 					
 				</div></div>
@@ -24,11 +24,8 @@
 				<div class="block-border columns"><div class="block-content">
 					<h1>Utilisateurs</h1>
 					<ul class="simple-list with-icon">
-						<li><a href="#">Tous les utilisateurs</a></li>
-						<li><a href="#">Mon profil</a></li>
-						
-					</ul>
-					
+						<li><a href="{{ path('ei_administration_listeuser') }}">Tous les utilisateurs</a></li>						
+					</ul>					
 				</div></div>				
 				<!-- ressources-->
 				<div class="block-border columns"><div class="block-content">
@@ -44,7 +41,7 @@
 				<div class="block-border columns" ><div class="block-content">
 					<h1>Applications</h1>
 					<ul class="simple-list with-icon">
-						<li><a href="#">Newsletter</a></li>
+						<li><a href="{{ path('ei_administration_newsletter') }}">Newsletter</a></li>
 						<li><a href="#">Statistiques</a></li>
 					</ul>					
 				</div></div>

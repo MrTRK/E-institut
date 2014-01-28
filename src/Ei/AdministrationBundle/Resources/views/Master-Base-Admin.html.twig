@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>
             {% block title %}
-                E-institut Admin
+                E-institut 
             {% endblock %}
 	</title>
 	<meta name="description" content="">
@@ -262,7 +262,7 @@ tinymce.init({
 							{ bSortable: false },
 							{ sType: 'numeric', bUseRendered: false, fnRender: function(obj) // Append unit and add icon
 								{
-									return '<small><img src="images/icons/fugue/image.png" width="16" height="16" class="picto"> '+obj.aData[obj.iDataColumn]+' Ko</small>';
+									return obj.aData[obj.iDataColumn];
 								}
 							},
 							{ sType: 'date' },

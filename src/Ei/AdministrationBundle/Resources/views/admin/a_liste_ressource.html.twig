@@ -1,4 +1,4 @@
-{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+{% extends "EiAdministrationBundle::Master-Base-Admin.html.twig" %}
 {% block title %}
      {{ parent() }}   | Lister ressoureces
 {% endblock %}
@@ -10,12 +10,9 @@
 
 {% endblock %}
 {% block content %}
-<h1>Tableau de bord</h1>
+
 <!--section block-->
-<section class="grid_3">
-{% include  "EiAdministrationBundle::Block_Contributor.html.twig" %} 
-<div class="clear"></div>
-</section>
+
 <section class="grid_9">			   	
 
         <div class="block-border"> 
@@ -62,7 +59,7 @@
 									<a href="" title="Sort up" class="sort-up"></a>
 									<a href="" title="Sort down" class="sort-down"></a>
 								</span>
-								Libellé
+								Titre
 							</th>
 							<th scope="col">Domaine</th>
 							<th scope="col">
@@ -85,54 +82,52 @@
 					
 					<tbody>
 						
-						<tr>
+						
+		{% for rs in ressource %}
+                                            
+                                            <tr>
 							<th scope="row" class="table-check-cell"><input type="checkbox" name="selected[]" id="table-selected-1" value="1"></th>
-							<td><small><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-pdf.png') }}" width="16" height="16" class="picto">PDF</small></td>
-		
-							<td>Lorem ipsum sit amet</td>
-							<td> mon domaine</td>
-							<td>Ali</td>
-							<td>02-05-2010</td>
-							
-							<td class="table-actions">
+                                                                                               
+   {% if rs.type=='document'%}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document.png')}}" width="16" height="16"/>{{rs.type}}</td>
+												{% elseif rs.type=='excel'  %}
+													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-excel.png')}}" width="16" height="16"/>{{rs.type}}</td>
+												{% elseif rs.type=='video'  %}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-film.png')}}" width="16" height="16"/>{{rs.type}}</td>
+												{% elseif rs.type=='flash'  %}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-flash-movie.png')}}" width="16" height="16"/>{{rs.type}}</td>
+												{% elseif rs.type=='image'  %}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-image.png')}}" width="16" height="16"/>{{rs.type}}</td>
+												{% elseif rs.type=='audio'  %}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-music.png')}}" width="16" height="16"/>{{rs.type}}</td>
+												{% elseif rs.type=='pdf'  %}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-pdf.png')}}" width="16" height="16"/>{{rs.type}}</td> 
+												{% elseif rs.type=='word'  %}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-word.png')}}" width="16" height="16"/> {{rs.type}}</td>
+												{% elseif rs.type=='ppt'  %}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-powerpoint.png')}}" width="16" height="16"/> {{rs.type}}</td>
+												{% elseif rs.type=='zip'  %}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-zipper.png')}}" width="16" height="16"/>{{rs.type}}</td> 
+												{% elseif rs.type=='text'  %}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-text.png')}}" width="16" height="16"/>{{rs.type}}</td> 
+												{% elseif rs.type=='database'  %}
+													<td><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/database.png')}}" width="16" height="16"/>{{rs.type}}</td> 
+                {% endif   %}                                                        
+               
+                <td>{{rs.titre}}</td> <td>{{rs.domaine}}</td> <td>{{rs.user }}</td> <td>{{rs.dateCreation|date('m/d/Y')}}</td>
+                                                                <td class="table-actions">
 								<a href="javascript:void(0)" title="Modifier" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/pencil.png') }}" width="16" height="16"></a>
 								<a href="javascript:void(0)" title="Afficher" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png') }}" width="16" height="16"></a>
 								<a href="javascript:void(0)" title="Metttre dans la corbeille" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a>
-							</td>
-						</tr>
-						
-						<tr>
-							<th scope="row" class="table-check-cell"><input type="checkbox" name="selected[]" id="table-selected-1" value="1"></th>
-							<td><small><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-pdf.png') }}" width="16" height="16" class="picto">PDF</small></td>
-		
-							<td>Lorem ipsum sit amet</td>
-							<td> mon domaine</td>
-							<td>Ali</td>
-							<td>02-05-2010</td>
+                                                                </td>
+                                                            </tr>
+		{% endfor %}					
 							
-							<td class="table-actions">
-								<a href="javascript:void(0)" title="Modifier" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/pencil.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Afficher" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Metttre dans la corbeille" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a>
-							</td>
-						</tr>
 						
-						<tr>
-							<th scope="row" class="table-check-cell"><input type="checkbox" name="selected[]" id="table-selected-1" value="1"></th>
-							<td><small><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-pdf.png') }}" width="16" height="16" class="picto">PDF</small></td>
-		
-							<td>Lorem ipsum sit amet</td>
-							<td> mon domaine</td>
-							<td>Ali</td>
-							<td>02-05-2010</td>
-							
-							<td class="table-actions">
-								<a href="javascript:void(0)" title="Modifier" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/pencil.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Afficher" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Metttre dans la corbeille" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a>
-							</td>
-						</tr>
 						
+
+						
+	
 						
 						
 					</tbody>
