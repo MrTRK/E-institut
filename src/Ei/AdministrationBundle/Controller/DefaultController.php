@@ -16,6 +16,13 @@ class DefaultController extends Controller
     }
     public function pageAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $pg= $em->getRepository('EieinstitutBundle:Pages')->findAll();
+        return $this->render('EiAdministrationBundle:admin:a_liste_page.html.twig',
+                            array(
+                                'pages' => $pg
+                            )    
+                );
         return $this->render('EiAdministrationBundle:admin:a_liste_page.html.twig');
     }
     
@@ -32,6 +39,20 @@ class DefaultController extends Controller
         
     }
     
+    public function supprimer_ressourceAction()
+    { 
+       $em = $this->getDoctrine()->getManager();
+        $request = $this->getRequest();
+        $idFiche = $request->request->get('idFiche');
+        if($idFiche)
+            {
+                $rs = $em->getRepository('EieinstitutBundle:Fiche')->findOneBy(array('id'=> $idFiche));
+                $em->remove($rs);
+                $em->flush();
+            }
+         return $this->redirect($this->generateUrl('ei_administration_ressources'));
+    }
+    
     public function listeuserAction()
     {
         return $this->render('EiAdministrationBundle:admin:a_liste_user.html.twig');
@@ -40,7 +61,7 @@ class DefaultController extends Controller
     {
         return $this->render('EiAdministrationBundle:admin:a_liste_tuto.html.twig');
     }
-     public function newsletterAction()
+    public function newsletterAction()
     {
         return $this->render('EiAdministrationBundle:admin:a_liste_newsletter.html.twig');
     }

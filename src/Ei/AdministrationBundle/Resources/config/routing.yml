@@ -5,6 +5,7 @@ ei_administration_homepage:
 ei_administration_actualite:
     pattern:  /admin/actualite
     defaults: { _controller: EiAdministrationBundle:Default:actualite } 
+
 ei_administration_page:
     pattern:  /admin/page
     defaults: { _controller: EiAdministrationBundle:Default:page } 
@@ -13,6 +14,18 @@ ei_administration_ressources:
     pattern:  /admin/ressources
     defaults: { _controller: EiAdministrationBundle:Default:ressources }
     
+ei_administration_ajouter_ressources:
+    pattern:  /ajouter_ressource
+    defaults: { _controller: EiAdministrationBundle:Default:ajouter_ressource}
+    
+ei_administration_supprimer_ressource:
+    pattern:  /supprimer_ressource/
+    defaults: { _controller: EiAdministrationBundle:Default:supprimer_ressource}
+    
+ei_administration_modifier_actualite:
+    pattern:  /modifier_ressources/{ressources}
+    defaults: { _controller: EiAdministrationBundle:Default:modifier_ressources}
+    
 ei_administration_listeuser:
     pattern:  /admin/users
     defaults: { _controller: EiAdministrationBundle:Default:listeuser }
@@ -20,10 +33,11 @@ ei_administration_listeuser:
 ei_administration_listetuto:
     pattern:  /admin/listetuto
     defaults: { _controller: EiAdministrationBundle:Default:listetuto }
-    
+
 ei_administration_newsletter:
     pattern:  /admin/newsletter
     defaults: { _controller: EiAdministrationBundle:Default:newsletter }
+
 
 ############## Actualite
 

@@ -118,9 +118,8 @@
                                                                 <td class="table-actions">
 								<a href="javascript:void(0)" title="Modifier" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/pencil.png') }}" width="16" height="16"></a>
 								<a href="javascript:void(0)" title="Afficher" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png') }}" width="16" height="16"></a>
-								<a href="javascript:void(0)" title="Metttre dans la corbeille" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a>
-                                                                </td>
-                                                            </tr>
+								<a onclick="Supprimer({{ rs.id }})" title="Metttre dans la corbeille" class="with-tip"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"></a>
+                                  </td></tr>
 		{% endfor %}					
 							
 						
@@ -158,5 +157,11 @@
 </section>		               
 {% endblock %}
 {% block javascripts_Bottom %}
-
-{% endblock %} 
+<script>
+    
+    function Supprimer(id)
+    {
+            $.post("{{ path('ei_administration_supprimer_ressource') }}",{idFiche:id},function(result){$('html').load('{{ path('ei_administration_ressources') }}');});
+}
+    </script> 
+{% endblock %}
