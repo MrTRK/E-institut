@@ -88,9 +88,8 @@ class CriterePreconisation
      public function __construct()
     {
 
-        $this->preconisation = new \Doctrine\Common\Collections\ArrayCollection();
+       // $this->preconisation = new \Doctrine\Common\Collections\ArrayCollection();
 
-        parent::__construct();
-        // your own logic
+     
     }
 }

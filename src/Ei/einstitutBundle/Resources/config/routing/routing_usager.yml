@@ -47,6 +47,9 @@ agenda:
 detail_ressource:
     pattern:  /detail_ressource/{fiche}
     defaults: { _controller: EieinstitutBundle:Default:detail_ressource} 
+preconiser_ressource:
+    pattern:  /preconiser_ressource/{fiche}
+    defaults: { _controller: EieinstitutBundle:Default:preconiser_ressource} 
 recherche_ressource:
     pattern:  /recherche_ressource
     defaults: { _controller: EieinstitutBundle:Default:recherche_ressource} 

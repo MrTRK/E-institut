@@ -24,8 +24,7 @@
 						<li ><span>Thème : {{ Fiches.theme }}</span></li>
 						<li ><span>Type : {{ Fiches.type }}</span></li>
                                                 <br>
-                                                <li ><div style="float:left">Annotation total : </div>
-                                                    <div>	
+                                                <li style="width: 100px;text-align: center; margin: auto;"><div>	
                                                         {% for i in 1..5 %}
                                                             {% if i < sumNote %}
                                                                 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"/>

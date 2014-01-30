@@ -3,7 +3,8 @@
 namespace Ei\einstitutBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Ei\einstitutBundle\Entity\Preconisation;
+use Ei\einstitutBundle\Entity\CriterePreconisation;
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -76,6 +77,47 @@ class DefaultController extends Controller
     {
         return $this->render('EieinstitutBundle:portefolio:agenda.html.twig');
     } 
+    
+    public function preconiser_ressourceAction($fiche)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $oFiches = $em->getRepository('EieinstitutBundle:Fiche')->findOneBy(array('id'=>$fiche));
+        $oCriteres = $em->getRepository('EieinstitutBundle:Criteres')->findAll();
+        $oNotes = $em->getRepository('EieinstitutBundle:Notes')->findAll();
+        $request = $this->getRequest();
+        $action = $request->request->get('preconiser');
+        
+        if(isset($action))
+        {
+            $UserConnected = $this->get('security.context')->getToken()->getUser();
+
+            $Preconisation =  new Preconisation();
+            $Preconisation->setFichePreconisation($oFiches);
+            $Preconisation->setUserPreconisation($UserConnected);
+            $Preconisation->setDate(new \DateTime());
+            $em->persist($Preconisation);
+            $em->flush();
+            
+            foreach($oCriteres as $C)
+            {
+                $Note = $request->request->get('radio'.$C->getId());
+                $oNote = $em->getRepository('EieinstitutBundle:Notes')->findOneBy(array("id"=>$Note));
+                
+                $CriterePreconisation =  new CriterePreconisation();
+                $CriterePreconisation->setPreconisation($Preconisation);
+                $CriterePreconisation->setCriteres($C);
+                $CriterePreconisation->setNotes($oNote);
+                $em->persist($CriterePreconisation);
+            }
+            
+            
+            
+            
+            $em->flush();
+            
+        }
+        return $this->render('EieinstitutBundle:Ressources:faire_une_preconisation.html.twig',array('fiche'=>$oFiches,'Notes'=>$oNotes,'Criteres'=>$oCriteres));
+    }
     
     public function detail_ressourceAction($fiche)
     {	
