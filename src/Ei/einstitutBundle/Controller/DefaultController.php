@@ -36,8 +36,16 @@ class DefaultController extends Controller
     }
     
     public function forumAction()
+            
     {
-        return $this->render('EieinstitutBundle:Community:Forum.html.twig');
+        
+        $em = $this->getDoctrine()->getManager();
+        $Forums = $em->getRepository('EieinstitutBundle:Forum')->findall();
+        $Rubriques = $em->getRepository('EieinstitutBundle:Rubrique')->findall();
+        return $this->render('EieinstitutBundle:Community:Forum.html.twig', array('Rubriques' => $Rubriques,'Forums' => $Forums));
+        
+        
+        
     }
     public function espace_PersonnelAction()
     {
