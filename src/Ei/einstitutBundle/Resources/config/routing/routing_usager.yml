@@ -11,8 +11,29 @@
 #liste_contact:
   #  pattern:  /liste_contact
   #  defaults: { _controller: EieinstitutBundle:Default:liste_contact}
-    
-    
+
+
+# Ressources
+detail_ressource:
+    pattern:  /detail_ressource/{fiche}
+    defaults: { _controller: EieinstitutBundle:Default:detail_ressource} 
+
+recherche_ressource:
+    pattern:  /recherche_ressource
+    defaults: { _controller: EieinstitutBundle:Default:recherche_ressource} 
+
+Ressources:
+    pattern:  /ressources{page}
+    defaults: { _controller: EieinstitutBundle:ressources:ressources,page:1 }
+
+action_fiche:
+    pattern:  /action_fiche
+    defaults: { _controller: EieinstitutBundle:Default:action_fiche}
+
+Ressources_Ajouter:
+    pattern:  /ajouter_ressource
+    defaults: { _controller: EieinstitutBundle:Default:ajouter_ressource }
+
 # Contact ***********************************
 list_contact:
     pattern:  /user/liste_contact
@@ -41,9 +62,19 @@ mon_compte:
 profil:
     pattern:  /profil
     defaults: { _controller: EieinstitutBundle:Default:profil}
-agenda:
-    pattern:  /agenda
-    defaults: { _controller: EieinstitutBundle:Default:agenda}    
+# Agenda
+_agenda:
+    pattern:  /user/agenda
+    defaults: { _controller: EieinstitutBundle:Usager:agenda }
+
+Navigation_agenda:
+    pattern:  /user/agenda/{annee}/{mois}
+    defaults: { _controller: EieinstitutBundle:Usager:navigation_agenda }
+
+Ajouter_evenement:
+    pattern:  /user/agenda/ajouter_evenement
+    defaults: { _controller: EieinstitutBundle:Usager:ajouter_evenement }
+
 detail_ressource:
     pattern:  /detail_ressource/{fiche}
     defaults: { _controller: EieinstitutBundle:Default:detail_ressource} 
@@ -65,3 +96,14 @@ messages_recus:
 brouillon:
     pattern:  /brouillon
     defaults: { _controller: EieinstitutBundle:Default:brouillon} 	
+
+# Actualités
+
+detail_actualite:
+    pattern:  /actualite/detail_actualite/{actualite}
+    defaults: { _controller: EieinstitutBundle:Default:detail_actualite}
+    
+actualite:
+    pattern:  /actualite
+    defaults: { _controller: EieinstitutBundle:Default:actualite}
+

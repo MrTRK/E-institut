@@ -26,116 +26,189 @@
                         <h1> Filtre </h1>
 
                         <div class="block-controls">
-                                <!--<ul class="controls-buttons">
-                                        <li><a href="#"><strong>Afficher tout</strong></a></li>
-                                        <li class="sep"></li>
-                                        <li><a href="#" title="Actualiser"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/arrow-circle.png')}}" width="16" height="16"></a></li>
-                                </ul>-->
+                              
                         </div>
-                    <form class="form" id="tab-stats" method="post" action="">
-                        <label for="simple-calendar">Mots Clés</label>
+				<form class="form" id="recherche_fiche" method="post" action="">
+                        <label for="simple-calendar" id="titrer">Mots Clés</label>
                         <p class="input-type-text">
                             
 
-                            <input type="text" name="simple-search" id="simple-search" value="" style="width:90%" title="Filter results">
-                            <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png')}}" width="16" height="16" class="float-right">
+                            <input type="text" name="mot_cle" id="simple-search" value="{{mot_cle}}" style="width:90%" title="Filter results">
+                           <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/magnifier.png')}}" width="16" height="16" class="float-right">
 
                         </p>
-
-
-                        
-                        <div class="columns">                  
-                        <span class="label">Domaine</span>
-                        <select name="Domaine" id="stats-sites-0" class="full-width">
-                            <option value="-1">--->Choisissez<---</option>
-                                <option value="0">Informatique</option>
-                                <option value="0">Economie</option>
-                        </select>
-                        </div>
            
-
-                    <div class="columns">
-                    <span class="label">Théme</span>
-                    <select name="theme" id="stats-sites-0" class="full-width">
-                        <option value="-1">--->Choisissez<---</option>
-                            <option value="0">Développemnt</option>
-                            <option value="0">Réseau</option>
-                    </select>
-            
-                    </div>
-            
-            
-                    <div class="columns">
-                            <span class="label">Type</span>
-                            <select name="type" id="stats-sites-0" class="full-width">
-                                <option value="-1">--->Choisissez<---</option>
-                                    <option value="0">Vidéo</option>
-                                    <option value="0">Document PDF</option>
-                            </select>                  
-                    </div>
-            
-                    
-                                        
+						<div class="clear"></div>
 
 
-                                      
-
-
-                        
-                       
-                    
-
-                       
-                   
-                      <div class="clear"></div>
-               
-
-                </form>
-
-                     <ul class="collapsible-list with-bg">
+                    <ul class="collapsible-list with-bg">
                                 <li>
                                         <b class="toggle"></b>
-                                        <span>Type</span>
+                                        <span>Type [ {{ type }}]</span>
                                         <ul>
 
                                                 <li class="closed">
-                                                        <input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-1" value="1">
-                                                        <label for="simple-checkbox-1">Video</label>
+													{% set check = '' %}
+													{% if type=='Audio'  %}
+														{% set check = 'checked' %}
+													{% endif   %}
+													<input type="checkbox" name="type" id="simple-checkbox-1" value="Audio"   {{ check }}/>
+													
+														<label for="simple-checkbox-1">Audio</label>
+                                                        
                                                 </li>
                                                 <li class="closed">
-                                                        <input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-2" value="2">
-                                                        <label for="simple-checkbox-2">Support papier</label>
+													{% set check = '' %}
+													{% if type1=='Document'  %}
+														{% set check = 'checked' %}
+													{% endif   %}
+													<input type="checkbox" name="type1" id="simple-checkbox-2" value="Document" {{ check }}/>	
+													<label for="simple-checkbox-2">Document</label>
                                                 </li>
                                                 <li class="closed">
-                                                        <input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-3" value="3">
-                                                        <label for="simple-checkbox-3">Slide</label>
+													{% set check = '' %}
+													{% if type2=='Database'  %}
+														{% set check = 'checked' %}
+													{% endif   %}
+                                                        <input type="checkbox" name="type2" id="simple-checkbox-3" value="Database"  {{ check }}/>
+                                                        <label for="simple-checkbox-2">Data base</label>
+                                                </li>
+												 <li class="closed">
+													{% set check = '' %}
+													{% if type3=='Excel'  %}
+														{% set check = 'checked' %}
+													{% endif   %}
+                                                        <input type="checkbox" name="type3" id="simple-checkbox-4" value="Excel"  {{ check }}/>
+                                                        <label for="simple-checkbox-3">Excel</label>
+                                                </li>
+												 <li class="closed">
+													{% set check = '' %}
+													{% if type4=='Flash'  %}
+														{% set check = 'checked' %}
+													{% endif   %}
+                                                        <input type="checkbox" name="type4" id="simple-checkbox-5" value="Flash" {{ check }}/>
+                                                        <label for="simple-checkbox-3">Flash</label>
                                                 </li>
                                                 <li class="closed">
-                                                        <input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-4" value="4">
-                                                        <label for="simple-checkbox-4">Audio</label>
+													{% set check = '' %}
+													{% if type5=='Pdf'  %}
+														{% set check = 'checked' %}
+													{% endif   %}
+                                                        <input type="checkbox" name="type5" id="simple-checkbox-6" value="Pdf" {{ check }}/>
+													
+														<label for="simple-checkbox-4">Pdf</label>
                                                 </li>
                                                 <li class="closed">
-                                                        <input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-5" value="5">
-                                                        <label for="simple-checkbox-5">Code source</label>
+													{% set check = '' %}
+													{% if type6=='vidéo'  %}
+														{% set check = 'checked' %}
+													{% endif   %}
+                                                        <input type="checkbox" name="type6" id="simple-checkbox-6" value="vidéo" {{ check }}/>
+													
+                                                        <label for="simple-checkbox-5">Vidéo</label>
+                                                </li>
+												<li class="closed">
+													{% set check = '' %}
+													{% if type7=='Word'  %}
+														{% set check = 'checked' %}
+													{% endif   %}
+                                                        <input type="checkbox" name="type7" id="simple-checkbox-7" value="Word" {{ check }}/>
+                                                        <label for="simple-checkbox-5">Word</label>
                                                 </li>
                                         </ul>
                                 </li>
-                                <li class="closed">
+								{% if test1==1  %}
+                                <li>
+								{% else  %}
+								<li class="closed">
+								{% endif   %}
                                         <b class="toggle"></b>
                                         <span>Domaine</span>
                                         <ul>
                                                 <li class="closed">
-                                                        <input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-1" value="1">
-                                                        <label for="simple-checkbox-1">Informatique</label>
+													{% if cases==1  %}
+                                                         <input type="checkbox" name="domaine" id="simple-checkbox-1" value="Banque/comptabilité/assurance" onClick="submit()"; checked>
+													{% else  %}
+                                                        <input type="checkbox" name="domaine" id="simple-checkbox-1" value="Banque/comptabilité/assurance" onClick="submit()";>
+													{% endif   %}
+                                                        <label for="simple-checkbox-1">Banque/comptabilité/assurance</label>
                                                 </li>
-                                                <li class="closed">
-                                                        <input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-2" value="2">
+												<li class="closed">
+													{% if cases1==1  %}
+                                                         <input type="checkbox" name="domaine1" id="simple-checkbox-1" value="Commerce" onClick="submit()"; checked>
+													{% else  %}
+                                                        <input type="checkbox" name="domaine1" id="simple-checkbox-1" value="Commerce" onClick="submit()";>
+													{% endif   %}
+                                                        <label for="simple-checkbox-1">Commerce</label>
+                                                </li>
+												<li class="closed">
+													{% if cases2==1  %}
+                                                         <input type="checkbox" name="domaine2" id="simple-checkbox-1" value="Documentation" onClick="submit()"; checked>
+													{% else  %}
+                                                        <input type="checkbox" name="domaine2" id="simple-checkbox-1" value="Documentation" onClick="submit()";>
+													{% endif   %}
+                                                        <label for="simple-checkbox-1">Documentation</label>
+                                                </li>
+												 <li class="closed">
+													{% if cases3==1  %}
+                                                         <input type="checkbox" name="domaine3" id="simple-checkbox-1" value="Droit" onClick="submit()"; checked>
+													{% else  %}
+                                                        <input type="checkbox" name="domaine3" id="simple-checkbox-2" value="Droit" onClick="submit()";>
+													{% endif   %}
                                                         <label for="simple-checkbox-2">Droit</label>
                                                 </li>
-                                                <li class="closed">
-                                                        <input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-3" value="3">
+												 <li class="closed">
+													{% if cases4==1  %}
+                                                         <input type="checkbox" name="domaine4" id="simple-checkbox-1" value="Economie" onClick="submit()"; checked>
+													{% else  %}
+                                                        <input type="checkbox" name="domaine4" id="simple-checkbox-3" value="Economie" onClick="submit()";>
+													{% endif   %}
                                                         <label for="simple-checkbox-3">Economie</label>
                                                 </li>
+												<li class="closed">
+													{% if cases5==1  %}
+                                                         <input type="checkbox" name="domaine5" id="simple-checkbox-1" value="Gestion projet/Ressorces humaines" onClick="submit()"; checked>
+													{% else  %}
+                                                        <input type="checkbox" name="domaine5" id="simple-checkbox-1" value="Gestion projet/Ressorces humaines" onClick="submit()";>
+													{% endif   %}
+                                                        <label for="simple-checkbox-1">Gestion projet/Ressorces humaines</label>
+                                                </li>
+												<li class="closed">
+													{% if cases6==1  %}
+                                                         <input type="checkbox" name="domaine6" id="simple-checkbox-1" value="Informatique" onClick="submit()"; checked>
+													{% else  %}
+                                                        <input type="checkbox" name="domaine6" id="simple-checkbox-1" value="Informatique" onClick="submit()";>
+													{% endif   %}
+                                                        <label for="simple-checkbox-1">Informatique</label>
+                                                </li>
+												
+												<li class="closed">
+													{% if cases7==1  %}
+                                                         <input type="checkbox" name="domaine7" id="simple-checkbox-1" value="Marketing" onClick="submit()"; checked>
+													{% else  %}
+                                                        <input type="checkbox" name="domaine7" id="simple-checkbox-1" value="Marketing" onClick="submit()";>
+													{% endif   %}
+                                                        <label for="simple-checkbox-1">Marketing</label>
+                                                </li>
+												
+												<li class="closed">
+													{% if cases8==1  %}
+                                                         <input type="checkbox" name="domaine8" id="simple-checkbox-1" value="Santé" onClick="submit()"; checked>
+													{% else  %}
+                                                        <input type="checkbox" name="domaine8" id="simple-checkbox-1" value="Santé" onClick="submit()";>
+													{% endif   %}
+                                                        <label for="simple-checkbox-1">Santé</label>
+                                                </li>
+												<li class="closed">
+													{% if cases9==1  %}
+                                                         <input type="checkbox" name="domaine8" id="simple-checkbox-1" value="Autre" onClick="submit()"; checked>
+													{% else  %}
+                                                        <input type="checkbox" name="domaine7" id="simple-checkbox-1" value="Autre" onClick="submit()";>
+													{% endif   %}
+                                                        <label for="simple-checkbox-1">Autre</label>
+                                                </li>
+                                               
+                                               
                                         </ul>
                                 </li>
                                 <li class="closed">
@@ -184,19 +257,21 @@
                                 <b class="toggle"></b>
                                 <span >Choix des base</span>
 
-                                <ul class="checkable-list">
-                                                                        <li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-0" value="0">&nbsp;<label for="stats-display-0">Pour comprendre les bases d'un sujet</label></li>
-                                                                        <li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-1" value="1">&nbsp;<label for="stats-display-1">Pour approfondir mes connaissances sur un sujet</label></li>
-                                                                        <li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-0" value="0">&nbsp;<label for="stats-display-0">Pour résoudre les problèmes du domaine</label> </li>
-                                                                        <li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-1" value="1">&nbsp;<label for="stats-display-1">Pour s'exercer</label></li>                                         
-                                                        </ul>
+										<ul class="checkable-list">
+											<li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-0" value="0">&nbsp;<label for="stats-display-0">Pour comprendre les bases d'un sujet</label></li>
+											<li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-1" value="1">&nbsp;<label for="stats-display-1">Pour approfondir mes connaissances sur un sujet</label></li>
+											<li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-0" value="0">&nbsp;<label for="stats-display-0">Pour résoudre les problèmes du domaine</label> </li>
+											<li class="closed"><input type="checkbox" name="stats-display[]" id="stats-display-1" value="1">&nbsp;<label for="stats-display-1">Pour s'exercer</label></li>                                         
+										</ul>
                             </li>
                         </ul>
-                         <div class="float-right" >
-                             <button type="button" class="grey" >Rechercher</button>
+                        <div class="clear"></div>
+						<div class="float-right" >
+                           <button type="submit" name="btn_search" class="grey" >Rechercher</button>
                          </div>
-
-                         <div class="clear"></div>
+						 
+				</form>
+						 <div class="clear"></div>
                 
 
                 </div></div>
@@ -219,76 +294,78 @@
  
         
         
-        <div class="block-controls">
-             <div class="controls-buttons">
+						<div class="block-controls">
+							<div class="controls-buttons">
                                         
 
                                             <!-- The class sub-hover removes the hover effect for the whole div -->
-                                            <div class="sub-hover">
-                                                    <a href="#" class="disabled">Libellé</a>
-                                                    <a href="#">Date</a>
-                                                    <a href="#">Domaine</a>
-                                                    <a href="#">Link 2</a>
-                                                    <a href="#">Link 2</a>
-                                            </div>
-                                           
-                                            
-                                    </div>
+								<div class="sub-hover">
+										<a href="#" class="disabled">Libellé</a>
+										{% if ordre=='dateCreation'  %} 
+										<input type="radio" name="trier" id="simple-radio-2" value="dateCreation" onClick="submit()"; checked >Date</input>
+										{% else %}
+										<input type="radio" name="trier" id="simple-radio-2" value="dateCreation" onClick="submit()";>Date</input>
+										{% endif%}
+										{% if ordre=='domaine'  %} 
+										<input  type="radio" name="trier" id="simple-radio-1" value="domaine" onClick="submit()"; checked >Domaine</input>
+										{% else %}
+										<input  type="radio" name="trier" id="simple-radio-1" value="domaine" onClick="submit()";>Domaine</input>
+										{% endif%}
+										{% if ordre=='titre'  %} 
+										<input  type="radio" name="trier" id="simple-radio-1" value="titre" onClick="submit()"; checked >Titre</input>
+										{% else %}
+										<input  type="radio" name="trier" id="simple-radio-1" value="titre" onClick="submit()";>Titre</input>
+										{% endif%}
+									
+									
+								</div>                    
+							</div>
 					
-					<ul class="controls-buttons">
-						
-						 
-                          <li><a href="#" title="Précédent"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png')}}" width="16" height="16"> Précédent</a></li>
-                                        <li><a href="#" title="Page 1"><b>1</b></a></li>
-                                        <li><a href="#" title="Page 2" class="current"><b>2</b></a></li>
-                                        <li><a href="#" title="Page 3"><b>3</b></a></li>
-                                        <li><a href="#" title="Page 4"><b>4</b></a></li>
-                                        <li><a href="#" title="Page 5"><b>5</b></a></li>
-                                        <li><a href="#" title="suivant">Suivant <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png')}}" width="16" height="16"></a></li>
-                                        <li class="sep"></li>   
-                        <li>
-                             <label for="show-empty">Trier par</label>
-                        </li>  
-                        <li class="sep"></li>                 
-					</ul>
+								<ul class="controls-buttons">
+
+									<li>
+										 <label for="show-empty">Trier par</label>
+									</li>  
+									<li class="sep"></li>                 
+								</ul>
                                        
 					
-				</div>
+						</div>
       
 
                 <!--fin recherche avancée-->	
                                
 
-                        </form>	<input type="texte"/>
+                        <!--</form>-->
                         {% for Fiche in Fiches %}
-                          {% if Fiche.statut==1  %}  
+                          {% if Fiche.statut==1  %}
                             <div class="task with-legend ">
 						
                                            <!-- The legend -->
                                            <div class="legend">
-												{% if Fiche.type=='document'  %}
+												{% if Fiche.type=='Document'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='excel'  %}
+												{% elseif Fiche.type=='Excel'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-excel.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='video'  %}
+												{% elseif Fiche.type=='Vidéo'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-film.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='flash'  %}
+												{% elseif Fiche.type=='Flash'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-flash-movie.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='image'  %}
+												{% elseif Fiche.type=='Image'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-image.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='audio'  %}
+												{% elseif Fiche.type=='Audio'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-music.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='pdf'  %}
+												{% elseif Fiche.type=='Pdf'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-pdf.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='word'  %}
+												{% elseif Fiche.type=='Word'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-word.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='ppt'  %}
+												{% elseif Fiche.type=='PPT'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-powerpoint.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='zip'  %}
+												{% elseif Fiche.type=='Zip'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-zipper.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='text'  %}
+												{% elseif Fiche.type=='Text'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-text.png')}}" width="16" height="16"/> 
-												{% elseif Fiche.type=='database'  %}
+												{% elseif Fiche.type=='Database'  %}
 													<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/database.png')}}" width="16" height="16"/> 
 													
 												{% endif   %}
@@ -336,12 +413,13 @@
 								<li><a href="{{ path('Ressources', { 'page': page }) }}"  title="Page {{ page }}"><b>{{ page }}</b></a></li>
 								{% endif %}
 								{% endfor %}
-								<li><a href="{{ path('Ressources', { 'page': next_page }) }}" title="suivant">Suivant <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png')}}" width="16" height="16"></a></li>
+								<li name="suiv" value="1"><a  title="suivant" href="{{ path('Ressources', { 'page': next_page }) }}">Suivant <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png')}}" width="16" height="16"></a></li>
+					
 								<li><a href="{{ path('Ressources', { 'page': last_page }) }}" title="derniére page"> <span> >| </span> </a></li>
 												 			</ul> <div class="clear"></div> <center><div class="pagination_desc" > 
 								 {% if last_page > 1 %}
 								 - page <strong>{{ current_page }}/{{ last_page }}</strong> {% endif %} -</div></center>
-											
+					</form>						
 						
 						<div class="clear"></div>
 					
@@ -351,7 +429,7 @@
                 </div>
 
         </section>
-        <!--fin section lioste des publications -->	
+        <!--fin section liste des publications -->	
 
 
 {% endblock %}

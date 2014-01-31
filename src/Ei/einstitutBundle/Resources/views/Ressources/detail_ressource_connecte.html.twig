@@ -23,26 +23,9 @@
 						<li ><span>Domaine : {{ Fiches.domaine }}</span></li>
 						<li ><span>Thème : {{ Fiches.theme }}</span></li>
 						<li ><span>Type : {{ Fiches.type }}</span></li>
-                                                <br>
-                                                <li style="width: 100px;text-align: center; margin: auto;"><div>	
-                                                        {% for i in 1..5 %}
-                                                            {% if i < sumNote %}
-                                                                <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"/>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                        {% if sumNote%2 == 1 %}
-                                                            <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-half.png') }}" width="16" height="16">
-                                                        {% endif %}
-                                                        {% for i in 1..5 %}
-                                                             {% if i > sumNote + 1%}
-                                                                 <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-empty.png') }}" width="16" height="16">
-                                                             {% endif %}
-                                                        {% endfor %}
-                                                    </div></li>
+						
 					</ul>
-                                    
-                                    
-                                    
+					</ul>
 				</div>
 					<p>{{ Fiches.resume }}</p>
 						<p> Adresse <a href="http://{{ Fiches.url }}" target="_blank" >{{ Fiches.url }}</a></p>
@@ -51,6 +34,7 @@
 							 {% for tag in Fiches.fiche_tags %}  <li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png')}}" width="16" height="16"> {{ tag.libelle }} </li>{% endfor %}
 							
 						</ul></p>
+					
 					<hr class="no-margin">
 					<div class="task with-legend">
 
@@ -61,21 +45,64 @@
 							Cette ressource a été estimée par le reseau pour : <br>
 							<dl><br>
 							<div class="grid_6">
-					{% for N in NotePreconisation %}  
-                                            <dt class=""><span class="number">{{ loop.index }}</span> {{ N.NomCritere }} </dt>
-                                            <dd><br>
-                                            <ul class="extended-options">
-                                                    <li>
-                                                            Annotation: <strong>{{ N.note|round(1, 'floor') }}/5</strong><br>
-                                                            <span class="progress-bar"><span style="width:{{ (N.note*20)|round(1, 'floor') }}%"></span></span>
-                                                    </li>
-                                            </ul>
-                                            </dd><br>
-                                        {% endfor %}
-                                                    
+					<dt class=""><span class="number">1</span> préparer ses cours</dt>
+					<dd><br>
+						<ul class="extended-options">
+							<li>
+								Tasks: <strong>5/9</strong><br>
+								<span class="progress-bar"><span style="width:56%"></span></span>
+							</li>
+							<li>
+								Rating: <strong>3.4</strong><br>
+								<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-half.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-empty.png') }}" width="16" height="16">
+							</li>
+						</ul>
+					</dd><br>
 					
+					<dt class="opened"><span class="number">2</span> préparer ses travaux dirigés</dt>
+					<dd><br>
+						<ul class="extended-options">
+							<li>
+								Tasks: <strong>5/9</strong><br>
+								<span class="progress-bar"><span style="width:56%"></span></span>
+							</li>
+							<li>
+								Rating: <strong>3.4</strong><br>
+								<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-half.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-empty.png') }}" width="16" height="16">
+							</li>
+						</ul>
+					</dd><br>
+					</div>
+					<div class="grid_6">
+					<dt class=""><span class="number">3</span> préparer ses expériences</dt>
+					<dd><br>
+						<ul class="extended-options">
+							<li>
+								Tasks: <strong>5/9</strong><br>
+								<span class="progress-bar"><span style="width:56%"></span></span>
+							</li>
+							<li>
+								Rating: <strong>3.4</strong><br>
+								<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png')}}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png')}}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-half.png')}}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-empty.png')}}" width="16" height="16">
+							</li>
+						</ul>
+					</dd><br>
 					
+					<dt class=""><span class="number">4</span> préparer ses exposés scientifiques</dt>
+					<dd><br>
+						<ul class="extended-options">
+							<li>
+								Tasks: <strong>5/9</strong><br>
+								<span class="progress-bar"><span style="width:56%"></span></span>
+							</li>
+							<li>
+								Rating: <strong>3.4</strong><br>
+								<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-half.png') }}" width="16" height="16"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/star-empty.png') }}" width="16" height="16">
+							</li>
+						</ul>
+					</dd>
 					
+					</div>
 				</dl>
 			
 					

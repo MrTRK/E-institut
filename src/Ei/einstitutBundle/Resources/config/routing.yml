@@ -6,14 +6,6 @@ Espace_Personnel:
     pattern:  /espace_Personnel
     defaults: { _controller: EieinstitutBundle:Default:espace_Personnel }
 
-Ressources:
-    pattern:  /ressources{page}
-    defaults: { _controller: EieinstitutBundle:Default:ressources,page:1 }
-
-Ressources_Ajouter:
-    pattern:  /ajouter_ressource
-    defaults: { _controller: EieinstitutBundle:Default:ajouter_ressource }
-
 
 Forum:
     pattern:  /forum
@@ -73,6 +65,13 @@ Nouveau_message:
 Repondre:
     pattern:  /repondre_message
     defaults: { _controller: EieinstitutBundle:Default:repondre_message }
+
+# Ressources
+
+
+
+################################################################################
+
 
 # footer routes
 Footer_:

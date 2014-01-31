@@ -18,28 +18,53 @@
 	
 	<nav id="main-nav">
 		<ul class="container_12">
-			<li class="accueil current"><a href="{{path('eieinstitut_homepage')}}" title="">Accueil</a></li>
-                        {% if app.user %}
-			<li class="users" title="Espace personnel"><a href="{{ path('Espace_Personnel') }}" title="">Espace personnel</a></li>
+                        {% set CurrentMenu = app.session.get('CurrentMenu') %}
+                        {% set index = '' %}
+                        {% set EspacePersonnel = '' %}
+                        {% set Ressources = '' %}
+                        {% set TutorielsEnLigne = '' %}
+                        {% set Annuaire = '' %}
+                        {% set Forum = '' %}
+                        {% set Actualites = '' %}
+                        
+                        {% if  CurrentMenu == 'index'  %}
+                            {% set index = 'current' %}
+                        {% elseif CurrentMenu == 'EspacePersonnel' %}
+                            {% set EspacePersonnel = 'current' %}
+                        {% elseif CurrentMenu == 'Ressources' %}
+                            {% set Ressources = 'current' %}
+                        {% elseif CurrentMenu == 'TutorielsEnLigne' %}
+                            {% set TutorielsEnLigne = 'current' %}
+                        {% elseif CurrentMenu == 'Annuaire' %}
+                            {% set Annuaire = 'current' %}
+                        {% elseif CurrentMenu == 'Forum' %}
+                            {% set Forum = 'current' %}
+                        {% elseif CurrentMenu == 'Actualites' %}
+                            {% set Actualites = 'current' %}
+                        
                         {% endif %}
-			<li class="medias" title="Ressources"><a href="{{ path('Ressources') }}" title="">Ressources</a>
+			<li class="accueil {{ index }}"><a href="{{path('eieinstitut_homepage')}}" title="">Accueil</a></li>
+                        {% if app.user %}
+			<li class="users {{ EspacePersonnel }}" title="Espace personnel"><a href="{{ path('Espace_Personnel') }}" title="">Espace personnel</a></li>
+                        {% endif %}
+			<li class="medias {{ Ressources }}" title="Ressources"><a href="{{ path('Ressources') }}" title="">Ressources</a>
                             <ul>
                                 <li><a href="{{ path('Ressources') }}" title="Articles">Ressources</a></li>
                                 <li><a href="{{ path('Ressources_Ajouter') }}" title="Add article">Ajouter Ressource</a></li>
                             </ul>
                         </li>
                         {% if app.user %}
-			<li class="comments" title="Tutoriels en ligne"><a href="#" title="">Tutoriels en ligne</a>
+			<li class="comments {{ TutorielsEnLigne }}" title="Tutoriels en ligne"><a href="#" title="">Tutoriels en ligne</a>
                             <ul>
                                 <li><a href="#" title="Articles">TBI & Visio</a></li>
                                 <li><a href="#" title="Add article">Tutoriels en cours</a></li>
                                 <li><a href="#" title="Add article">Demande en cours</a></li>
                             </ul>
                         </li>
-			<li class="contacts" title="Annuaire"><a href="{{ path('Annuaire') }}" title="">Annuaire</a></li>
+			<li class="contacts {{ Annuaire }}" title="Annuaire"><a href="{{ path('Annuaire') }}" title="">Annuaire</a></li>
                         {% endif %}
-			<li class="settings" title="Forum"><a href="{{ path('Forum') }}" title="">Forum</a></li>
-                        <li class="write"><a href="#" title="Actualités">Actualités</a></li>
+			<li class="settings {{ Forum }}" title="Forum"><a href="{{ path('Forum') }}" title="">Forum</a></li>
+                        <li class="write {{ Actualites }}"><a href="{{ path('actualite') }}" title="Actualités">Actualités</a></li>
 		</ul>
 	</nav>
 		
@@ -61,30 +86,30 @@
 	<!-- Status bar -->
 	<div id="status-bar">
 		<div class="container_12">
-
+                        {% set messages = app.session.get('messages') %}
 			<ul id="status-infos">
                             {% if app.user %}
                             <li class="spaced">Bonjour  <strong>{{ app.user.username }}</strong></li>
                            
                                 
 			<li>
-				<a href="#" class="button" title="2 messages"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" width="16" height="16"> <strong>2</strong></a>
+				<a href="#" class="button" title="{{ messages|length }} messages"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png')}}" width="16" height="16"> <strong>{{ app.session.get('msg') }}</strong></a>
 				<div id="messages-list" class="result-block" style="display: none;">
 					<span class="arrow"><span></span></span>
 					
 					<ul class="small-files-list icon-mail relative" style="overflow: hidden;">
+						{% for msg in messages %}
 						<li>
-							<a href="#"><strong>10:15</strong> Please update...<br>
-							<small>From: System</small></a>
+							<a href="#">
+							<strong>{{msg.dateMessage|date('H:II')}}</strong>
+							{{msg.objet}}<br>
+							<small>De : {{msg.messagesuser.username}}</small></a>
 						</li>
-						<li>
-							<a href="#"><strong>Yest.</strong> Hi<br>
-							<small>From: Jane</small></a>
-						</li>
+						{% endfor %}
 						
 					</ul>
 					
-					<p id="messages-info" class="result-info"><a href="#">Voir ma messagerie</a></p>
+					<p id="messages-info" class="result-info"><a href="#">Boîte de réception</a></p>
 				</div>
 			</li>
 			<li>
