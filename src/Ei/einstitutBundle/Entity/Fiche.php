@@ -190,9 +190,10 @@ class Fiche
      */
     public function setTheme($theme)
     {
+         $this->theme = $theme;
         return $this->theme;
     }
-
+    
 
     /**
      * Get id
