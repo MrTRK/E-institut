@@ -4,10 +4,8 @@ security:
 
     role_hierarchy:
         ROLE_USAGER      :   ROLE_USER
-        ROLE_INSTITUTION :   ROLE_USER
         ROLE_ADMIN       :   
             - ROLE_ADMIN
-            - ROLE_INSTITUTION
             - ROLE_USAGER
         ROLE_SUPER_ADMIN :
             - ROLE_ADMIN
@@ -39,4 +37,5 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/hello, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/user, role: ROLE_USAGER }
 
