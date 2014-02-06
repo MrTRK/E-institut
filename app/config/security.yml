@@ -4,6 +4,9 @@ security:
 
     role_hierarchy:
         ROLE_USAGER      :   ROLE_USER
+        ROLE_CONTRIBUTEUR:
+            - ROLE_USER
+            - ROLE_USAGER
         ROLE_ADMIN       :   
             - ROLE_ADMIN
             - ROLE_USAGER
