@@ -261,8 +261,6 @@ class TutorielsEnLigne
      public function __construct()
     {
 
-        $this->tutoriel_enligne_tag = new ArrayCollection();   
-        parent::__construct();
-        // your own logic
+        $this->tutoriel_enligne_tag = new \Doctrine\Common\Collections\ArrayCollection();  
     }
 }
