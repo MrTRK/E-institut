@@ -89,7 +89,14 @@
                         {% set messages = app.session.get('messages') %}
 			<ul id="status-infos">
                             {% if app.user %}
+                                
                             <li class="spaced">Bonjour  <strong>{{ app.user.username }}</strong></li>
+                            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_CONTRIBUTEUR')  %}
+                            <li class="spaced">
+                             <a href="{{ path('ei_administration_homepage') }}" class="button red"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/application-blog.png')}}" width="16" height="16"> Administration</a>
+			
+                            </li>
+                            {% endif %}
                            
                                 
 			<li>
@@ -149,5 +156,17 @@
 	
 	<div id="header-shadow"></div>
 	<!-- End header -->
+
 	
+	<!-- Always visible control bar 
+	<div id="control-bar" class="grey-bg clearfix"><div class="container_12">
 	
+		<div class="float-left">
+			<button type="button"><img src="" width="16" height="16"> Accueil E-INSTITUT</button>
+		</div>
+		
+		<div class="float-right"> 
+			
+		</div>
+			
+	</div></div>-->
