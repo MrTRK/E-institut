@@ -1,4 +1,4 @@
-{% extends "EiAdministrationBundle::Master-Base-Contribu.html.twig" %}
+{% extends "EiAdministrationBundle::Master-Base-Admin.html.twig" %}
 
 {% block title %}
      {{ parent() }}   | Modifier Actualité
@@ -68,13 +68,11 @@
 						
 					</p>
 					
-					<div class="float-right"><br>
-						<button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/newspaper.png') }}" width="16" height="16"> Prévisualiser</button>
-						<button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"> Annuler</button>
+					<div class="float-right">
 						<button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png') }}" width="16" height="16"> Enregistrer</button>
 											
 					</div>
-				
+				<div class="clear"></div>
 			</form>
         {% endfor %}
 			</div>

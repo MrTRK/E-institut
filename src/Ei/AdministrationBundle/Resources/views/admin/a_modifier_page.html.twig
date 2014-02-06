@@ -14,9 +14,9 @@
 <section class="grid_9">			   	
 
         <div class="block-border"> 
-            <div class="block-content"> <h1>Ajouter la page</h1>								
+            <div class="block-content"> <h1>Modifier la page</h1>								
                 <div class="block-border" id="status-bar">				
-		<a href="javascript:void(0)" class="button" title=""> <strong>Toutes les pages</strong></a>
+		<a href="{{ path('ei_administration_page') }}" class="button" title=""> <strong>Toutes les pages</strong></a>
 			
 		<span class="float-left">Modifier page</span>
                 </div>
@@ -25,41 +25,55 @@
 	<br><br>
         
         <div class="block-content">
-					
-					<form class="block-content form" id="simple_form" method="post" action="#">
-				
-								
+                               
+			<form class="block-content form" id="simple_form" method="post" action="{{ path('modifier_page', {'id': page.id }) }}">
+				{% set etat = '0' %}   
+                                {% set titre = '' %}  
+                                {% set description = '' %} 
+                                {% set contenu = '' %} 
+                                {% set rubriquesPage = '' %}                         
+                                {% set dateCreation = '' %}  
+                        {% if page is not null %}
+                                 {% set etat = page.etat %}
+                                 {% set titre = page.titre %}
+                                 {% set description = page.description %}
+                                 {% set contenu = page.contenu %}
+                                 {% set rubriquesPage = page.rubriquesPage %}
+                        {% endif %} 
+                                
 				<div class="columns">
 				
 							<p class="colx2-left">
 								
-								
-							
-								
-								<span class="label required">
+							<span class="label">
+                                    <b>Activé</b>
+                                </span>
+                                 <input type="checkbox" name="etat" id="enabled" value="1" class="mini-switch with-tip" title="Enable/disable switch" checked="checked"/>
+       	
+						<span class="label required">
 									Titre
-								</span>
-									<input type="text" name="complex-fr-subtitle" id="complex-fr-subtitle" value="" class="full-width">
+						</span>
+									<input type="text" name="titre" id="complex-fr-subtitle" value="{{titre}}" class="full-width">
 							<br><br>
 							<span class="label required">
 									Description
 								</span>
-									<input type="text" name="complex-fr-subtitle" id="complex-fr-subtitle" value="" class="full-width">
+									<input type="text" name="description" id="complex-fr-subtitle" value="{{description}}" class="full-width">
 							
 						
 							
 							
 							
 							</p>
-							<p class="colx2-right">
+                                                        <p class="colx2-right">
 							<span class="label required">
 									Rubrique
 								</span>
 							
-									<select name="table-action" id="table-action" class="small">
-										<option value="">E-institut</option>
-										<option value="publie">Légales</option>
-										<option value="corbeille">Aide</option>
+									<select name="rubriquesPage" id="table-action" class="small">
+                                                                            {% for RP in RubriquePage%}
+										<option value="{{ RP.id }}">{{ RP.nom }}</option>
+                                                                            {%endfor%}
 									</select>
 								
 								</p>	
@@ -69,16 +83,17 @@
 						<span class="label required">
 							Contenu
 						</span>
-						<textarea ></textarea>
+						<textarea name="contenu" >
+                                                {{contenu}}
+                                                </textarea>
 						
 										
 						<br><br>
 									
 					<div class="float-right"><br>
 						<button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/newspaper.png') }}" width="16" height="16"> Prévisualiser</button>
-						<button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"> Annuler</button>
-						<button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png') }}" width="16" height="16"> Enregistrer</button>
-											
+                                                <a href="{{ path('ei_administration_page') }}"> <button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"> Annuler</button></a>
+						<button type="submit" name="btn_save"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png') }}" width="16" height="16"> Enregistrer</button>					
 					</div>
 				
 			</form>

@@ -11,42 +11,29 @@
 
 {% endblock %}
 {% block content %}
-   
+     
      
  <section class="grid_9">
-			<div class="fieldset with-legend grey-bg ">		      
-					<div class="legend">Ajouter un tutoriel</div>
-					
-                                        <div class="block-border" id="status-bar">
-	
-		<a href="javascript:void(0)" class="button" title=""> <strong>Toutes les tutoriel</strong></a>
-			
-			<span class="float-left">Ajouter un tutoriel</span>
-	
-	</div>			
-						<br><br>																	
-						<form class="block-content form" id="tab-stats" method="post" action="">
-							
+			<div class="block-border">
+			    <div class="block-content">			      
+					<div class="block-controls">
+								<h1>Ajouter un tutoriel </h1>  <br><br>
+								
+					</div>																		
+						<form class="form" id="tab-stats" method="post" action="">
+							<fieldset class="grey-bg">
 							<h3>Informations : </h3><br><br>
-								<!--<legend><a href="#">Recherche avancée</legend>-->
+								<!--<legend><a href="#">Recherche avanc閑</legend>-->
 										<span  class="label required">
 											Titre 
 										</span>
-								<input id="complex-fr-subtitle" class="full-width" type="text" value="" name="nom"> <br><br>
+								<input id="complex-fr-subtitle" class="full-width" type="text" value="" name="titre"></input> <br><br>
 										<span  class="label required">
 											Description
 										</span>
 										
 										<textarea id="editable" class="full-width" rows="10" cols="7" name="description">
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
+										Une bonne description de votre tutoriel serait un plus pour les utilisateurs.
 											
 										</textarea><br><br>
 							
@@ -58,34 +45,50 @@ At w3schools.com you will learn how to make a website. We offer free tutorials i
 								<input id="complex-fr-subtitle" class="full-width" type="text" value="" name="tags"> <br><br>
 								
 							</p>
+
+
+							<select data-placeholder="Choose a Tags..." class="chosen-select" multiple style="width:100%;" >
+					            <option value=""></option>
+					            <option value="Tag">Tag</option>
+								<option value="Tag">Tag</option>
+								<option value="Tag">Tag</option>
+								<option value="Tag">Tag</option>
+								<option value="Tag">Tag</option>
+			
+          					</select>
 					</div>		
 							
 					<div class="columns">
 						<p class="colx2-left">
 							<span  class="label required"> Domaine </span>
 					<select class="full-width" name="Domaine" id="stats-sites-0" >
-						<option value="0">Informatique</option>
-						<option value="0">Economie</option>
+						<option value="Informatique">Informatique</option>
+						<option value="Economie">Economie</option>
 					</select><br><br>	
 						</p>
 						<p class="colx2-right">
 						
-						<span  class="label required"> Théme</span>
+						<span  class="label required"> Th閙e</span>
 					<select class="full-width" name="theme" id="stats-sites-0">
-						<option value="0">Développemnt</option>
-						<option value="0">Réseau</option>
+						<option value="D関eloppemnt">D関eloppemnt</option>
+						<option value="">R閟eau</option>
 					</select><br><br>
 						</p>
 					</div>															
-						<span  class="label required"> Options</span>
-						<input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-1" value="1">&nbsp;<label for="simple-checkbox-1">Audio</label> 
-						<input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-2" value="1">&nbsp;<label for="simple-checkbox-2">Video</label> 
-						<input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-3" value="1">&nbsp;<label for="simple-checkbox-3">Tableau blanc</label> 
+						<span  class="label required"> Type</span>
+						<input type="radio" name="TypeTuto" id="simple-checkbox-2" value="1">&nbsp;<label for="simple-checkbox-2"> Tableau blanc </label> 
+						<input type="radio" name="TypeTuto" id="simple-checkbox-3" value="2">&nbsp;<label for="simple-checkbox-3">Visio Conf閞ence</label> 
 						<br><br>	
 					<span class="label required">
 									Date
 						</span>
-					<span class="input-type-text margin-right relative"><input type="text" name="simple-calendar" id="simple-calendar" value="" class="datepicker"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/calendar-month.png') }}" width="16" height="16"></span>
+					<span class="input-type-text margin-right relative">
+					<input type="text" name="simple-calendar" id="simple-calendar" value="" class="datepicker"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/calendar-month.png') }}" width="16" height="16">
+					</span>
+
+
+
+
 					
 				<span  class="label required">Heure</span>
 					<select  name="theme" id="stats-sites-0">
@@ -106,12 +109,12 @@ At w3schools.com you will learn how to make a website. We offer free tutorials i
 						
 			<div class="float-right"><br>
 			<button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png') }}" width="16" height="16"> Annuler</button>
-			<button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png') }}" width="16" height="16"> Enregistrer</button>
+			<button type="submit" name="btn_save" ><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png') }}" width="16" height="16"> Enregistrer</button>
 								
 			</div>
 				
 			</div>						
-					
+							</fieldset>
 					
 					
 		</section>

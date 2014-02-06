@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>
             {% block title %}
-                E-institut 
+                Administration E-institut 
             {% endblock %}
 	</title>
 	<meta name="description" content="">
@@ -51,7 +51,7 @@ tinymce.init({
         plugins: [
                 "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
                 "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                "table contextmenu directionality emoticons template textcolor paste fullpage textcolor"
+                "table contextmenu directionality emoticons template textcolor paste textcolor"
         ],
         toolbar1: "bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
         toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | code | forecolor backcolor",
@@ -94,7 +94,7 @@ tinymce.init({
 		<ul id="status-infos">
 			<li class="spaced">Bonjour: <strong>Administrator</strong></li>
 			<li>
-				<a href="#" class="button" title="5 messages"><img src="images/icons/fugue/mail.png" width="16" height="16"> <strong>5</strong></a>
+				<a href="#" class="button" title="5 messages"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/mail.png') }}" width="16" height="16"> <strong>5</strong></a>
 				<div id="messages-list" class="result-block" style="display: none;">
 					<span class="arrow"><span></span></span>
 					
@@ -103,7 +103,6 @@ tinymce.init({
 							<a href="#"><strong>10:15</strong> Please update...<br>
 							<small>From: System</small></a>
 						</li>
-					
 					</ul>
 					
 					<p id="messages-info" class="result-info"><a href="#">Voir tous les mails »</a></p>

@@ -1,4 +1,4 @@
-{% extends "EiAdministrationBundle::Master-Base-Contribu.html.twig" %}
+{% extends "EiAdministrationBundle::Master-Base-Admin.html.twig" %}
 {% block title %}
      {{ parent() }}   | Lister actualite
 {% endblock %}
@@ -23,7 +23,7 @@
 			
 			<div class="block-border" id="status-bar">
 	
-		<a href="javascript:void(0)" class="button" title="Ajouter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png') }}" width="16" height="16"> <strong>Ajouter</strong></a>
+		<a href="{{ path('ajouter_actualite') }}" class="button" title="Ajouter"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/plus-circle.png') }}" width="16" height="16"> <strong>Ajouter</strong></a>
 		
 			
 			<span class="float-left">Toutes les actualités </span>
@@ -38,17 +38,7 @@
 				
 				<div class="block-controls">
 					
-					<ul class="controls-buttons">
-						<li><a href="javascript:void(0)" title="Previous"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-180.png') }}" width="16" height="16"> Prev</a></li>
-						<li><a href="javascript:void(0)" title="Page 1"><b>1</b></a></li>
-						<li><a href="javascript:void(0)" title="Page 2" class="current"><b>2</b></a></li>
-						<li><a href="javascript:void(0)" title="Page 3"><b>3</b></a></li>
-						<li><a href="javascript:void(0)" title="Page 4"><b>4</b></a></li>
-						<li><a href="javascript:void(0)" title="Page 5"><b>5</b></a></li>
-						<li><a href="javascript:void(0)" title="Next">Next <img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation.png') }}" width="16" height="16"></a></li>
-						<li class="sep"></li>
-						<li><a href="javascript:void(0)"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/arrow-circle.png') }}" width="16" height="16"></a></li>
-					</ul>
+					
 					
 				</div>
 			
@@ -142,24 +132,37 @@
      
      <script>
     
-    function SupprimerActualite(id)
-    {
-        var confirmation=confirm("Voulez-vous supprimer:"+id);
-        if (confirmation){
-            console.log("test supp",id);
-            $.post(
-                    "{{ path('supprimer_actualite') }}",
-                    {idActualite:id},
-                        function(result){
-                            console.log("bien jouer");
-                            //location.reload();
-                            //$('html').load('{{ path('liste_actualite') }}');
-                            });
-          //action à faire pour la valeur true 
-        }else{
-          //action à faire pour la valeur false
-        }
-    }
+    //Delete Modal
+            function SupprimerActualite(id)
+            {
+                    $.modal({
+                            content: 'Voulez-vous supprimer cet actualité ?'
+                                              ,
+                            title: 'Confirmation',
+                            maxWidth: 300,
+                            buttons: {
+                                    'Confirmer': function(win) 
+                                    { 
+                                       console.log("Entrer ");
+                                    // Action 
+                                    $.post(
+                                        "{{ path('supprimer_actualite') }}",
+                                        {idActualite:id},
+                                            function(result){
+                                                console.log("bien jouer");
+                                                location.reload();
+                                                //$('html').load('{{ path('liste_actualite') }}');
+                                                });
+                                    
+                                    
+                                     },
+                                    'Annuler': function(win) { win.closeModal(); }
+                            }
+                    });
+            }
+    
+    
+   
     </script> 
     
 
