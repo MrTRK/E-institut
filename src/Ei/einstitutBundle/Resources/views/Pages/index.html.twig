@@ -1,7 +1,7 @@
 {% extends "EieinstitutBundle::Master-Base.html.twig" %}
 
 {% block title %}
-Accueil | {{ parent() }}
+Bienvenue ! | {{ parent() }}
 {% endblock %}
 {% block content %}
 
@@ -17,14 +17,19 @@ Accueil | {{ parent() }}
              
             
              
-                            <div class="block-content no-title no-margin">
+                       <div class="block-content no-title no-margin">
                         <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
-                            <div data-thumb="{{ asset('bundles/eieinstitut/images/slides/thumbs/bridge.jpg')}}" data-src="{{ asset('bundles/eieinstitut/images/slides/bridge.jpg')}}">
-                                <div class="camera_caption fadeFromBottom">
+                            <div data-thumb="{{ asset('bundles/eieinstitut/images/slides/thumbs/slide1-small.jpg')}}" data-src="{{ asset('bundles/eieinstitut/images/slides/slide1.jpg')}}">
+                                <!--<div class="camera_caption fadeFromBottom">
                                     Camera is a responsive/adaptive slideshow. <em>Try to resize the browser window</em>
-                                </div>
+                                </div>-->
                             </div>
-                            <div data-thumb="{{ asset('bundles/eieinstitut/images/slides/thumbs/leaf.jpg')}}" data-src="{{ asset('bundles/eieinstitut/images/slides/leaf.jpg')}}">
+                            <div data-thumb="{{ asset('bundles/eieinstitut/images/slides/thumbs/slide2-small.jpg')}}" data-src="{{ asset('bundles/eieinstitut/images/slides/slide2.jpg')}}">
+                                <!--<div class="camera_caption fadeFromBottom">
+                                    Camera is a responsive/adaptive slideshow. <em>Try to resize the browser window</em>
+                                </div>-->
+                            </div>
+                            <!--<div data-thumb="{{ asset('bundles/eieinstitut/images/slides/thumbs/leaf.jpg')}}" data-src="{{ asset('bundles/eieinstitut/images/slides/leaf.jpg')}}">
                                 <div class="camera_caption fadeFromBottom">
                                     It uses a light version of jQuery mobile, <em>navigate the slides by swiping with your fingers</em>
                                 </div>
@@ -36,7 +41,7 @@ Accueil | {{ parent() }}
                                 <div class="camera_caption fadeFromBottom"> 
                                     Camera slideshow provides many options <em>to customize your project</em> as more as possible
                                 </div>
-                            </div>
+                            </div>-->
                             
                         </div>
                         <!-- #camera_wrap_1 -->
@@ -44,8 +49,14 @@ Accueil | {{ parent() }}
                         
                             
                     
-                        <h3>E- INSTITUT</h3>
-                            Espace Numérique Académique Unifié (ENAU)
+                        <h3>E- INSTITUT</h3><h4>Espace Numérique Académique Unifié (ENAU)</h4>
+                            
+                        <br>
+                            
+                            <p>E-institut est une initiative du réseau Ramses, le Réseau Africain pour la Mutualisation et le Soutien des pôles d'Excellence Scientifique.
+                                    </p>
+                             <p>Il a vocation à proposer aux établissements d'enseignement supérieur d'Afrique sub-saharienne une plateforme en ligne dédiée à l'éducation, au partage des savoirs et à la scolarité.
+                            </p>
                         <!-- Tags -->
                         
 
@@ -263,7 +274,7 @@ Accueil | {{ parent() }}
         <div class="block-content no-title">
 
 
-            <h2>Evenement</h2>
+            <h2>Evenements tutoriel en ligne</h2>
 
             <!-- With the class no-margin -->
             <ul class="message no-margin"></ul>
@@ -281,7 +292,7 @@ Accueil | {{ parent() }}
                                                 {% set day     = 'Now'|date('d') %}
                                                 {% set LastDay = 'Now'|date('t') %}
                                                 {% set CalcDay = 0  %}
-                                                {% for i in 1..7 %}
+                                                {% for i in 1..5 %}
                         <tr class="empty">
                                                     {% set CalcDay = day + i - 1  %}
                                                         {% if CalcDay > LastDay %}

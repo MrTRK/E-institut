@@ -1,0 +1,94 @@
+{% extends "EieinstitutBundle::Master-Base.html.twig" %}
+{% block title %}
+     inscription | {{ parent() }}   
+{% endblock %}
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
+{% block content %}
+<section class="grid_3"></section>    
+<section class="grid_6">
+    <div class="block-border">
+        <div class="block-content">
+            <div class="block-controls">
+                <h1>Inscription </h1><br><br>
+            </div>
+
+          
+                <form class="form" id="form1" method="post" action="{{ path('inscription') }}">
+                    <fieldset class="grey-bg">
+                    <legend>Vos informations</legend>
+                    <div class="colx4-left-double required">
+                        <label for="complex-fr-title">Nom</label>
+                        <span class="relative">
+                            <input type="text" name="nom" id="complex-fr-title" value="" class="full-width">
+                           
+                        </span>
+                    </div><br>
+                    <div class="colx4-right-double required">
+                        <label for="complex-fr-title">Prénom</label>
+                        <span class="relative">
+                            <input type="text" name="prenom" id="complex-fr-title" value="" class="full-width">
+                            
+                        </span>
+                    </div><br>
+                    <div class=" required">
+                        <label for="complex-fr-title">Adresse mail</label>
+                        <span class="relative">
+                            <input type="text" name="email" id="complex-fr-title" value="" class="full-width">
+                            
+                        </span>
+                    </div>
+                </fieldset>
+                <fieldset class="grey-bg">
+                    <legend>Votre compte</legend>
+                    <div class=" required">
+                        <label for="complex-fr-title">Identifiant</label>
+                        <span class="relative">
+                            <input type="text" name="username" id="complex-fr-title" value="" class="full-width">
+                            
+                        </span>
+                    </div><br>
+                    <div class=" required">
+                        <label for="complex-fr-title">Mot de passe</label>
+                        <span class="relative">
+                            <input type="text" name="password" id="complex-fr-title" value="" class="full-width">
+                            
+                        </span>
+                    </div><br>
+                    <div class=" required">
+                        <label for="complex-fr-title">Confirmer le mot de passe</label>
+                        <span class="relative">
+                            <input type="text" name="confirmer_password" id="complex-fr-title" value="" class="full-width">
+                            
+                        </span>
+                    </div>
+                
+
+<br><br><br>
+                    <input type="checkbox" name="simple-checkbox[]" id="simple-checkbox-1" value="1">
+                    &nbsp;  <label for="simple-checkbox-1">J'ai lu et j'accepte les <a href="{{ path('Legal_Condition') }}" > Conditions d'utilisations </a></label> <br><br><br>
+                    
+                    
+                    <div class="float-right"><br>
+
+                        <button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/cross-circle.png')}}" width="16" height="16"> Annuler</button>
+                        <button type="submit" name="btn_valider"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png')}}" width="16" height="16"> Enregistrer</button>
+                    </div>
+                </fieldset>
+                </form>
+                
+        </div>	
+    </div>				
+</section>
+<section class="grid_3"></section>    
+{% endblock %}
+
+{% block javascripts_Bottom %}
+
+{% endblock %}

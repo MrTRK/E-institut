@@ -3,7 +3,7 @@ eieinstitut_homepage:
     defaults: { _controller: EieinstitutBundle:Default:index }
 
 Espace_Personnel:
-    pattern:  /espace_Personnel
+    pattern:  /user/espace_personnel
     defaults: { _controller: EieinstitutBundle:Default:espace_Personnel }
 
 
@@ -12,26 +12,8 @@ Forum:
     defaults: { _controller: EieinstitutBundle:Default:forum }
 
 Annuaire:
-    pattern:  /annuaire
+    pattern:  /user/annuaire
     defaults: { _controller: EieinstitutBundle:Default:annuaire }
-
-
-
-eieinstitut_admin:
-    pattern:  /admin
-    defaults: { _controller: EieinstitutBundle:Default:admin }
-
-Page:
-    pattern:  /page
-    defaults: { _controller: EieinstitutBundle:Default:page }
-
-espace_personnel:
-    pattern:  /espace_personnel
-    defaults: { _controller: EieinstitutBundle:Default:espace_personnel }
-
-Test:
-    pattern:  /test_page
-    defaults: { _controller: EieinstitutBundle:Default:test_page }
 
 Recus:
     pattern:  /messages_recus

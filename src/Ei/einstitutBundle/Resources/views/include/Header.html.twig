@@ -1,5 +1,5 @@
 	<!-- Header -->
-	<a href="#"><img style="float:left;padding-left:10%;padding-top:5px;" src="{{ asset('bundles/eieinstitut/images/logo_s2.png')}}" width="231" height="91"></a>
+	<a href="{{ path('eieinstitut_homepage')}}"><img style="float:left;padding-left:10%;padding-top:5px;" src="{{ asset('bundles/eieinstitut/images/logo_s2.png')}}" width="231" height="91"></a>
 	<!-- Server status -->
 	<header>
             
@@ -48,18 +48,18 @@
 			<li class="users {{ EspacePersonnel }}" title="Espace personnel"><a href="{{ path('Espace_Personnel') }}" title="">Espace personnel</a></li>
                         {% endif %}
 			<li class="medias {{ Ressources }}" title="Ressources"><a href="{{ path('Ressources') }}" title="">Ressources</a>
-                            <ul>
-                                <li><a href="{{ path('Ressources') }}" title="Articles">Ressources</a></li>
-                                <li><a href="{{ path('Ressources_Ajouter') }}" title="Add article">Ajouter Ressource</a></li>
-                            </ul>
+                           <!-- <ul>
+                                <li><a href="#" title="Articles">Ressources</a></li>
+                                <li><a href="#" title="Add article">Ajouter Ressource</a></li>
+                            </ul>-->
                         </li>
                         {% if app.user %}
 			<li class="comments {{ TutorielsEnLigne }}" title="Tutoriels en ligne"><a href="#" title="">Tutoriels en ligne</a>
-                            <ul>
+                            <!--<ul>
                                 <li><a href="#" title="Articles">TBI & Visio</a></li>
                                 <li><a href="#" title="Add article">Tutoriels en cours</a></li>
                                 <li><a href="#" title="Add article">Demande en cours</a></li>
-                            </ul>
+                            </ul>-->
                         </li>
 			<li class="contacts {{ Annuaire }}" title="Annuaire"><a href="{{ path('Annuaire') }}" title="">Annuaire</a></li>
                         {% endif %}
@@ -113,11 +113,11 @@
 				</div>
 			</li>
 			<li>
-				<a href="#" class="button" title="2 comments"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/balloon.png')}}" width="16" height="16"> <strong>2</strong></a>
+				<a href="#" class="button" title="2 comments"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/balloon.png')}}" width="16" height="16"> <strong>{{ app.session.get('notif') }}</strong></a>
 				<div id="comments-list" class="result-block">
 					<span class="arrow"><span></span></span>
 					
-					<ul class="small-files-list icon-comment">
+					<!--<ul class="small-files-list icon-comment">
 						<li>
 							<a href="#"><strong>Jane</strong>: I don't think so<br>
 							<small>On <strong>Post title</strong></small></a>
@@ -127,15 +127,15 @@
 							<small>On <strong>Post title</strong></small></a>
 						</li>
 											
-					</ul>
+					</ul>-->
 					
-					<p id="comments-info" class="result-info"><a href="#">Voir tous les commentaires</a></p>
+					<p id="comments-info" class="result-info"><a href="#">Voir tous les notifications</a></p>
 				</div>
 			</li>
 			
                         <li><a href="{{ path('logout') }}" class="button red" title="Déconnexion"><span class="smaller">Déconnexion</span></a></li>
                         {% else %}
-                            <li><a href="#" onclick="inscriptionModal(); return false;" class="button grey" title="Inscription"><span class="smaller">Inscription</span></a></li>
+                            <li><a href="{{ path('inscription') }}"  class="button grey" title="Inscription"><span class="smaller">Inscription</span></a></li>
                             <li><a href="{{ path('login') }}"  class="button red" title="Connexion"><span class="smaller">Connexion</span></a></li>
                          {% endif %}
 		</ul>

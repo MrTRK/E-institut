@@ -5,6 +5,7 @@ namespace Ei\einstitutBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ei\einstitutBundle\Entity\Preconisation;
 use Ei\einstitutBundle\Entity\CriterePreconisation;
+use Ei\einstitutBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class DefaultController extends Controller {
@@ -22,26 +23,29 @@ class DefaultController extends Controller {
                 ->getRepository('EieinstitutBundle:fiche')
                 ->createQueryBuilder('f')
                 ->addOrderBy('f.dateCreation', 'DESC')
-                ->setMaxResults(4)
+                ->setMaxResults(3)
                 ->getQuery()
                 ->getResult();
         //Messages Notif
         $UserConnected = $this->get('security.context')->getToken()->getUser();
-        $query = $this->getDoctrine()
-                ->getManager()
-                ->createQuery("SELECT m,u FROM EieinstitutBundle:Messages m JOIN m.users u WHERE u.id = :user and m.etat = 0")
-                ->setParameter('user', $UserConnected->getId());
+        $messages_recus = null;
 
-        $messages_recus = $query->getResult();
+        if ($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $query = $this->getDoctrine()
+                    ->getManager()
+                    ->createQuery("SELECT m,u FROM EieinstitutBundle:Messages m JOIN m.users u WHERE u.id = :user and m.etat = 0")
+                    ->setParameter('user', $UserConnected->getId());
 
+            $messages_recus = $query->getResult();
+        }
         $NbrMsg = count($messages_recus);
-
+        $Nbrnotif = 0;
         $session = new Session();
 
         $session->set('msg', $NbrMsg);
-        
+        $session->set('notif', $Nbrnotif);
         $session->set('CurrentMenu', 'index');
-        
+
         $session->set('messages', $messages_recus);
 
         // Actialités 
@@ -64,26 +68,6 @@ class DefaultController extends Controller {
                     'actualites' => $actualites,
                     'tags' => $tags
         ));
-    }
-
-    public function ressourcesAction($page) {
-        $total = $this->getDoctrine()->getRepository('EieinstitutBundle:fiche')->createQueryBuilder('p')->getQuery()->getResult();
-        /* total of resultat */
-        $total_articles = count($total);
-        $articles_per_page = $this->container->getParameter('max_articles_on_listepage');
-        $last_page = ceil($total_articles / $articles_per_page);
-        $previous_page = $page > 1 ? $page - 1 : 1;
-        $next_page = $page < $last_page ? $page + 1 : $last_page;         /* resultat  a afficher */ $entities = $this->getDoctrine()->getRepository('EieinstitutBundle:fiche')->createQueryBuilder('p')->setFirstResult(($page * $articles_per_page) - $articles_per_page)->setMaxResults($this->container->getParameter('max_articles_on_listepage'))->getQuery()->getResult();
-        return $this->render('EieinstitutBundle:Ressources:listes_ressources.html.twig', array(
-                    'Fiches' => $entities,
-                    'last_page' => $last_page,
-                    'previous_page' => $previous_page,
-                    'current_page' => $page,
-                    'next_page' => $next_page,
-                    'total_articles' => $total_articles,
-        ));
-        
-        return $this->render('EieinstitutBundle:Ressources:listes_ressources.html.twig');
     }
 
     public function ajouter_ressourceAction() {
@@ -134,12 +118,15 @@ class DefaultController extends Controller {
 
         $session = new Session();
         $session->set('CurrentMenu', 'Ressources');
-        
+
         return $this->render('EieinstitutBundle:Ressources:ajouter_ressource.html.twig', array("lastvalue" => $lastvalue));
     }
 
     public function forumAction() {
-
+        
+        $session = new Session();
+        $session->set('CurrentMenu', 'Forum');
+        
         $em = $this->getDoctrine()->getManager();
         $Forums = $em->getRepository('EieinstitutBundle:Forum')->findall();
         $Rubriques = $em->getRepository('EieinstitutBundle:Rubrique')->findall();
@@ -148,9 +135,12 @@ class DefaultController extends Controller {
 
     public function espace_PersonnelAction() {
         return $this->render('EieinstitutBundle:Portefolio:espace_personnel.html.twig');
+        
     }
 
     public function annuaireAction() {
+        $session = new Session();
+        $session->set('CurrentMenu', 'Annuaire');
         return $this->render('EieinstitutBundle:Pages:annuaire.html.twig');
     }
 
@@ -175,6 +165,10 @@ class DefaultController extends Controller {
     }
 
     public function preconiser_ressourceAction($fiche) {
+        
+        $session = new Session();
+        $session->set('CurrentMenu', 'Ressources');
+        
         $em = $this->getDoctrine()->getManager();
         $oFiches = $em->getRepository('EieinstitutBundle:Fiche')->findOneBy(array('id' => $fiche));
         $oCriteres = $em->getRepository('EieinstitutBundle:Criteres')->findAll();
@@ -212,6 +206,10 @@ class DefaultController extends Controller {
     }
 
     public function detail_ressourceAction($fiche) {
+        
+        $session = new Session();
+        $session->set('CurrentMenu', 'Ressources');
+        
         $em = $this->getDoctrine()->getEntityManager();
         $oFiches = $em->getRepository('EieinstitutBundle:Fiche')->findOneBy(array('id' => $fiche));
 
@@ -414,6 +412,10 @@ class DefaultController extends Controller {
     }
 
     public function detail_actualiteAction($actualite) {
+        
+        $session = new Session();
+        $session->set('CurrentMenu', 'Actualites');
+        
         $em = $this->getDoctrine()->getManager();
         $request = $this->getRequest();
         $actualit = $request->request->get('actualite');
@@ -427,6 +429,9 @@ class DefaultController extends Controller {
     }
 
     public function actualiteAction() {
+        $session = new Session();
+        $session->set('CurrentMenu', 'Actualites');
+        
         $em = $this->getDoctrine()->getManager();
         $actualites = $em
                 ->createQuery('SELECT a FROM EieinstitutBundle:Actualites a  ORDER BY a.titre DESC')
@@ -434,5 +439,50 @@ class DefaultController extends Controller {
                 ->getResult();
         return $this->render('EieinstitutBundle:Pages:actualite.html.twig', array("actualites" => $actualites));
     }
+    
+    
+    public function inscriptionAction()
+         {
+            $em = $this->getDoctrine()->getManager();
+            $request = $this->getRequest();
+            $action = $request->request->get('btn_valider');  
+            $etat = 0;
+            if(isset($action))
+            {
+                $User = new User();
+                
+                $password = $request->request->get('password');
+                $confirmer_password = $request->request->get('confirmer_password');
+                $nom = $request->request->get('nom');
+                $prenom = $request->request->get('prenom');
+                $email = $request->request->get('email');
+                $username = $request->request->get('username');
+                 
+                if ($password == $confirmer_password  && $password !='' ){
+                   
+                    $User->setNom($nom);
+                    $User->setPrenom($prenom);
+                    $User->setEmail($email);
+                    $User->setEmailCanonical($email);
+                    $User->setUsername($username);  
+                    $User->addRole("ROLE_USAGER");
+                    $User->setEnabled(true);
+                    
+                    $User->setPassword($password);
+                    $factory = $this->get('security.encoder_factory');
+                    $encoder = $factory->getEncoder($User);
+                    $password = $encoder->encodePassword($User->getPassword(), $User->getSalt());
+                    $User->setPassword($password);
+                  
+                    $em->persist($User);
+                    $em->flush();
+                    $etat = 1;
+                } 
+                else {
+                    $etat = -1 ;
+                    }
+            }
+            return $this->render('EieinstitutBundle:Portefolio:inscription.html.twig',array("etat" => $etat));
+        }
 
 }

@@ -22,3 +22,7 @@ logout:
 
 login:
     pattern:  /login
+
+inscription:
+    pattern:  /inscription
+    defaults: { _controller: EieinstitutBundle:Default:inscription }
