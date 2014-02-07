@@ -29,23 +29,23 @@
                                                         <span  class="label required">
 											Titre 
 										</span>                                                             
-								<input id="complex-fr-subtitle" class="full-width" type="text" name="titre"></input> <br><br>
+								<input id="id_titre" class="full-width" type="text" name="titre"></input> <br><br>
 								<!--<legend><a href="#">Recherche avancée</legend>-->
 										
 										<span  class="label required">
 											Description
 										</span>
                                                                 
-                                                        	<textarea id="editable" class="full-width" type="text" rows="10" cols="7" name="description">textarea</textarea><br><br>
+                                                        	<textarea id="id_description" class="full-width" type="text" rows="10" cols="7" name="description">textarea</textarea><br><br>
 
 										<span  class="label required">
 											 URL 
 										</span>
-								<input id="complex-fr-subtitle" class="full-width" type="text"  name="url"></input> <br><br>
+								<input id="id_url" class="full-width" type="text"  name="url"></input> <br><br>
 								<div class="columns">
 							<p class="colx2-left">
-									<span  class="label required">
-											Tags
+									<span  ><b>
+											Tags</b>
 									</span>
 								<input id="id_tags" class="full-width" type="text" value="" name="txt_tags"> <br><br>
 								
@@ -63,16 +63,9 @@
 			    <div class="block-content no-title">
 			    	<h3>Tags</h3>
 			    
-					<ul class="tags" id="tags" name="tags[]">
+					<ul class="tags" id="tags" name="listetags">
 					    <li>Sea</li>
 					    <li>Fish</li>
-					    <li>Bubble</li>
-					    <li>Sea</li>
-					    <li>Fish</li>
-					    <li>Bubble</li>
-					    <li>Sea</li>
-					    <li>Fish</li>
-					    <li>Bubble</li>
 					</ul>
 
 				</div>
@@ -81,9 +74,8 @@
 			
 				
 				<span  class="label required"> Domaine </span>
-					<select class="full-width" name="domaine" id="stats-sites-0" >
+					<select class="full-width" name="domaine" id="id_domaine" >
 						<option value="Banque/comptabilité/assurance">Banque/comptabilité/assurance</option>
-						<option value="Commerce">Commerce</option>
 						<option value="Commerce">Commerce</option>
 						<option value="Droit">Droit</option>
 						<option value="Economie">Economie</option>
@@ -94,14 +86,11 @@
 						<option value="Autre">Autre</option>
 					</select><br><br>		
 				
-				<span  class="label required"> Théme</span>
-					<!--<select class="full-width" name="theme" id="stats-sites-0">
-						<option value="Développemnt">Développemnt</option>
-						<option value="Réseau">Réseau</option>
-					</select><br><br>	--><input id="complex-fr-subtitle" class="full-width" type="text" value="" name="theme">
+				<span  ><b> Théme <b></span>
+						<input id="id_theme" class="full-width" type="text" value="" name="theme"><br><br>
 						
 				<span  class="label required">Type</span>
-					<select class="full-width" name="type" id="stats-sites-0">
+					<select class="full-width" name="type" id="id_type">
 						<option value="Audio">Audio</option>
 						<option value="Document">Document</option>
 						<option value="Database">Data base</option>
@@ -114,8 +103,8 @@
 					
 						
 					<div class="float-right"><br>
-					<button type="button" id="Ajouter_ressource" name="Ajouter_ressource"  >Enregistrer</button>
-					<button type="submit" name="btn_add" class="grey" ><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png') }}" width="16" height="16"> Enregistrer</button>
+					<button type="button" id="add-ressources"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png') }}" width="16" height="16"> Enregistrer </button>
+					<!--<button type="submit" name="btn_add" class="grey" ><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png') }}" width="16" height="16"> Enregistrer</button>
 					<!--<button type="button"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tick-circle.png') }}" width="16" height="16"> Enregistrer</button>-->
 										
 					</div>
@@ -125,7 +114,7 @@
 						
 							</fieldset>								
 		</section>
-
+ 
 
 {% endblock %}
      
@@ -134,13 +123,24 @@
 	function addTag()
 	{
 		console.log("TRK", $('#id_tags').val());
+		if($('#id_tags').val()!='')
 		$('#tags').append("<li>"+$('#id_tags').val()+"</li> ");
 	}
 	
 	
-	$("#Ajouter_ressource").click(function(){
+	
+	$('#add-ressources').click(function(){
         console.log("TRK");
 			var tags = [];
+			var titre =$('#id_titre').val();
+			var domaine =$('#id_domaine').val();
+			var type =$('#id_type').val();
+			var url =$('#id_url').val();
+			var description =$('#id_description').val();
+			var theme =$('#id_theme').val();
+			if(titre==''||url==''){
+			alert('verifiez que tous les champs obligatoir sont remplis');
+			}else{
 		$('#tags').each(function(){
 			//$(this).find('li').toArray();
 			$(this).find('li').each(function(){
@@ -150,20 +150,20 @@
 			});
 			//alert(tags);
 		});
-		
-	
+
 		$.post(
 		"{{ path('Ressources_Ajouter') }}",
-		{param_titre: "TRK" ,param_tags :  tags },
+		{param_titre:  titre ,param_domaine :  domaine,param_type :  type,param_url :  url,param_description :  description,param_tags :  tags,param_theme:  theme },
 			function(message)
 			{  
-				console.log("TRK Sucssess");
+				console.log("TRK Sucssess", domaine);
+				
+				 document.location.href="{{ path('Ressources') }}" ;
+				
 			}
 		);
-    });   
+    }});   
 	
-	
-	
-	
+
 	</script>
 {% endblock %}

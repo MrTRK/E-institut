@@ -123,7 +123,7 @@ class Fiche
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_creation", type="datetime")
+     * @ORM\Column(name="date_creation", type="datetime", nullable=true)
      */
     private $dateCreation;
 
@@ -144,14 +144,14 @@ class Fiche
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="statut", type="boolean")
+     * @ORM\Column(name="statut", type="boolean", nullable=true)
      */
     private $statut;
 
@@ -161,14 +161,14 @@ class Fiche
      /**
      * @var string
      *
-     * @ORM\Column(name="domaine", type="string")
+     * @ORM\Column(name="domaine", type="string", nullable=true)
      */
     private $domaine;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="theme", type="string")
+     * @ORM\Column(name="theme", type="string", nullable=true)
      */
     private $theme;
     
@@ -429,8 +429,7 @@ class Fiche
         $this->fiche_tags = new \Doctrine\Common\Collections\ArrayCollection();        
         $this->fiche = new \Doctrine\Common\Collections\ArrayCollection();
         $this->preconisation = new \Doctrine\Common\Collections\ArrayCollection();
-        parent::__construct();
-        // your own logic
+    
     }
 
 }

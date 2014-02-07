@@ -7,6 +7,8 @@ use Ei\einstitutBundle\Entity\Preconisation;
 use Ei\einstitutBundle\Entity\CriterePreconisation;
 use Ei\einstitutBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Ei\einstitutBundle\Entity\Fiche;
+use Ei\einstitutBundle\Entity\Tags;
 
 class DefaultController extends Controller {
 
@@ -76,51 +78,67 @@ class DefaultController extends Controller {
         $request = $this->getRequest();
         $action = $request->request->get('btn_add');
         $action1 = $request->request->get('add_tags_fiche');
-        $request = $this->getRequest();
         $date = new \DateTime('now');
-        $titre = $request->request->get('titre');
-        $tags = $request->request->get('tags');
-        $domaine = $request->request->get('domaine');
-        $theme = $request->request->get('theme');
-        $url = $request->request->get('url');
-        $type = $request->request->get('type');
-        $tabtag[] = "";
-        $description = $request->request->get('description');
+        $titre = $request->request->get('param_titre');
+	$tagsarray = array(''); 
+        $tagsarray = $request->request->get('param_tags');
+        $domaine = $request->request->get('param_domaine');
+        $theme = $request->request->get('param_theme');
+        $url = $request->request->get('param_url');
+        $type = $request->request->get('param_type');
+        $description = $request->request->get('param_description');
         $User = $this->get('security.context')->getToken()->getUser();
-        if (isset($action)) {
-            $fiche = new Fiche();
-            $fiche->setTitre($titre);
+		
+		
+		if(!empty($titre))
+			{
+			$fiche = new Fiche();
+            $fiche->setTitre("gfdgf");
             $fiche->setDomaine($domaine);
             $fiche->setUser($User);
             $fiche->setUrl($url);
-            $fiche->setType($type);
+            $fiche->setType($type );
             $fiche->setResume($description);
             $fiche->setStatut(1);
             $fiche->setDateCreation($date);
             $fiche->setTheme($theme);
             $em->persist($fiche);
-            //$em->flush();
-        }
-        /* else
-          if(isset($action1))
-          {
-          $tag=new Tags();
-          $tag->setLibelle($tags);
-          $tag->setEtat(1);
-          $em->persist($tag);
-          $result = count($movies);
-          $long=$tabtag->length();
-          $em->flush();
 
-          } */
-        $lastvalue = '';
-        $lastvalue = $tags[0];
+				for ($i = 1; $i <= count($tagsarray); $i++)
+				{
+					$totalTags = $em->getRepository('EieinstitutBundle:Tags')->findAll();
+					$test_tag=false;
+					foreach($totalTags as $liste_tag)
+					{
+					if($liste_tag->getLibelle()==$tagsarray[$i-1])
+					$test_tag=true;
+					}
+					if($test_tag==false)
+					{
+					$tags = new Tags();
+					$tags->setLibelle($tagsarray[$i-1]);
+					$tags->setEtat(true);
+					$em->persist($tags); 
+					$fiche->addFicheTags($tags);
+					}
+					else
+					{
+					  $tag_exist = $em->getRepository('EieinstitutBundle:Tags')->findOneBy(array('libelle' => $tagsarray[$i-1]));
+					  $fiche->addFicheTags($tag_exist);
+					}
+				}
+			 $em->flush();
+			}
+        
+        
+                $session = new Session();
+                $session->set('CurrentMenu', 'Ressources');
 
-        $session = new Session();
-        $session->set('CurrentMenu', 'Ressources');
-
-        return $this->render('EieinstitutBundle:Ressources:ajouter_ressource.html.twig', array("lastvalue" => $lastvalue));
+		return $this->render('EieinstitutBundle:Ressources:ajouter_ressource.html.twig');
+		
+      
     }
+/*** partie bousso ajouter ressouces*/
 
     public function forumAction() {
         
@@ -165,10 +183,6 @@ class DefaultController extends Controller {
     }
 
     public function preconiser_ressourceAction($fiche) {
-        
-        $session = new Session();
-        $session->set('CurrentMenu', 'Ressources');
-        
         $em = $this->getDoctrine()->getManager();
         $oFiches = $em->getRepository('EieinstitutBundle:Fiche')->findOneBy(array('id' => $fiche));
         $oCriteres = $em->getRepository('EieinstitutBundle:Criteres')->findAll();
@@ -205,11 +219,7 @@ class DefaultController extends Controller {
         return $this->render('EieinstitutBundle:Ressources:faire_une_preconisation.html.twig', array('fiche' => $oFiches, 'Notes' => $oNotes, 'Criteres' => $oCriteres));
     }
 
-    public function detail_ressourceAction($fiche) {
-        
-        $session = new Session();
-        $session->set('CurrentMenu', 'Ressources');
-        
+   public function detail_ressourceAction($fiche) {
         $em = $this->getDoctrine()->getEntityManager();
         $oFiches = $em->getRepository('EieinstitutBundle:Fiche')->findOneBy(array('id' => $fiche));
 

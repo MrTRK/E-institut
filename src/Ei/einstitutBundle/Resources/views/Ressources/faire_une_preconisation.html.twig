@@ -91,121 +91,69 @@
     <div class="block-border">
         <div class="block-content">
             <div class="block-controls">
-                <h1 class="bigger">Faire une préconisation</h1>
+                <h1 class="bigger">{{ fiche.titre }}</h1>
             </div>
+            <div class="fieldset  grey-bg clearfix">
+                <div class="box float-right">
 
-            <div class="task with-legend">
-
-                <!-- The legend -->
-                <div class="legend"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/document-pdf.png')}}" width="16" height="16"> Type de fiche</div>
-
-                <div class="task-description">
-
-                    <!-- Task-list has special integration of the floating-tags class -->
-
-                    <div class="columns">
-                        <ul class="floating-tags">
-                            <li class="tag-time">5 days ago</li>
-                            <li class="tag-user">You</li>
-                            <li>Domaine</li>
-                            <li>Théme</li>
+                        <ul class="simple-list with-icon">
+                            <li ><span>Mise en ligne : {{ fiche.datecreation|time_ago_in_words }}</span></li>
+                            <li ><span>Domaine : {{ fiche.domaine }}</span></li>
+                            <li ><span>Thème : {{ fiche.theme }}</span></li>
+                            <li ><span>Type : {{ fiche.type }}</span></li>
                         </ul>
-                        <h3><a href="#">Fiche 1</a></h3>
-                        Small task description ...
-                    </div> 
-                    <div class="columns">
-                        <ul class="keywords">
-                            <li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png')}}" width="16" height="16"> Sea</li>
-                            <li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png')}}" width="16" height="16"> Fish</li>
-                            <li><a href="#"><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png')}}" width="16" height="16"> Bubble</a></li>
-                        </ul>
-                    </div>
                 </div>
-                <ul class="mini-menu" style="opacity: 0;">
-                    <li><a href="#" title="Delete"> + Détails<img src="{{ asset('bundles/eieinstitut/images/icons/fugue/navigation-000-white.png')}}" width="16" height="16"></a></li>
-                </ul>
+                <p>{{ fiche.resume }}</p>
+                <p> Adresse <a href="http://{{ fiche.url }}" target="_blank" >{{ fiche.url }}</a></p>
+                <p><ul class="keywords">
+                    Tags 
+                    {% for tag in fiche.fiche_tags %}
+                        <li><img src="{{ asset('bundles/eieinstitut/images/icons/fugue/tag-small.png')}}" width="16" height="16"> {{ tag.libelle }} </li>
+                    {% endfor %}
+                </ul></p>
+                <hr class="no-margin">
             </div>
-
-
-
-
             <div class="task with-legend">
-
                 <!-- The legend -->
                 <div class="legend"><img src="{{ asset('bundles/eieinstitut/images/icons/finefiles/32/rtf.png')}}" width="16" height="16"> Notes</div>
 
                 <div class="task-description">
-                    Vous estimez que cette ressource est bien pour : </br>
-                    <dl ></br>
-                        <div class="grid_6">
-                            <dt class=""><span class="number">1</span> préparer ses cours</dt>
-                            <dd ></br>
-                                <ul class="checkable-list">
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1">Avis réservé</label></li>
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2">Suggéré</label></li>
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2">Très fortement conseillée</label></li>
-                                </ul>
-                            </dd></br>
+                    <form class="block-content form" id="table_form" method="post" action="{{ path('preconiser_ressource',{'fiche':fiche.id}) }}">
+                        Vous estimez que cette ressource est bien pour : </br>
+                        <dl></br>
+                            <div class="grid_6">
+                                {% for Critere in Criteres %}
+                                <dt class=""><span class="number">{{ loop.index }}</span> {{ Critere.libelle }}</dt>
+                                <dd></br>
+                                    <ul class="checkable-list">
 
-                            <dt class="opened"><span class="number">2</span> préparer ses travaux dirigés</dt>
-                            <dd ></br>
-                                <ul class="checkable-list">
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1">Avis réservé</label></li>
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2">Suggéré</label></li>
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2">Très fortement conseillée</label></li>
-                                </ul>
-                            </dd></br>
-                        </div>
-                        <div class="grid_6">
-                            <dt class=""><span class="number">3</span> préparer ses expériences</dt>
-                            <dd ></br>
-                                <ul class="checkable-list">
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1">Avis réservé</label></li>
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2">Suggéré</label></li>
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2">Très fortement conseillée</label></li>
-                                </ul>
-                            </dd></br>
+                                        {% for Note in Notes %}
+                                             <li>
+                                                 <input type="radio" name="radio{{Critere.id}}" id="radio-{{Note.id}}" value="{{Note.id}}">&nbsp;<label for="radio-{{Note.id}}">{{ Note.libelle }}</label>
+                                             </li>
+                                        {% endfor %}
+                                    </ul>
+                                </dd>
+                                </br>
+                                {% endfor %}
 
-                            <dt class=""><span class="number">4</span> préparer ses exposés scientifiques</dt>
-                            <dd ></br>
-                                <ul class="checkable-list">
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1">Avis réservé</label></li>
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2">Suggéré</label></li>
-                                    <li><input type="radio" name="simple-radio" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2">Très fortement conseillée</label></li>
-                                </ul>
-                            </dd>
-
-                        </div>
-                    </dl>
-
-                    <div class="clear"></div>
-                </div>
-                <div class="task with-legend">
-                    <button class="float-right" type=" button ">Valider</button>
-
-                    <div ><div class="container_6">
-
-                            <a href="#" title="Help" class="nav-button"><b>Enrichir les tags de cette ressource</b></a>
-
-                            <form id="search-form" name="search-form" method="post" action="search.html">
-                                <input type="text" name="s" id="s" value="" title="Search..." autocomplete="off">
-                            </form>
-                            <h3>Tags</h3>
-                            <ul class="tags">
-                                <li>Sea</li>
-                                <li>Fish</li>
-                                <li>Bubble</li>
-                                <li>Sea</li>
-                                <li>Fish</li>
-                                <li>Bubble</li>
-                                <li>Sea</li>
-                            </ul>
-                        </div></div>
-
-
-                </div>		
+                                <!--<dt class="opened"><span class="number">2</span> préparer ses travaux dirigés</dt>
+                                <dd ></br>
+                                    <ul class="checkable-list">
+                                        <li><input type="radio" name="radio2" id="simple-radio-1" value="1">&nbsp;<label for="simple-radio-1">Avis réservé</label></li>
+                                        <li><input type="radio" name="radio2" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2">Suggéré</label></li>
+                                        <li><input type="radio" name="radio2" id="simple-radio-2" value="2">&nbsp;<label for="simple-radio-2">Très fortement conseillée</label></li>
+                                    </ul>
+                                </dd></br>-->
+                            </div>
+                        </dl>
+                        <div class="clear"></div>
+                        <button class="float-right" name="preconiser" type="submit">Préconiser</button>
+                    </form>
+                </div>	
             </div>
-
-            </section>
+        </div>
+    </div>
+</section>
 
   {% endblock %}

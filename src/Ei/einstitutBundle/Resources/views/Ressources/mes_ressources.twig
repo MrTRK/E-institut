@@ -11,12 +11,8 @@
 
 {% endblock %}
 {% block content %}
-   
-
 
         <div class="clear"></div>
-
-
 
         <!--section filtre -->	   	
 
@@ -133,7 +129,6 @@
 						 
 				</form>
 						 <div class="clear"></div>
-                
 
                 </div>
 			</div>
@@ -199,14 +194,6 @@
                                
 
                         <!--</form>-->
-					 {% if Fiches==null  %}
-					 <div class="task with-legend "><ul class="message error no-margin">
-						<li><strong>Pas de publications trouvées pour votre recherche !</strong></li>
-					</ul>
-					<br>
-					
-					 </div>
-					 {% endif%}
                         {% for Fiche in Fiches %}
                           {% if Fiche.statut==1  %}
                             <div class="task with-legend ">

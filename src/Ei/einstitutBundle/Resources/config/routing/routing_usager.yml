@@ -12,7 +12,6 @@
   #  pattern:  /liste_contact
   #  defaults: { _controller: EieinstitutBundle:Default:liste_contact}
 
-
 # Ressources
 detail_ressource:
     pattern:  /detail_ressource/{fiche}
@@ -23,17 +22,29 @@ recherche_ressource:
     defaults: { _controller: EieinstitutBundle:Default:recherche_ressource} 
 
 Ressources:
-    pattern:  /ressources{page}
+    pattern:  /ressources/{page}
     defaults: { _controller: EieinstitutBundle:ressources:ressources,page:1 }
+
+mes_ressources:
+    pattern:  /mes_ressources/{page}
+    defaults: { _controller: EieinstitutBundle:ressources:mes_ressources,page:1 }
 
 action_fiche:
     pattern:  /action_fiche
     defaults: { _controller: EieinstitutBundle:Default:action_fiche}
 
 Ressources_Ajouter:
-    pattern:  /ajouter_ressource
+    pattern:  /user/ajouter_ressource
     defaults: { _controller: EieinstitutBundle:Default:ajouter_ressource }
 
+detail_ressource:
+    pattern:  /detail_ressource/{fiche}
+    defaults: { _controller: EieinstitutBundle:Default:detail_ressource}
+
+preconiser_ressource:
+    pattern:  /user/preconiser_ressource/{fiche}
+    defaults: { _controller: EieinstitutBundle:Default:preconiser_ressource}
+    
 # Contact ***********************************
 list_contact:
     pattern:  /user/liste_contact
@@ -75,12 +86,6 @@ Ajouter_evenement:
     pattern:  /user/agenda/ajouter_evenement
     defaults: { _controller: EieinstitutBundle:Usager:ajouter_evenement }
 
-detail_ressource:
-    pattern:  /detail_ressource/{fiche}
-    defaults: { _controller: EieinstitutBundle:Default:detail_ressource} 
-preconiser_ressource:
-    pattern:  /preconiser_ressource/{fiche}
-    defaults: { _controller: EieinstitutBundle:Default:preconiser_ressource} 
 recherche_ressource:
     pattern:  /recherche_ressource
     defaults: { _controller: EieinstitutBundle:Default:recherche_ressource} 
